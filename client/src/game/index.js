@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 
 export default () => {
-
   var config = {
     type: Phaser.AUTO,
     pixelArt: true,
