@@ -134,8 +134,10 @@ export default () => {
     this.physics.add.overlap(player, pohms, collectPohms, null, this);
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
+
     // collect GREEN ohms
     function collectGohms(player, gohms) {
+
 
       gohms.disableBody(true, true);
 
