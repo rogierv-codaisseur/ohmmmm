@@ -59,7 +59,7 @@ export default () => {
     });
 
     // create timer - set time in ms
-    timedEvent = this.time.delayedCall(5000, onEvent, [], this);
+    timedEvent = this.time.delayedCall(60000, onEvent, [], this);
 
     this.anims.create({
       key: 'breath',
