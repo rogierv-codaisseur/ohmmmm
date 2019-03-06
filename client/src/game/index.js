@@ -1,176 +1,127 @@
 import Phaser from 'phaser';
 
 export default () => {
-  let config = {
+
+  var config = {
     type: Phaser.AUTO,
     pixelArt: true,
-    width: 800,
-    height: 600,
+    width: 400,
+    height: 700,
+    parent: "phaser-game",
     physics: {
       default: 'arcade',
       arcade: {
-        gravity: { y: 300 },
+        gravity: {
+          y: 0
+        },
         debug: false
       }
     },
-    parent: 'phaser-game',
     scene: {
-      preload,
-      create,
-      update
+      preload: preload,
+      create: create,
+      update: update
     }
   };
+
+  var player;
+  var ohms;
+  var score = 0;
+  var scoreText;
+  var timedEvent;
+  var timeText;
+  var gameOver = false;
 
   new Phaser.Game(config);
 
   function preload() {
-    this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/platform.png');
-    this.load.image('star', 'assets/star.png');
-    this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('dude', 'assets/dude.png', {
-      frameWidth: 32,
-      frameHeight: 48
+    this.load.image('stage', 'assets/Stage.png');
+    this.load.image('gohm', 'assets/DotGreen.png');
+    this.load.image('pohm', 'assets/DotPurple.png');
+    this.load.image('oohm', 'assets/DotOrange.png');
+    this.load.spritesheet('player', 'assets/Player.png', {
+      frameWidth: 150,
+      frameHeight: 150
     });
   }
 
-  let platforms;
-  let player;
-  let cursors;
-  let stars;
-  let score = 0;
-  let scoreText;
-  let bombs;
-
   function create() {
-    this.add.image(400, 300, 'sky');
 
-    platforms = this.physics.add.staticGroup();
+    this.add.image(200, 350, 'stage');
 
-    platforms
-      .create(400, 568, 'ground')
-      .setScale(2)
-      .refreshBody();
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
-
-    player = this.physics.add.sprite(100, 450, 'dude');
-
-    player.setBounce(0.2);
-    player.setCollideWorldBounds(true);
-
-    this.anims.create({
-      key: 'left',
-      frames: this.anims.generateFrameNumbers('dude', {
-        start: 0,
-        end: 3
-      }),
-      frameRate: 10,
-      repeat: -1
-    });
-
-    this.anims.create({
-      key: 'turn',
-      frames: [
-        {
-          key: 'dude',
-          frame: 4
-        }
-      ],
-      frameRate: 20
-    });
-
-    this.anims.create({
-      key: 'right',
-      frames: this.anims.generateFrameNumbers('dude', {
-        start: 5,
-        end: 8
-      }),
-      frameRate: 10,
-      repeat: -1
-    });
-
-    this.physics.add.collider(player, platforms);
-    cursors = this.input.keyboard.createCursorKeys();
-
-    stars = this.physics.add.group({
-      key: 'star',
-      repeat: 11,
-      setXY: {
-        x: 12,
-        y: 0,
-        stepX: 70
-      }
-    });
-
-    stars.children.iterate(function(child) {
-      child.setBounceY(Phaser.Math.FloatBetween(0.5, 0.9));
-    });
-
-    this.physics.add.collider(stars, platforms);
-
-    this.physics.add.overlap(player, stars, collectStar, null, this);
-
-    scoreText = this.add.text(16, 16, 'score: 0', {
-      fontSize: '32px',
+    timeText = this.add.text(300, 0, '', {
+      fontSize: '16px',
       fill: '#000'
     });
 
-    function collectStar(player, star) {
-      star.disableBody(true, true);
+    timedEvent = this.time.delayedCall(5000, onEvent, [], this);
+
+
+    player = this.physics.add.sprite(75, 625, 'player').setInteractive();
+
+    this.input.on('pointermove', function (pointer) {
+      player.x = pointer.x;
+      player.y = pointer.y
+    });
+
+    //  Create 10 sprites (they all start life at 0x0)
+    ohms = this.physics.add.group({
+      key: 'gohm',
+      frameQuantity: 10,
+      // this scale does not work
+      scale: {
+        randFloat: [0.5, 1.5]
+      }
+    });
+
+    var rect = new Phaser.Geom.Rectangle(0, 0, 400, 700);
+
+    //  Randomly position the sprites within the rectangle
+    Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
+
+    scoreText = this.add.text(0, 0, 'score: 0', {
+      fontSize: '16px',
+      fill: '#000'
+    });
+
+    this.physics.add.overlap(player, ohms, collectOhms, null, this);
+
+    function collectOhms(player, ohms) {
+
+      ohms.disableBody(true, true);
 
       score += 10;
       scoreText.setText('Score: ' + score);
 
-      if (stars.countActive(true) === 0) {
-        stars.children.iterate(function(child) {
-          child.enableBody(true, child.x, 0, true, true);
-        });
+      // if (ohms.countActive(true) === 0) {
 
-        var x = player.x < 400 ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
 
-        var bomb = bombs.create(x, 16, 'bomb');
-        bomb.setBounce(1);
-        bomb.setCollideWorldBounds(true);
-        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-      }
-    }
-
-    bombs = this.physics.add.group();
-
-    this.physics.add.collider(bombs, platforms);
-
-    this.physics.add.collider(player, bombs, hitBomb, null, this);
-
-    function hitBomb(player, bomb) {
-      this.physics.pause();
-
-      player.setTint(0xff0000);
-
-      player.anims.play('turn');
-
-      // gameOver = true;
+      // }
     }
   }
 
   function update() {
-    if (cursors.left.isDown) {
-      player.setVelocityX(-160);
 
-      player.anims.play('left', true);
-    } else if (cursors.right.isDown) {
-      player.setVelocityX(160);
-
-      player.anims.play('right', true);
-    } else {
-      player.setVelocityX(0);
-
-      player.anims.play('turn');
+    if (gameOver) {
+      return;
     }
 
-    if (cursors.up.isDown && player.body.touching.down) {
-      player.setVelocityY(-330);
-    }
+    timeText.setText('Time: ' + timedEvent.getElapsedSeconds().toString().substr(0, 3));
+
   }
-};
+
+
+  function onEvent() {
+
+    this.physics.pause();
+
+    gameOver = true
+
+    let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
+      fontSize: '64px',
+      fill: '#000'
+    });
+  }
+
+}
