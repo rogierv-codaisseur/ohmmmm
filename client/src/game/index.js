@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
 
 export default () => {
-
+  
   var config = {
     type: Phaser.AUTO,
     pixelArt: true,
     width: 400,
     height: 700,
-    parent: "phaser-game",
+    parent: 'phaser-game',
     physics: {
       default: 'arcade',
       arcade: {
@@ -66,8 +66,9 @@ export default () => {
 
     // define player movements
     this.input.on('pointermove', function (pointer) {
+
       player.x = pointer.x;
-      player.y = pointer.y
+      player.y = pointer.y;
     });
 
     //  Create 5 GREEN ohms
@@ -130,6 +131,7 @@ export default () => {
       //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
       // }
     }
+    
     // collect PURPLE ohms
     function collectPohms(player, pohms) {
 
@@ -161,9 +163,7 @@ export default () => {
 
     // displays the current timer in seconds
     timeText.setText('Time: ' + timedEvent.getElapsedSeconds().toString().substr(0, 3));
-
   }
-
 
   function onEvent() {
 
@@ -179,5 +179,4 @@ export default () => {
       fill: '#000'
     });
   }
-
-}
+};
