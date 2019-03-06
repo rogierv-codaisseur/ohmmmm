@@ -41,10 +41,10 @@ export default () => {
     this.load.image('gohm', 'assets/DotGreen.png');
     this.load.image('pohm', 'assets/DotPurple.png');
     this.load.image('oohm', 'assets/DotOrange.png');
-    this.load.spritesheet('player', 'assets/Player.png', {
-      frameWidth: 150,
-      frameHeight: 150
-    });
+    this.load.image('player150', 'assets/Player150.png');
+    this.load.image('player140', 'assets/Player140.png');
+    this.load.image('player130', 'assets/Player130.png');
+    this.load.image('player120', 'assets/Player120.png');
   }
 
   function create() {
@@ -61,8 +61,23 @@ export default () => {
     // create timer - set time in ms
     timedEvent = this.time.delayedCall(5000, onEvent, [], this);
 
+    this.anims.create({
+      key: 'breath',
+      frames: [
+        { key: 'player120' },
+        { key: 'player130' },
+        { key: 'player140' },
+        { key: 'player150', duration: 2000 },
+        { key: 'player140' },
+        { key: 'player130' },
+        { key: 'player120', duration: 2000 },
+      ],
+      frameRate: 8,
+      repeat: -1
+    });
+
     // create player
-    player = this.physics.add.sprite(75, 625, 'player').setInteractive();
+    player = this.physics.add.sprite(75, 625, 'player150').setInteractive().play('breath');
 
     // define player movements
     this.input.on('pointermove', function (pointer) {
@@ -119,8 +134,10 @@ export default () => {
     this.physics.add.overlap(player, pohms, collectPohms, null, this);
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
+
     // collect GREEN ohms
     function collectGohms(player, gohms) {
+
 
       gohms.disableBody(true, true);
 
