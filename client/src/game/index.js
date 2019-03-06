@@ -25,7 +25,9 @@ export default () => {
   };
 
   var player;
-  var ohms;
+  var gohms;
+  var pohms;
+  var oohms
   var score = 0;
   var scoreText;
   var timedEvent;
@@ -47,27 +49,51 @@ export default () => {
 
   function create() {
 
+    // add background image
     this.add.image(200, 350, 'stage');
 
+    // add timer text to canvas
     timeText = this.add.text(300, 0, '', {
       fontSize: '16px',
       fill: '#000'
     });
 
+    // create timer - set time in ms
     timedEvent = this.time.delayedCall(5000, onEvent, [], this);
 
-
+    // create player
     player = this.physics.add.sprite(75, 625, 'player').setInteractive();
 
+    // define player movements
     this.input.on('pointermove', function (pointer) {
       player.x = pointer.x;
       player.y = pointer.y
     });
 
-    //  Create 10 sprites (they all start life at 0x0)
-    ohms = this.physics.add.group({
+    //  Create 5 GREEN ohms
+    gohms = this.physics.add.group({
       key: 'gohm',
-      frameQuantity: 10,
+      frameQuantity: 5,
+      // this scale does not work
+      scale: {
+        randFloat: [0.5, 1.5]
+      }
+    });
+
+    //  Create 5 PURPLE ohms
+    pohms = this.physics.add.group({
+      key: 'pohm',
+      frameQuantity: 5,
+      // this scale does not work
+      scale: {
+        randFloat: [0.5, 1.5]
+      }
+    });
+
+    //  Create 5 ORANGE ohms
+    oohms = this.physics.add.group({
+      key: 'oohm',
+      frameQuantity: 5,
       // this scale does not work
       scale: {
         randFloat: [0.5, 1.5]
@@ -76,37 +102,64 @@ export default () => {
 
     var rect = new Phaser.Geom.Rectangle(0, 0, 400, 700);
 
-    //  Randomly position the sprites within the rectangle
-    Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
+    //  Randomly position the ohms within the rectangle
+    Phaser.Actions.RandomRectangle(gohms.getChildren(), rect);
+    Phaser.Actions.RandomRectangle(pohms.getChildren(), rect);
+    Phaser.Actions.RandomRectangle(oohms.getChildren(), rect);
 
+    // add score text
     scoreText = this.add.text(0, 0, 'score: 0', {
       fontSize: '16px',
       fill: '#000'
     });
 
-    this.physics.add.overlap(player, ohms, collectOhms, null, this);
+    // set up overlap to trigger the scoring
+    this.physics.add.overlap(player, gohms, collectGohms, null, this);
+    this.physics.add.overlap(player, pohms, collectPohms, null, this);
+    this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
-    function collectOhms(player, ohms) {
+    // collect GREEN ohms
+    function collectGohms(player, gohms) {
 
-      ohms.disableBody(true, true);
+      gohms.disableBody(true, true);
 
       score += 10;
       scoreText.setText('Score: ' + score);
 
       // if (ohms.countActive(true) === 0) {
-
       //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
+      // }
+    }
+    // collect PURPLE ohms
+    function collectPohms(player, pohms) {
 
+      pohms.disableBody(true, true);
+
+      score += 10;
+      scoreText.setText('Score: ' + score);
+
+      // if (ohms.countActive(true) === 0) {
+      //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
+      // }
+    }
+
+    // collect ORANGE ohms
+    function collectOohms(player, oohms) {
+
+      oohms.disableBody(true, true);
+
+      score += 10;
+      scoreText.setText('Score: ' + score);
+
+      // if (ohms.countActive(true) === 0) {
+      //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
       // }
     }
   }
 
   function update() {
 
-    if (gameOver) {
-      return;
-    }
-
+    // displays the current timer in seconds
     timeText.setText('Time: ' + timedEvent.getElapsedSeconds().toString().substr(0, 3));
 
   }
@@ -114,10 +167,13 @@ export default () => {
 
   function onEvent() {
 
+    // pauses the game when timer runs out
     this.physics.pause();
 
+    // set gameOver to false, even though this does nothing yet
     gameOver = true
 
+    // pop up text when timer runs out
     let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
       fontSize: '64px',
       fill: '#000'
