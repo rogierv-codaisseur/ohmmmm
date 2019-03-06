@@ -9,7 +9,6 @@ window.onload = function() {
   function preload() {
     game.load.image('ball', 'assets/ball.png');
   }
-  let sprite;
 
   function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);

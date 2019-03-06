@@ -1,0 +1,45 @@
+html {
+  background-color: rgb(243, 243, 243)
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  margin: 0 auto;
+  color: dimgray;
+}
+
+.List {
+  list-style-type: none;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Images {
+  height: 300px;
+}
+
+.Thumbnails {
+  height: 100px;
+}
+
+.homeLinks {
+  margin-bottom: 5px;
+}
+.welcome {
+  color: dimgray;
+  font-size: 1.7rem;
+}
+
+.Title {
+  color: rgb(54, 54, 54);
+}
