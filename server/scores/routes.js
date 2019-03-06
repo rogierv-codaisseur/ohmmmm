@@ -11,4 +11,26 @@ router.get('/scores', (req, res, next) => {
   });
 });
 
+router.get('/scores/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  Score.findByPk(id, { include: [{ all: true, nested: true }] })
+    .then(score => {
+      if (!score)
+        return res.status(404).send({
+          message: 'Score does not exist'
+        });
+      return res.status(200).send(score);
+    })
+    .catch(error => next(error));
+});
+
+router.post('/scores', (req, res, next) => {
+  Score.create({ ...req.body })
+    .then(score => {
+      return res.status(201).send(score);
+    })
+    .catch(error => next(error));
+});
+
 module.exports = router;

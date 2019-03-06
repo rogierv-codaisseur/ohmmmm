@@ -10,4 +10,18 @@ router.get('/game-types', (req, res, next) => {
   });
 });
 
+router.get('/game-types/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  GameType.findByPk(id)
+    .then(gameType => {
+      if (!gameType)
+        return res.status(404).send({
+          message: 'Game Type does not exist'
+        });
+      return res.status(200).send(gameType);
+    })
+    .catch(error => next(error));
+});
+
 module.exports = router;
