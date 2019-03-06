@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 
 export default () => {
-  
   var config = {
     type: Phaser.AUTO,
     pixelArt: true,
@@ -31,6 +30,8 @@ export default () => {
   var timedEvent;
   var timeText;
   var gameOver = false;
+  let speed = 0;
+  let speedText;
 
   new Phaser.Game(config);
 
@@ -48,6 +49,16 @@ export default () => {
   function create() {
     this.add.image(200, 350, 'stage');
 
+    scoreText = this.add.text(0, 0, 'score: 0', {
+      fontSize: '16px',
+      fill: '#000'
+    });
+
+    speedText = this.add.text(150, 0, 'speed: 0', {
+      fontSize: '16px',
+      fill: '#000'
+    });
+
     timeText = this.add.text(300, 0, '', {
       fontSize: '16px',
       fill: '#000'
@@ -60,6 +71,7 @@ export default () => {
     this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
       player.y = pointer.y;
+      speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
     });
 
     //  Create 10 sprites (they all start life at 0x0)
@@ -76,11 +88,6 @@ export default () => {
 
     //  Randomly position the sprites within the rectangle
     Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
-
-    scoreText = this.add.text(0, 0, 'score: 0', {
-      fontSize: '16px',
-      fill: '#000'
-    });
 
     this.physics.add.overlap(player, ohms, collectOhms, null, this);
 
@@ -110,6 +117,8 @@ export default () => {
           .toString()
           .substr(0, 3)
     );
+
+    speedText.setText('Speed: ' + speed);
   }
 
   function onEvent() {
