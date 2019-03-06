@@ -1,13 +1,12 @@
 import Phaser from 'phaser';
 
 export default () => {
-
   var config = {
     type: Phaser.AUTO,
     pixelArt: true,
     width: 400,
     height: 700,
-    parent: "phaser-game",
+    parent: 'phaser-game',
     physics: {
       default: 'arcade',
       arcade: {
@@ -46,7 +45,6 @@ export default () => {
   }
 
   function create() {
-
     this.add.image(200, 350, 'stage');
 
     timeText = this.add.text(300, 0, '', {
@@ -56,12 +54,11 @@ export default () => {
 
     timedEvent = this.time.delayedCall(5000, onEvent, [], this);
 
-
     player = this.physics.add.sprite(75, 625, 'player').setInteractive();
 
-    this.input.on('pointermove', function (pointer) {
+    this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
-      player.y = pointer.y
+      player.y = pointer.y;
     });
 
     //  Create 10 sprites (they all start life at 0x0)
@@ -87,7 +84,6 @@ export default () => {
     this.physics.add.overlap(player, ohms, collectOhms, null, this);
 
     function collectOhms(player, ohms) {
-
       ohms.disableBody(true, true);
 
       score += 10;
@@ -102,26 +98,27 @@ export default () => {
   }
 
   function update() {
-
     if (gameOver) {
       return;
     }
 
-    timeText.setText('Time: ' + timedEvent.getElapsedSeconds().toString().substr(0, 3));
-
+    timeText.setText(
+      'Time: ' +
+        timedEvent
+          .getElapsedSeconds()
+          .toString()
+          .substr(0, 3)
+    );
   }
 
-
   function onEvent() {
-
     this.physics.pause();
 
-    gameOver = true
+    gameOver = true;
 
     let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
       fontSize: '64px',
       fill: '#000'
     });
   }
-
-}
+};
