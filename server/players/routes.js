@@ -24,7 +24,7 @@ router.get('/players/:id', (req, res, next) => {
     .catch(error => next(error));
 });
 
-router.post('/player', (req, res, next) => {
+router.post('/players', (req, res, next) => {
   Player.create({ ...req.body })
     .then(player => {
       return res.status(201).send(player);
