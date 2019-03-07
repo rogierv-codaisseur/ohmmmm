@@ -44,10 +44,8 @@ export default timeInSec => {
     this.load.image('gohm', 'assets/DotGreen.png');
     this.load.image('pohm', 'assets/DotPurple.png');
     this.load.image('oohm', 'assets/DotOrange.png');
-    this.load.image('player150', 'assets/Player150.png');
-    this.load.image('player140', 'assets/Player140.png');
-    this.load.image('player130', 'assets/Player130.png');
-    this.load.image('player120', 'assets/Player120.png');
+    this.load.spritesheet('player', 'assets/BreatheIn2.png', { 
+      frameWidth: 150, frameHeight: 150 });
   }
 
   flyingOhms = new Phaser.Class({
@@ -115,22 +113,18 @@ export default timeInSec => {
 
     this.anims.create({
       key: 'breath',
-      frames: [
-        { key: 'player120' },
-        { key: 'player130' },
-        { key: 'player140' },
-        { key: 'player150', duration: 2000 },
-        { key: 'player140' },
-        { key: 'player130' },
-        { key: 'player120', duration: 2000 }
-      ],
-      frameRate: 8,
+      frames: 
+      this.anims.generateFrameNumbers('player', { 
+        start: 0, end: 53, first: 54
+        }),
+        yoyo: true,
+      frameRate: 13,
       repeat: -1
     });
 
     // create player
     player = this.physics.add
-      .sprite(75, 625, 'player150')
+      .sprite(75, 625, 'player')
       .setCircle(40)
       .setDepth(2)
       .setInteractive()
