@@ -20,6 +20,9 @@ export default (preload, create, update) => {
       preload,
       create,
       update
+    },
+    audio: {
+      disableWebAudio: true
     }
   };
 };

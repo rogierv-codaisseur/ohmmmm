@@ -5,10 +5,7 @@ import preloadGame from './preload';
 import createGame from './create';
 
 export default timeInSec => {
-
   const config = configGame(preload, create, update);
-
-
 
   let player;
   let gohms;
@@ -20,8 +17,8 @@ export default timeInSec => {
   let timeText;
   let speed = 0;
   let speedText;
-  let flyingOhms
-  let music
+  let flyingOhms;
+  let music;
 
   new Phaser.Game(config);
 
@@ -63,10 +60,9 @@ export default timeInSec => {
     // this.add.image(200, 350, 'stage');
 
     // declare and play theme music
-    music = this.sound
-      .add('theme', {
-        loop: true
-      });
+    music = this.sound.add('theme', {
+      loop: true
+    });
     music.play();
 
     scoreText = this.add
@@ -104,11 +100,12 @@ export default timeInSec => {
 
     this.anims.create({
       key: 'breath',
-      frames: 
-      this.anims.generateFrameNumbers('player', { 
-        start: 0, end: 53, first: 54
-        }),
-        yoyo: true,
+      frames: this.anims.generateFrameNumbers('player', {
+        start: 0,
+        end: 53,
+        first: 54
+      }),
+      yoyo: true,
       frameRate: 13,
       repeat: -1
     });
@@ -121,10 +118,12 @@ export default timeInSec => {
       .setInteractive()
       .play('breath');
 
-      let slowDownText = this.add.text(30, 270, '', {
+    let slowDownText = this.add
+      .text(30, 270, '', {
         fontSize: '40px',
         fill: '#000'
-      }).setDepth(5);
+      })
+      .setDepth(5);
     // define player movements
     this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
@@ -132,14 +131,14 @@ export default timeInSec => {
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
       if (speed > 10) {
         score -= 1;
-        slowDownText.setText('Sloooow down...')
+        slowDownText.setText('Sloooow down...');
 
         if (score < 0) {
-          score = 0
+          score = 0;
         }
       }
       if (speed < 10) {
-        slowDownText.setText('')
+        slowDownText.setText('');
       }
     });
 
@@ -231,10 +230,9 @@ export default timeInSec => {
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
     // declare bell sound
-    let bell = this.sound
-      .add('bell', {
-        loop: false
-      });
+    let bell = this.sound.add('bell', {
+      loop: false
+    });
 
     // collect GREEN ohms
     function collectGohms(player, gohms) {
@@ -276,18 +274,18 @@ export default timeInSec => {
     this.physics.pause();
 
     // declare and play endgame sound
-    let endgame = this.sound
-     .add('endgame', {
-       loop: false
-     });
+    let endgame = this.sound.add('endgame', {
+      loop: false
+    });
     music.pause();
     endgame.play();
-    
 
     // pop up text when timer runs out
-    let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
-      fontSize: '64px',
-      fill: '#000'
-    }).setDepth(5);
+    let gameOverText = this.add
+      .text(30, 270, 'GOOD JOB!', {
+        fontSize: '64px',
+        fill: '#000'
+      })
+      .setDepth(5);
   }
 };
