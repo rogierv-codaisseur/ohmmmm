@@ -31,14 +31,15 @@ export default () => {
   var scoreText;
   var timedEvent;
   var timeText;
-  // var gameOver = false;
   let speed = 0;
   let speedText;
+  var flyingOhms
 
   new Phaser.Game(config);
 
   function preload() {
     this.load.image('stage', 'assets/Stage.png');
+    this.load.image('star', 'assets/star.png')
     this.load.image('gohm', 'assets/DotGreen.png');
     this.load.image('pohm', 'assets/DotPurple.png');
     this.load.image('oohm', 'assets/DotOrange.png');
@@ -47,6 +48,41 @@ export default () => {
     this.load.image('player130', 'assets/Player130.png');
     this.load.image('player120', 'assets/Player120.png');
   }
+
+
+  flyingOhms = new Phaser.Class({
+
+    Extends: Phaser.Physics.Arcade.Sprite,
+
+    initialize:
+
+    function flyingOhms (scene, x, y, width, height, speed, ohm)
+    {
+        Phaser.Physics.Arcade.Sprite.call(this, scene, x, y, ohm);
+
+        //  This is the path the sprite will follow
+        this.path = new Phaser.Curves.Ellipse(x, y, width, height);
+        this.pathIndex = 0;
+        this.pathSpeed = speed;
+        this.pathVector = new Phaser.Math.Vector2();
+
+        this.path.getPoint(0, this.pathVector);
+
+        this.setPosition(this.pathVector.x, this.pathVector.y);
+    },
+
+    preUpdate: function (time, delta)
+    {
+        this.anims.update(time, delta);
+
+        this.path.getPoint(this.pathIndex, this.pathVector);
+
+        this.setPosition(this.pathVector.x, this.pathVector.y);
+
+        this.pathIndex = Phaser.Math.Wrap(this.pathIndex + this.pathSpeed, 0, 1);
+    }
+
+});
 
   function create() {
     // add background image
@@ -104,39 +140,39 @@ export default () => {
     //  Create 5 GREEN ohms
     gohms = this.physics.add.group({
       key: 'gohm',
-      frameQuantity: 5,
-      // this scale does not work
-      scale: {
-        randFloat: [0.5, 1.5]
-      }
+      // frameQuantity: 5,
     });
 
     //  Create 5 PURPLE ohms
     pohms = this.physics.add.group({
       key: 'pohm',
-      frameQuantity: 5,
-      // this scale does not work
-      scale: {
-        randFloat: [0.5, 1.5]
-      }
+      // frameQuantity: 5,
     });
 
     //  Create 5 ORANGE ohms
     oohms = this.physics.add.group({
       key: 'oohm',
-      frameQuantity: 5,
-      // this scale does not work
-      scale: {
-        randFloat: [0.5, 1.5]
-      }
+      // frameQuantity: 5,
     });
 
-    var rect = new Phaser.Geom.Rectangle(0, 0, 400, 700);
+    //  x, y = center of the path
+    //  width, height = size of the elliptical path
+    //  speed = speed the sprite moves along the path per frame
 
-    //  Randomly position the ohms within the rectangle
-    Phaser.Actions.RandomRectangle(gohms.getChildren(), rect);
-    Phaser.Actions.RandomRectangle(pohms.getChildren(), rect);
-    Phaser.Actions.RandomRectangle(oohms.getChildren(), rect);
+    for (var i = 0; i < 10; i++)
+    {
+      gohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 5, 5, 0.01, 'gohm'), true);
+    }
+
+    for (var x = 0; x < 10; x++)
+    {
+      pohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 4, 4, 0.012, 'pohm'), true);
+    }
+
+    for (var z = 0; z < 10; z++)
+    {
+      oohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 3, 3, 0.015, 'oohm'), true);
+    }
 
     // add score text
     scoreText = this.add.text(0, 0, 'score: 0', {
