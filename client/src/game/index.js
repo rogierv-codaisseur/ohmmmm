@@ -20,6 +20,9 @@ export default timeInSec => {
       preload: preload,
       create: create,
       update: update
+    },
+    audio: {
+      disableWebAudio: true
     }
   };
 
@@ -35,6 +38,7 @@ export default timeInSec => {
   let speed = 0;
   let speedText;
   var flyingOhms
+  var music
 
   new Phaser.Game(config);
 
@@ -48,6 +52,9 @@ export default timeInSec => {
     this.load.image('player140', 'assets/Player140.png');
     this.load.image('player130', 'assets/Player130.png');
     this.load.image('player120', 'assets/Player120.png');
+    this.load.audio('theme', 'assets/bowl.wav');
+    this.load.audio('bell', 'assets/cowbell.wav');
+    this.load.audio('endgame', 'assets/endgame.mp3');
   }
 
 
@@ -88,6 +95,13 @@ export default timeInSec => {
   function create() {
     // add background image
     this.add.image(200, 350, 'stage');
+
+    // declare and play theme music
+    music = this.sound
+      .add('theme', {
+        loop: true
+      });
+    music.play();
 
     scoreText = this.add
       .text(0, 0, '', {
@@ -197,7 +211,7 @@ export default timeInSec => {
     }
 
     // add score text
-    scoreText = this.add.text(0, 0, 'score: 0', {
+    scoreText = this.add.text(0, 0, 'ohms: 0', {
       fontSize: '16px',
       fill: '#000'
     });
@@ -207,12 +221,20 @@ export default timeInSec => {
     this.physics.add.overlap(player, pohms, collectPohms, null, this);
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
+    // declare bell sound
+    var bell = this.sound
+      .add('bell', {
+        loop: false
+      });
+
     // collect GREEN ohms
     function collectGohms(player, gohms) {
       gohms.disableBody(true, true);
 
       score += 10;
       scoreText.setText('ohms: ' + score);
+
+      bell.play();
     }
 
     // collect PURPLE ohms
@@ -221,6 +243,8 @@ export default timeInSec => {
 
       score += 10;
       scoreText.setText('ohms: ' + score);
+
+      bell.play();
     }
 
     // collect ORANGE ohms
@@ -229,6 +253,8 @@ export default timeInSec => {
 
       score += 10;
       scoreText.setText('ohms: ' + score);
+
+      bell.play();
     }
   }
 
@@ -243,13 +269,19 @@ export default timeInSec => {
     // pauses the game when timer runs out
     this.physics.pause();
 
-    // set gameOver to false, even though this does nothing yet
-    // gameOver = true;
+    // declare and play endgame sound
+    var endgame = this.sound
+     .add('endgame', {
+       loop: false
+     });
+    music.pause();
+    endgame.play();
+    
 
     // pop up text when timer runs out
     var gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
       fontSize: '64px',
       fill: '#000'
-    });
+    }).setDepth(5);
   }
 };
