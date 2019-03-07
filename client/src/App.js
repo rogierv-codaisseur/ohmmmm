@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
-          <GameContainer/>
+          <GameContainer className="Game"/>
         </Provider>
       </div>
     );

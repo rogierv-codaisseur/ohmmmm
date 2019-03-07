@@ -31,7 +31,7 @@ export default () => {
   var scoreText;
   var timedEvent;
   var timeText;
-  var gameOver = false;
+  // var gameOver = false;
   let speed = 0;
   let speedText;
 
@@ -57,13 +57,13 @@ export default () => {
       fill: '#000'
     });
 
-    speedText = this.add.text(150, 0, '', {
+    speedText = this.add.text(160, 0, '', {
       fontSize: '16px',
       fill: '#000'
     });
 
     // add timer text to canvas
-    timeText = this.add.text(300, 0, '', {
+    timeText = this.add.text(310, 0, '', {
       fontSize: '16px',
       fill: '#000'
     });
@@ -152,7 +152,7 @@ export default () => {
       gohms.disableBody(true, true);
 
       score += 10;
-      scoreText.setText('Score: ' + score);
+      scoreText.setText('ohms: ' + score);
 
       // if (ohms.countActive(true) === 0) {
       //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
@@ -164,7 +164,7 @@ export default () => {
       pohms.disableBody(true, true);
 
       score += 10;
-      scoreText.setText('Score: ' + score);
+      scoreText.setText('ohms: ' + score);
 
       // if (ohms.countActive(true) === 0) {
       //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
@@ -176,7 +176,7 @@ export default () => {
       oohms.disableBody(true, true);
 
       score += 10;
-      scoreText.setText('Score: ' + score);
+      scoreText.setText('ohms: ' + score);
 
       // if (ohms.countActive(true) === 0) {
       //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
@@ -187,8 +187,8 @@ export default () => {
   function update() {
     // displays the current timer in seconds
     // console.log(Math.round(timedEvent.getElapsedSeconds()));
-    timeText.setText('Time: ' + Math.round(timedEvent.getElapsedSeconds()));
-    speedText.setText('Speed: ' + speed);
+    timeText.setText('time: ' + Math.round(timedEvent.getElapsedSeconds()));
+    speedText.setText('speed: ' + speed);
   }
 
   function onEvent() {
@@ -196,7 +196,7 @@ export default () => {
     this.physics.pause();
 
     // set gameOver to false, even though this does nothing yet
-    gameOver = true;
+    // gameOver = true;
 
     // pop up text when timer runs out
     let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
