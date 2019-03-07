@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const bcrypt = require('bcrypt');
 
 const Player = require('./model');
 
@@ -25,7 +26,12 @@ router.get('/players/:id', (req, res, next) => {
 });
 
 router.post('/players', (req, res, next) => {
-  Player.create({ ...req.body })
+  const { name, password } = req.body;
+  const player = {
+    name,
+    password: bcrypt.hashSync(password, 10)
+  };
+  Player.create(player)
     .then(player => {
       return res.status(201).send(player);
     })

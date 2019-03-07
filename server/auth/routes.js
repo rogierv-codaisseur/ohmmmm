@@ -9,7 +9,7 @@ const router = new Router();
 router.post('/login', (req, res, next) => {
   const { name, password } = req.body;
   if (name && password) {
-    User.findOne({ where: { name } })
+    Player.findOne({ where: { name } })
       .then(entity => {
         if (!entity) {
           return res.status(404).send({ message: 'Player with that name does not exists' });
