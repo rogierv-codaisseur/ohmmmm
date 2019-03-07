@@ -130,6 +130,10 @@ export default timeInSec => {
       .setInteractive()
       .play('breath');
 
+      var slowDownText = this.add.text(30, 270, '', {
+        fontSize: '40px',
+        fill: '#000'
+      });
     // define player movements
     this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
@@ -137,6 +141,10 @@ export default timeInSec => {
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
       if (speed > 10) {
         score -= 1;
+        slowDownText.setText('Sloooow down...')
+      }
+      if (speed < 10) {
+        slowDownText.setText('')
       }
     });
 
