@@ -267,7 +267,7 @@ export default timeInSec => {
     let finalTime = str_pad_left(minutes, '0', 1) + ':' + str_pad_left(remainingSeconds, '0', 2);
     timeText.setText('time: ' + finalTime);
     speedText.setText('speed: ' + speed);
-    scoreText.setText('speed: ' + score);
+    scoreText.setText('score: ' + score);
   }
 
   function str_pad_left(string, pad, length) {
