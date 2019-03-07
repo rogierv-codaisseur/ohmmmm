@@ -1,27 +1,11 @@
 import Phaser from 'phaser';
+import updateGame from './update';
+import configGame from './config';
+import preloadGame from './preload';
+import createGame from './create';
 
 export default timeInSec => {
-  var config = {
-    type: Phaser.AUTO,
-    pixelArt: true,
-    width: 400,
-    height: 700,
-    parent: 'phaser-game',
-    physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: {
-          y: 0
-        },
-        debug: false
-      }
-    },
-    scene: {
-      preload: preload,
-      create: create,
-      update: update
-    }
-  };
+  const config = configGame(preload, create, update);
 
   var player;
   var gohms;
@@ -39,15 +23,7 @@ export default timeInSec => {
   new Phaser.Game(config);
 
   function preload() {
-    this.load.image('stage', 'assets/Stage.png');
-    this.load.image('star', 'assets/star.png');
-    this.load.image('gohm', 'assets/DotGreen.png');
-    this.load.image('pohm', 'assets/DotPurple.png');
-    this.load.image('oohm', 'assets/DotOrange.png');
-    this.load.image('player150', 'assets/Player150.png');
-    this.load.image('player140', 'assets/Player140.png');
-    this.load.image('player130', 'assets/Player130.png');
-    this.load.image('player120', 'assets/Player120.png');
+    preloadGame(this);
   }
 
   flyingOhms = new Phaser.Class({
@@ -79,8 +55,9 @@ export default timeInSec => {
   });
 
   function create() {
+    createGame(this);
     // add background image
-    this.add.image(200, 350, 'stage');
+    // this.add.image(200, 350, 'stage');
 
     scoreText = this.add
       .text(0, 0, '', {
@@ -259,19 +236,7 @@ export default timeInSec => {
   }
 
   function update() {
-    // displays the current timer in seconds
-    // console.log(Math.round(timedEvent.getElapsedSeconds()));
-    let seconds = Math.round(timedEvent.getElapsedSeconds());
-    let minutes = Math.floor(seconds / 60);
-    let remainingSeconds = seconds - minutes * 60;
-    let finalTime = str_pad_left(minutes, '0', 1) + ':' + str_pad_left(remainingSeconds, '0', 2);
-    timeText.setText('time: ' + finalTime);
-    speedText.setText('speed: ' + speed);
-    scoreText.setText('score: ' + score);
-  }
-
-  function str_pad_left(string, pad, length) {
-    return (new Array(length + 1).join(pad) + string).slice(-length);
+    updateGame(scoreText, score, speedText, speed, timeText, timedEvent);
   }
 
   function onEvent() {
