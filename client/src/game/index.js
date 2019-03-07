@@ -109,9 +109,10 @@ export default () => {
     timedEvent = this.time.delayedCall(60000, onEvent, [], this);
 
     // create ohm regen - set time in ms
-    regenOhms = this.time.addEvent({ delay: 0, callback: generateOhms, callbackScope: this, loop: false });
-    regenOhms = this.time.addEvent({ delay: 20000, callback: generateOhms, callbackScope: this, loop: true });
-
+    regenOhms = this.time.addEvent({ delay: 0, callback: generateOrangeOhms, callbackScope: this, loop: false });
+    regenOhms = this.time.addEvent({ delay: 10000, callback: generateGreenOhms, callbackScope: this, loop: true });
+    regenOhms = this.time.addEvent({ delay: 20000, callback: generatePurpleOhms, callbackScope: this, loop: true });
+    regenOhms = this.time.addEvent({ delay: 30000, callback: generateOrangeOhms, callbackScope: this, loop: true });
 
     this.anims.create({
       key: 'breath',
@@ -168,26 +169,26 @@ export default () => {
     //  x, y = center of the path
     //  width, height = size of the elliptical path
     //  speed = speed the sprite moves along the path per frame
-
-    function generateOhms() {
-
+    function generateGreenOhms() {
       for (var x = 0; x < 5; x++)
       {
         gohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 5, 5, 0.01, 'gohm'), true);
       }
+    }
 
+    function generatePurpleOhms() {
       for (var y = 0; y < 5; y++)
       {
         pohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 4, 4, 0.012, 'pohm'), true);
       }
+    }
 
+    function generateOrangeOhms() {
       for (var z = 0; z < 5; z++)
       {
         oohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 3, 3, 0.015, 'oohm'), true);
       }
     }
-
-    
 
     // add score text
     scoreText = this.add.text(0, 0, 'score: 0', {
