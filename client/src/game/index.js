@@ -26,7 +26,7 @@ export default () => {
   var player;
   var gohms;
   var pohms;
-  var oohms
+  var oohms;
   var score = 0;
   var scoreText;
   var timedEvent;
@@ -49,21 +49,19 @@ export default () => {
   }
 
   function create() {
-
     // add background image
     this.add.image(200, 350, 'stage');
 
-
-    scoreText = this.add.text(0, 0, 'score: 0', {
+    scoreText = this.add.text(0, 0, '', {
       fontSize: '16px',
       fill: '#000'
     });
 
-    speedText = this.add.text(150, 0, 'speed: 0', {
+    speedText = this.add.text(150, 0, '', {
       fontSize: '16px',
       fill: '#000'
     });
-    
+
     // add timer text to canvas
     timeText = this.add.text(300, 0, '', {
       fontSize: '16px',
@@ -82,18 +80,20 @@ export default () => {
         { key: 'player150', duration: 2000 },
         { key: 'player140' },
         { key: 'player130' },
-        { key: 'player120', duration: 2000 },
+        { key: 'player120', duration: 2000 }
       ],
       frameRate: 8,
       repeat: -1
     });
 
     // create player
-    player = this.physics.add.sprite(75, 625, 'player150').setInteractive().play('breath');
+    player = this.physics.add
+      .sprite(75, 625, 'player150')
+      .setInteractive()
+      .play('breath');
 
     // define player movements
-    this.input.on('pointermove', function (pointer) {
-
+    this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
       player.y = pointer.y;
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
@@ -147,10 +147,8 @@ export default () => {
     this.physics.add.overlap(player, pohms, collectPohms, null, this);
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
-
     // collect GREEN ohms
     function collectGohms(player, gohms) {
-
       gohms.disableBody(true, true);
 
       score += 10;
@@ -160,10 +158,9 @@ export default () => {
       //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
       // }
     }
-    
+
     // collect PURPLE ohms
     function collectPohms(player, pohms) {
-
       pohms.disableBody(true, true);
 
       score += 10;
@@ -176,7 +173,6 @@ export default () => {
 
     // collect ORANGE ohms
     function collectOohms(player, oohms) {
-
       oohms.disableBody(true, true);
 
       score += 10;
@@ -190,17 +186,17 @@ export default () => {
 
   function update() {
     // displays the current timer in seconds
-    timeText.setText('Time: ' + timedEvent.getElapsedSeconds().toString().substr(0, 3));
+    // console.log(Math.round(timedEvent.getElapsedSeconds()));
+    timeText.setText('Time: ' + Math.round(timedEvent.getElapsedSeconds()));
     speedText.setText('Speed: ' + speed);
   }
 
   function onEvent() {
-
     // pauses the game when timer runs out
     this.physics.pause();
 
     // set gameOver to false, even though this does nothing yet
-    gameOver = true
+    gameOver = true;
 
     // pop up text when timer runs out
     let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
