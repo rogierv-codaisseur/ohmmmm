@@ -5,7 +5,9 @@ import preloadGame from './preload';
 import createGame from './create';
 
 export default timeInSec => {
+
   const config = configGame(preload, create, update);
+
 
   var player;
   var gohms;
@@ -18,7 +20,8 @@ export default timeInSec => {
   var timeText;
   let speed = 0;
   let speedText;
-  var flyingOhms;
+  var flyingOhms
+  var music
 
   new Phaser.Game(config);
 
@@ -59,6 +62,13 @@ export default timeInSec => {
     // add background image
     // this.add.image(200, 350, 'stage');
 
+    // declare and play theme music
+    music = this.sound
+      .add('theme', {
+        loop: true
+      });
+    music.play();
+
     scoreText = this.add
       .text(0, 0, '', {
         fontSize: '16px',
@@ -92,27 +102,27 @@ export default timeInSec => {
 
     this.anims.create({
       key: 'breath',
-      frames: [
-        { key: 'player120' },
-        { key: 'player130' },
-        { key: 'player140' },
-        { key: 'player150', duration: 2000 },
-        { key: 'player140' },
-        { key: 'player130' },
-        { key: 'player120', duration: 2000 }
-      ],
-      frameRate: 8,
+      frames: 
+      this.anims.generateFrameNumbers('player', { 
+        start: 0, end: 53, first: 54
+        }),
+        yoyo: true,
+      frameRate: 13,
       repeat: -1
     });
 
     // create player
     player = this.physics.add
-      .sprite(75, 625, 'player150')
+      .sprite(75, 625, 'player')
       .setCircle(40)
       .setDepth(2)
       .setInteractive()
       .play('breath');
 
+      var slowDownText = this.add.text(30, 270, '', {
+        fontSize: '40px',
+        fill: '#000'
+      });
     // define player movements
     this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
@@ -120,6 +130,10 @@ export default timeInSec => {
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
       if (speed > 10) {
         score -= 1;
+        slowDownText.setText('Sloooow down...')
+      }
+      if (speed < 10) {
+        slowDownText.setText('')
       }
     });
 
@@ -200,7 +214,7 @@ export default timeInSec => {
     }
 
     // add score text
-    scoreText = this.add.text(0, 0, 'score: 0', {
+    scoreText = this.add.text(0, 0, 'ohms: 0', {
       fontSize: '16px',
       fill: '#000'
     });
@@ -210,12 +224,20 @@ export default timeInSec => {
     this.physics.add.overlap(player, pohms, collectPohms, null, this);
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
+    // declare bell sound
+    var bell = this.sound
+      .add('bell', {
+        loop: false
+      });
+
     // collect GREEN ohms
     function collectGohms(player, gohms) {
       gohms.disableBody(true, true);
 
       score += 10;
       scoreText.setText('ohms: ' + score);
+
+      bell.play();
     }
 
     // collect PURPLE ohms
@@ -224,6 +246,8 @@ export default timeInSec => {
 
       score += 10;
       scoreText.setText('ohms: ' + score);
+
+      bell.play();
     }
 
     // collect ORANGE ohms
@@ -232,6 +256,8 @@ export default timeInSec => {
 
       score += 10;
       scoreText.setText('ohms: ' + score);
+
+      bell.play();
     }
   }
 
@@ -243,13 +269,19 @@ export default timeInSec => {
     // pauses the game when timer runs out
     this.physics.pause();
 
-    // set gameOver to false, even though this does nothing yet
-    // gameOver = true;
+    // declare and play endgame sound
+    var endgame = this.sound
+     .add('endgame', {
+       loop: false
+     });
+    music.pause();
+    endgame.play();
+    
 
     // pop up text when timer runs out
     var gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
       fontSize: '64px',
       fill: '#000'
-    });
+    }).setDepth(5);
   }
 };
