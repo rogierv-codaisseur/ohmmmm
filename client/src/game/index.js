@@ -1,30 +1,14 @@
 import Phaser from 'phaser';
+import updateGame from './update';
+import configGame from './config';
+import preloadGame from './preload';
+import createGame from './create';
 
 export default timeInSec => {
-  let config = {
-    type: Phaser.AUTO,
-    pixelArt: true,
-    width: 400,
-    height: 700,
-    parent: 'phaser-game',
-    physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: {
-          y: 0
-        },
-        debug: false
-      }
-    },
-    scene: {
-      preload: preload,
-      create: create,
-      update: update
-    },
-    audio: {
-      disableWebAudio: true
-    }
-  };
+
+  const config = configGame(preload, create, update);
+
+
 
   let player;
   let gohms;
@@ -42,16 +26,7 @@ export default timeInSec => {
   new Phaser.Game(config);
 
   function preload() {
-    this.load.image('stage', 'assets/Stage.png');
-    this.load.image('star', 'assets/star.png');
-    this.load.image('gohm', 'assets/DotGreen.png');
-    this.load.image('pohm', 'assets/DotPurple.png');
-    this.load.image('oohm', 'assets/DotOrange.png');
-    this.load.audio('theme', 'assets/bowl.wav');
-    this.load.audio('bell', 'assets/cowbell.wav');
-    this.load.audio('endgame', 'assets/endgame.mp3');
-    this.load.spritesheet('player', 'assets/BreatheIn2.png', { 
-      frameWidth: 150, frameHeight: 150 });
+    preloadGame(this);
   }
 
   flyingOhms = new Phaser.Class({
@@ -83,8 +58,9 @@ export default timeInSec => {
   });
 
   function create() {
+    createGame(this);
     // add background image
-    this.add.image(200, 350, 'stage');
+    // this.add.image(200, 350, 'stage');
 
     // declare and play theme music
     music = this.sound
@@ -292,19 +268,7 @@ export default timeInSec => {
   }
 
   function update() {
-    // displays the current timer in seconds
-    // console.log(Math.round(timedEvent.getElapsedSeconds()));
-    let seconds = Math.round(timedEvent.getElapsedSeconds());
-    let minutes = Math.floor(seconds / 60);
-    let remainingSeconds = seconds - minutes * 60;
-    let finalTime = str_pad_left(minutes, '0', 1) + ':' + str_pad_left(remainingSeconds, '0', 2);
-    timeText.setText('time: ' + finalTime);
-    speedText.setText('speed: ' + speed);
-    scoreText.setText('score: ' + score);
-  }
-
-  function str_pad_left(string, pad, length) {
-    return (new Array(length + 1).join(pad) + string).slice(-length);
+    updateGame(scoreText, score, speedText, speed, timeText, timedEvent);
   }
 
   function onEvent() {
