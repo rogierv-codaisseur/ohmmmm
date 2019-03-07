@@ -30,6 +30,7 @@ export default () => {
   var score = 0;
   var scoreText;
   var timedEvent;
+  var regenOhms;
   var timeText;
   let speed = 0;
   let speedText;
@@ -107,6 +108,11 @@ export default () => {
     // create timer - set time in ms
     timedEvent = this.time.delayedCall(60000, onEvent, [], this);
 
+    // create ohm regen - set time in ms
+    regenOhms = this.time.addEvent({ delay: 0, callback: generateOhms, callbackScope: this, loop: false });
+    regenOhms = this.time.addEvent({ delay: 20000, callback: generateOhms, callbackScope: this, loop: true });
+
+
     this.anims.create({
       key: 'breath',
       frames: [
@@ -140,18 +146,22 @@ export default () => {
     //  Create 5 GREEN ohms
     gohms = this.physics.add.group({
       key: 'gohm',
+      repeat: 1,
+      setXY: { x: 75, y: 625 }
       // frameQuantity: 5,
     });
 
     //  Create 5 PURPLE ohms
     pohms = this.physics.add.group({
       key: 'pohm',
+      setXY: { x: 75, y: 625 }
       // frameQuantity: 5,
     });
 
     //  Create 5 ORANGE ohms
     oohms = this.physics.add.group({
       key: 'oohm',
+      setXY: { x: 75, y: 625 }
       // frameQuantity: 5,
     });
 
@@ -159,20 +169,25 @@ export default () => {
     //  width, height = size of the elliptical path
     //  speed = speed the sprite moves along the path per frame
 
-    for (var i = 0; i < 10; i++)
-    {
-      gohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 5, 5, 0.01, 'gohm'), true);
+    function generateOhms() {
+
+      for (var x = 0; x < 5; x++)
+      {
+        gohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 5, 5, 0.01, 'gohm'), true);
+      }
+
+      for (var y = 0; y < 5; y++)
+      {
+        pohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 4, 4, 0.012, 'pohm'), true);
+      }
+
+      for (var z = 0; z < 5; z++)
+      {
+        oohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 3, 3, 0.015, 'oohm'), true);
+      }
     }
 
-    for (var x = 0; x < 10; x++)
-    {
-      pohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 4, 4, 0.012, 'pohm'), true);
-    }
-
-    for (var z = 0; z < 10; z++)
-    {
-      oohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 3, 3, 0.015, 'oohm'), true);
-    }
+    
 
     // add score text
     scoreText = this.add.text(0, 0, 'score: 0', {
@@ -191,10 +206,6 @@ export default () => {
 
       score += 10;
       scoreText.setText('ohms: ' + score);
-
-      // if (gohms.countActive(true) === 0) {
-      //   return Phaser.Actions.RandomRectangle(gohms.getChildren(), rect);
-      // }
     }
 
     // collect PURPLE ohms
@@ -203,10 +214,6 @@ export default () => {
 
       score += 10;
       scoreText.setText('ohms: ' + score);
-
-      // if (ohms.countActive(true) === 0) {
-      //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
-      // }
     }
 
     // collect ORANGE ohms
@@ -215,10 +222,6 @@ export default () => {
 
       score += 10;
       scoreText.setText('ohms: ' + score);
-
-      // if (ohms.countActive(true) === 0) {
-      //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
-      // }
     }
   }
 
@@ -229,10 +232,7 @@ export default () => {
     speedText.setText('speed: ' + speed);
   }
 
-  
-
   function onEvent() {
-
     // pauses the game when timer runs out
     this.physics.pause();
 
