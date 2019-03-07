@@ -34,13 +34,13 @@ export default timeInSec => {
   var timeText;
   let speed = 0;
   let speedText;
-  var flyingOhms
+  var flyingOhms;
 
   new Phaser.Game(config);
 
   function preload() {
     this.load.image('stage', 'assets/Stage.png');
-    this.load.image('star', 'assets/star.png')
+    this.load.image('star', 'assets/star.png');
     this.load.image('gohm', 'assets/DotGreen.png');
     this.load.image('pohm', 'assets/DotPurple.png');
     this.load.image('oohm', 'assets/DotOrange.png');
@@ -50,40 +50,33 @@ export default timeInSec => {
     this.load.image('player120', 'assets/Player120.png');
   }
 
-
   flyingOhms = new Phaser.Class({
-
     Extends: Phaser.Physics.Arcade.Sprite,
 
-    initialize:
+    initialize: function flyingOhms(scene, x, y, width, height, speed, ohm) {
+      Phaser.Physics.Arcade.Sprite.call(this, scene, x, y, ohm);
 
-    function flyingOhms (scene, x, y, width, height, speed, ohm)
-    {
-        Phaser.Physics.Arcade.Sprite.call(this, scene, x, y, ohm);
+      //  This is the path the sprite will follow
+      this.path = new Phaser.Curves.Ellipse(x, y, width, height);
+      this.pathIndex = 0;
+      this.pathSpeed = speed;
+      this.pathVector = new Phaser.Math.Vector2();
 
-        //  This is the path the sprite will follow
-        this.path = new Phaser.Curves.Ellipse(x, y, width, height);
-        this.pathIndex = 0;
-        this.pathSpeed = speed;
-        this.pathVector = new Phaser.Math.Vector2();
+      this.path.getPoint(0, this.pathVector);
 
-        this.path.getPoint(0, this.pathVector);
-
-        this.setPosition(this.pathVector.x, this.pathVector.y);
+      this.setPosition(this.pathVector.x, this.pathVector.y);
     },
 
-    preUpdate: function (time, delta)
-    {
-        this.anims.update(time, delta);
+    preUpdate: function(time, delta) {
+      this.anims.update(time, delta);
 
-        this.path.getPoint(this.pathIndex, this.pathVector);
+      this.path.getPoint(this.pathIndex, this.pathVector);
 
-        this.setPosition(this.pathVector.x, this.pathVector.y);
+      this.setPosition(this.pathVector.x, this.pathVector.y);
 
-        this.pathIndex = Phaser.Math.Wrap(this.pathIndex + this.pathSpeed, 0, 1);
+      this.pathIndex = Phaser.Math.Wrap(this.pathIndex + this.pathSpeed, 0, 1);
     }
-
-});
+  });
 
   function create() {
     // add background image
@@ -105,7 +98,7 @@ export default timeInSec => {
 
     // add timer text to canvas
     timeText = this.add
-      .text(310, 0, '', {
+      .text(300, 0, '', {
         fontSize: '16px',
         fill: '#000'
       })
@@ -148,6 +141,9 @@ export default timeInSec => {
       player.x = pointer.x;
       player.y = pointer.y;
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
+      if (speed > 10) {
+        score -= 1;
+      }
     });
 
     //  Create 5 GREEN ohms
@@ -176,23 +172,53 @@ export default timeInSec => {
     //  width, height = size of the elliptical path
     //  speed = speed the sprite moves along the path per frame
     function generateGreenOhms() {
-      for (var x = 0; x < 5; x++)
-      {
-        gohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 5, 5, 0.01, 'gohm'), true);
+      for (var x = 0; x < 5; x++) {
+        gohms.add(
+          new flyingOhms(
+            this,
+            Phaser.Math.FloatBetween(20, 380),
+            Phaser.Math.FloatBetween(20, 680),
+            5,
+            5,
+            0.01,
+            'gohm'
+          ),
+          true
+        );
       }
     }
 
     function generatePurpleOhms() {
-      for (var y = 0; y < 5; y++)
-      {
-        pohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 4, 4, 0.012, 'pohm'), true);
+      for (var y = 0; y < 5; y++) {
+        pohms.add(
+          new flyingOhms(
+            this,
+            Phaser.Math.FloatBetween(20, 380),
+            Phaser.Math.FloatBetween(20, 680),
+            4,
+            4,
+            0.012,
+            'pohm'
+          ),
+          true
+        );
       }
     }
 
     function generateOrangeOhms() {
-      for (var z = 0; z < 5; z++)
-      {
-        oohms.add(new flyingOhms(this, Phaser.Math.FloatBetween(20, 380), Phaser.Math.FloatBetween(20, 680), 3, 3, 0.015, 'oohm'), true);
+      for (var z = 0; z < 5; z++) {
+        oohms.add(
+          new flyingOhms(
+            this,
+            Phaser.Math.FloatBetween(20, 380),
+            Phaser.Math.FloatBetween(20, 680),
+            3,
+            3,
+            0.015,
+            'oohm'
+          ),
+          true
+        );
       }
     }
 
@@ -235,8 +261,17 @@ export default timeInSec => {
   function update() {
     // displays the current timer in seconds
     // console.log(Math.round(timedEvent.getElapsedSeconds()));
-    timeText.setText('time: ' + Math.round(timedEvent.getElapsedSeconds()));
+    let seconds = Math.round(timedEvent.getElapsedSeconds());
+    let minutes = Math.floor(seconds / 60);
+    let remainingSeconds = seconds - minutes * 60;
+    let finalTime = str_pad_left(minutes, '0', 1) + ':' + str_pad_left(remainingSeconds, '0', 2);
+    timeText.setText('time: ' + finalTime);
     speedText.setText('speed: ' + speed);
+    scoreText.setText('speed: ' + score);
+  }
+
+  function str_pad_left(string, pad, length) {
+    return (new Array(length + 1).join(pad) + string).slice(-length);
   }
 
   function onEvent() {
