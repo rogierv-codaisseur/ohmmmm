@@ -1,10 +1,12 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 import game from '../game';
 
 export default class GameContainer extends React.Component {
   componentDidMount() {
-    game();
+    const { location } = this.props;
+    game(location.state.timeInSec);
   }
 
   shouldComponentUpdate() {
@@ -15,3 +17,11 @@ export default class GameContainer extends React.Component {
     return <div id="phaser-game" />;
   }
 }
+
+GameContainer.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      timeInSec: PropTypes.number.isRequired
+    }).isRequired
+  }).isRequired
+};
