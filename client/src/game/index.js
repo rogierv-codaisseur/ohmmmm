@@ -9,19 +9,19 @@ export default timeInSec => {
   const config = configGame(preload, create, update);
 
 
-  var player;
-  var gohms;
-  var pohms;
-  var oohms;
-  var score = 0;
-  var scoreText;
-  var timedEvent;
-  var regenOhms;
-  var timeText;
+
+  let player;
+  let gohms;
+  let pohms;
+  let oohms;
+  let score = 0;
+  let scoreText;
+  let timedEvent;
+  let timeText;
   let speed = 0;
   let speedText;
-  var flyingOhms
-  var music
+  let flyingOhms
+  let music
 
   new Phaser.Game(config);
 
@@ -94,6 +94,8 @@ export default timeInSec => {
     // create timer - set time in ms
     timedEvent = this.time.delayedCall(timeInSec * 1000, onEvent, [], this);
 
+    let regenOhms;
+
     // create ohm regen - set time in ms
     regenOhms = this.time.addEvent({ delay: 0, callback: generateOrangeOhms, callbackScope: this, loop: false });
     regenOhms = this.time.addEvent({ delay: 10000, callback: generateGreenOhms, callbackScope: this, loop: true });
@@ -119,10 +121,10 @@ export default timeInSec => {
       .setInteractive()
       .play('breath');
 
-      var slowDownText = this.add.text(30, 270, '', {
+      let slowDownText = this.add.text(30, 270, '', {
         fontSize: '40px',
         fill: '#000'
-      });
+      }).setDepth(5);
     // define player movements
     this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
@@ -131,6 +133,10 @@ export default timeInSec => {
       if (speed > 10) {
         score -= 1;
         slowDownText.setText('Sloooow down...')
+
+        if (score < 0) {
+          score = 0
+        }
       }
       if (speed < 10) {
         slowDownText.setText('')
@@ -163,7 +169,7 @@ export default timeInSec => {
     //  width, height = size of the elliptical path
     //  speed = speed the sprite moves along the path per frame
     function generateGreenOhms() {
-      for (var x = 0; x < 5; x++) {
+      for (let x = 0; x < 5; x++) {
         gohms.add(
           new flyingOhms(
             this,
@@ -180,7 +186,7 @@ export default timeInSec => {
     }
 
     function generatePurpleOhms() {
-      for (var y = 0; y < 5; y++) {
+      for (let y = 0; y < 5; y++) {
         pohms.add(
           new flyingOhms(
             this,
@@ -197,7 +203,7 @@ export default timeInSec => {
     }
 
     function generateOrangeOhms() {
-      for (var z = 0; z < 5; z++) {
+      for (let z = 0; z < 5; z++) {
         oohms.add(
           new flyingOhms(
             this,
@@ -225,7 +231,7 @@ export default timeInSec => {
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
     // declare bell sound
-    var bell = this.sound
+    let bell = this.sound
       .add('bell', {
         loop: false
       });
@@ -270,7 +276,7 @@ export default timeInSec => {
     this.physics.pause();
 
     // declare and play endgame sound
-    var endgame = this.sound
+    let endgame = this.sound
      .add('endgame', {
        loop: false
      });
@@ -279,7 +285,7 @@ export default timeInSec => {
     
 
     // pop up text when timer runs out
-    var gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
+    let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
       fontSize: '64px',
       fill: '#000'
     }).setDepth(5);
