@@ -55,18 +55,18 @@ export default () => {
     scoreText = this.add.text(0, 0, '', {
       fontSize: '16px',
       fill: '#000'
-    });
+    }).setDepth(3);
 
     speedText = this.add.text(160, 0, '', {
       fontSize: '16px',
       fill: '#000'
-    });
+    }).setDepth(3);
 
     // add timer text to canvas
     timeText = this.add.text(310, 0, '', {
       fontSize: '16px',
       fill: '#000'
-    });
+    }).setDepth(3);
 
     // create timer - set time in ms
     timedEvent = this.time.delayedCall(60000, onEvent, [], this);
