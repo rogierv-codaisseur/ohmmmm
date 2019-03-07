@@ -89,6 +89,8 @@ export default () => {
     // create player
     player = this.physics.add
       .sprite(75, 625, 'player150')
+      .setCircle(40)
+      .setDepth(2)
       .setInteractive()
       .play('breath');
 
@@ -191,7 +193,10 @@ export default () => {
     speedText.setText('speed: ' + speed);
   }
 
+  
+
   function onEvent() {
+
     // pauses the game when timer runs out
     this.physics.pause();
 
@@ -199,7 +204,7 @@ export default () => {
     // gameOver = true;
 
     // pop up text when timer runs out
-    let gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
+    var gameOverText = this.add.text(30, 270, 'GOOD JOB!', {
       fontSize: '64px',
       fill: '#000'
     });
