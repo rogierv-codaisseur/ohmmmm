@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-export default () => {
+export default timeInSec => {
   var config = {
     type: Phaser.AUTO,
     pixelArt: true,
@@ -52,24 +52,30 @@ export default () => {
     // add background image
     this.add.image(200, 350, 'stage');
 
-    scoreText = this.add.text(0, 0, '', {
-      fontSize: '16px',
-      fill: '#000'
-    }).setDepth(3);
+    scoreText = this.add
+      .text(0, 0, '', {
+        fontSize: '16px',
+        fill: '#000'
+      })
+      .setDepth(3);
 
-    speedText = this.add.text(160, 0, '', {
-      fontSize: '16px',
-      fill: '#000'
-    }).setDepth(3);
+    speedText = this.add
+      .text(160, 0, '', {
+        fontSize: '16px',
+        fill: '#000'
+      })
+      .setDepth(3);
 
     // add timer text to canvas
-    timeText = this.add.text(310, 0, '', {
-      fontSize: '16px',
-      fill: '#000'
-    }).setDepth(3);
+    timeText = this.add
+      .text(310, 0, '', {
+        fontSize: '16px',
+        fill: '#000'
+      })
+      .setDepth(3);
 
     // create timer - set time in ms
-    timedEvent = this.time.delayedCall(60000, onEvent, [], this);
+    timedEvent = this.time.delayedCall(timeInSec * 1000, onEvent, [], this);
 
     this.anims.create({
       key: 'breath',
@@ -193,10 +199,7 @@ export default () => {
     speedText.setText('speed: ' + speed);
   }
 
-  
-
   function onEvent() {
-
     // pauses the game when timer runs out
     this.physics.pause();
 
