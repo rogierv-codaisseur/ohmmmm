@@ -6,7 +6,7 @@ export default () => {
     pixelArt: true,
     width: 400,
     height: 700,
-    parent: "phaser-game",
+    parent: 'phaser-game',
     physics: {
       default: 'arcade',
       arcade: {
@@ -32,6 +32,8 @@ export default () => {
   var timedEvent;
   var timeText;
   var gameOver = false;
+  let speed = 0;
+  let speedText;
 
   new Phaser.Game(config);
 
@@ -40,10 +42,10 @@ export default () => {
     this.load.image('gohm', 'assets/DotGreen.png');
     this.load.image('pohm', 'assets/DotPurple.png');
     this.load.image('oohm', 'assets/DotOrange.png');
-    this.load.spritesheet('player', 'assets/Player.png', {
-      frameWidth: 150,
-      frameHeight: 150
-    });
+    this.load.image('player150', 'assets/Player150.png');
+    this.load.image('player140', 'assets/Player140.png');
+    this.load.image('player130', 'assets/Player130.png');
+    this.load.image('player120', 'assets/Player120.png');
   }
 
   function create() {
@@ -51,6 +53,17 @@ export default () => {
     // add background image
     this.add.image(200, 350, 'stage');
 
+
+    scoreText = this.add.text(0, 0, 'score: 0', {
+      fontSize: '16px',
+      fill: '#000'
+    });
+
+    speedText = this.add.text(150, 0, 'speed: 0', {
+      fontSize: '16px',
+      fill: '#000'
+    });
+    
     // add timer text to canvas
     timeText = this.add.text(300, 0, '', {
       fontSize: '16px',
@@ -58,15 +71,32 @@ export default () => {
     });
 
     // create timer - set time in ms
-    timedEvent = this.time.delayedCall(5000, onEvent, [], this);
+    timedEvent = this.time.delayedCall(60000, onEvent, [], this);
+
+    this.anims.create({
+      key: 'breath',
+      frames: [
+        { key: 'player120' },
+        { key: 'player130' },
+        { key: 'player140' },
+        { key: 'player150', duration: 2000 },
+        { key: 'player140' },
+        { key: 'player130' },
+        { key: 'player120', duration: 2000 },
+      ],
+      frameRate: 8,
+      repeat: -1
+    });
 
     // create player
-    player = this.physics.add.sprite(75, 625, 'player').setInteractive();
+    player = this.physics.add.sprite(75, 625, 'player150').setInteractive().play('breath');
 
     // define player movements
     this.input.on('pointermove', function (pointer) {
+
       player.x = pointer.x;
-      player.y = pointer.y
+      player.y = pointer.y;
+      speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
     });
 
     //  Create 5 GREEN ohms
@@ -117,6 +147,7 @@ export default () => {
     this.physics.add.overlap(player, pohms, collectPohms, null, this);
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
+
     // collect GREEN ohms
     function collectGohms(player, gohms) {
 
@@ -129,6 +160,7 @@ export default () => {
       //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
       // }
     }
+    
     // collect PURPLE ohms
     function collectPohms(player, pohms) {
 
@@ -157,12 +189,10 @@ export default () => {
   }
 
   function update() {
-
     // displays the current timer in seconds
     timeText.setText('Time: ' + timedEvent.getElapsedSeconds().toString().substr(0, 3));
-
+    speedText.setText('Speed: ' + speed);
   }
-
 
   function onEvent() {
 
@@ -178,5 +208,4 @@ export default () => {
       fill: '#000'
     });
   }
-
-}
+};
