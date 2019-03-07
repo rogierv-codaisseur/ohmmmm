@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 
 export default () => {
-  
   var config = {
     type: Phaser.AUTO,
     pixelArt: true,
@@ -33,6 +32,8 @@ export default () => {
   var timedEvent;
   var timeText;
   var gameOver = false;
+  let speed = 0;
+  let speedText;
 
   new Phaser.Game(config);
 
@@ -52,6 +53,17 @@ export default () => {
     // add background image
     this.add.image(200, 350, 'stage');
 
+
+    scoreText = this.add.text(0, 0, 'score: 0', {
+      fontSize: '16px',
+      fill: '#000'
+    });
+
+    speedText = this.add.text(150, 0, 'speed: 0', {
+      fontSize: '16px',
+      fill: '#000'
+    });
+    
     // add timer text to canvas
     timeText = this.add.text(300, 0, '', {
       fontSize: '16px',
@@ -84,6 +96,7 @@ export default () => {
 
       player.x = pointer.x;
       player.y = pointer.y;
+      speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
     });
 
     //  Create 5 GREEN ohms
@@ -138,7 +151,6 @@ export default () => {
     // collect GREEN ohms
     function collectGohms(player, gohms) {
 
-
       gohms.disableBody(true, true);
 
       score += 10;
@@ -177,9 +189,9 @@ export default () => {
   }
 
   function update() {
-
     // displays the current timer in seconds
     timeText.setText('Time: ' + timedEvent.getElapsedSeconds().toString().substr(0, 3));
+    speedText.setText('Speed: ' + speed);
   }
 
   function onEvent() {
