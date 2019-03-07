@@ -156,8 +156,8 @@ export default () => {
       score += 10;
       scoreText.setText('ohms: ' + score);
 
-      // if (ohms.countActive(true) === 0) {
-      //   return Phaser.Actions.RandomRectangle(ohms.getChildren(), rect);
+      // if (gohms.countActive(true) === 0) {
+      //   return Phaser.Actions.RandomRectangle(gohms.getChildren(), rect);
       // }
     }
 
