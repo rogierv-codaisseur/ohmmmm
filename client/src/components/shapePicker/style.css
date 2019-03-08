@@ -1,0 +1,30 @@
+.shape-picker-group {
+  display: flex
+}
+
+.shape-picker {
+  position: relative;
+  background-color: lightgrey;
+  width: 89px;
+  height: 89px;
+  border-radius: 5px;
+}
+
+.shape {
+  position: absolute;
+  width: 50px;
+  left: 19px;
+  top: 20px;
+}
+
+.shape-up {
+  position: absolute;
+  left: 36px;
+  top: 3px
+}
+
+.shape-down {
+  position: absolute;
+  left: 36px;
+  top: 75px
+}
