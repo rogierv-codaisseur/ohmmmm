@@ -7,7 +7,7 @@ export default game => {
   game.load.audio('theme', 'assets/bowl.wav');
   game.load.audio('bell', 'assets/cowbell.wav');
   game.load.audio('endgame', 'assets/endgame.mp3');
-  game.load.spritesheet('player', 'assets/BreatheIn2.png', {
+  game.load.spritesheet('player', 'assets/BreatheIn3.png', {
     frameWidth: 150,
     frameHeight: 150
   });
