@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ShapePicker from './shapePicker';
 import './style.css';
 
@@ -24,5 +25,9 @@ class ShapePickerContainer extends React.Component {
     );
   }
 }
+
+ShapePickerContainer.propTypes = {
+  onChange: PropTypes.func.isRequired
+};
 
 export default ShapePickerContainer;

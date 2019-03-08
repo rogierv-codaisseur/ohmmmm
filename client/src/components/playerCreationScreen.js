@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 import ShapePickerGroup from './shapePicker';
 
 const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
-  const { name, shape, avatar } = values;
-
-  const onChangeShape = () => {
-    console.log('test');
-  };
+  const { name, avatar } = values;
 
   return (
     <div>
@@ -17,8 +13,7 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
         <input type="text" id="name" name="name" value={name} onChange={onChange} />
 
         <label htmlFor="shapes">Shape</label>
-        <ShapePickerGroup onChangeShape={onChangeShape()} />
-        <input type="text" id="shape" name="shape" value={shape} onChange={onChange} />
+        <ShapePickerGroup />
 
         <label htmlFor="avatar">Avatar</label>
         <input type="text" id="avatar" name="avatar" value={avatar} onChange={onChange} />
@@ -36,7 +31,6 @@ PlayerCreationScreen.propTypes = {
   onChange: PropTypes.func.isRequired,
   values: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired
   }).isRequired
 };

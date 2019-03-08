@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ShapePickerContainer from './shapePickerContainer';
 import './style.css';
 import { connect } from 'react-redux';
@@ -8,19 +9,17 @@ class ShapePickerGroup extends React.Component {
   state = { shapeCode: '000' };
 
   changeShape1 = async shape => {
-    await this.setState(prevState => ({
-      shapeCode: shape + prevState.shapeCode[1] + prevState.shapeCode[2]
-    }));
+    this.setState(prevState => ({ shapeCode: shape + prevState.shapeCode[1] + prevState.shapeCode[2] }));
     await this.props.shapeSelection(this.state.shapeCode);
   };
 
   changeShape2 = async shape => {
-    await this.setState(prevState => ({ shapeCode: prevState.shapeCode[0] + shape + prevState.shapeCode[2] }));
+    this.setState(prevState => ({ shapeCode: prevState.shapeCode[0] + shape + prevState.shapeCode[2] }));
     await this.props.shapeSelection(this.state.shapeCode);
   };
 
   changeShape3 = async shape => {
-    await this.setState(prevState => ({ shapeCode: prevState.shapeCode[0] + prevState.shapeCode[1] + shape }));
+    this.setState(prevState => ({ shapeCode: prevState.shapeCode[0] + prevState.shapeCode[1] + shape }));
     await this.props.shapeSelection(this.state.shapeCode);
   };
 
@@ -34,6 +33,10 @@ class ShapePickerGroup extends React.Component {
     );
   }
 }
+
+ShapePickerGroup.propTypes = {
+  shapeSelection: PropTypes.func.isRequired
+};
 
 export default connect(
   null,
