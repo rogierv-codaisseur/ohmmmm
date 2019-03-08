@@ -6,7 +6,9 @@ const SplashScreen = () => {
   return (
     <div className="Splash">
       <div className="Logo">
-        <img src="../assets/Logo.png" alt="logo"/>
+        <Link to="/player-creation">
+          <img src="../assets/Logo.png" alt="logo"/>
+        </Link>
       </div>
       <div className="Footer">
         <p>Made with ❤ at <Link to="https://codaisseur.com/">Codaisseur</Link></p>
