@@ -1,5 +1,6 @@
 html {
-  background-color: rgb(123, 102, 207)
+  background-color: rgb(1, 171, 209);
+  font-family: 'Fredoka One', cursive;
 }
 
 .App {
@@ -10,9 +11,4 @@ html {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   margin: 0 auto;
-  color: dimgray;
-}
-#phaser-game {
-  border: 2px solid white;
-  border-radius: 5px;
 }
