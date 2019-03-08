@@ -1,0 +1,62 @@
+
+.GameSelectSplash {
+  background: url('../assets/garyselect.png');
+  width: 400px;
+  height: 700px;
+  border: 1px solid rgb(97, 75, 75);
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Fredoka One', cursive;
+  color: white
+}
+
+.Time {
+  font-size: 5rem;
+}
+
+.PlayerName {
+  font-size: 1.5rem;
+  position: relative;
+  left: -37%;
+  top: -2%;
+}
+
+.Two {
+  line-height: 1.3rem;
+  position: relative;
+  left: -16.5%;
+  top: 1.5%;
+}
+
+.Five {
+  line-height: 1.3rem;
+  position: relative;
+  left: 22%;
+  top: 14%;
+}
+
+.Ten {
+  line-height: 1.3rem;
+  position: relative;
+  left: -23.5%;
+  top: 21.5%;
+}
+
+.Minutes {
+  font-size: 1rem;
+}
+
+.Two  a {
+  text-decoration: none;
+  color: white;
+}
+
+.Five a {
+  text-decoration: none;
+  color: white;
+}
+
+.Ten a {
+  text-decoration: none;
+  color: white;
+}
