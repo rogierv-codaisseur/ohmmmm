@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 
-const ShapePicker = ({ shape, shapeSelection, id }) => {
+const ShapePicker = ({ shape, shapeSelection }) => {
   const shapes = {
     0: 'ShapeCloud.png',
     1: 'ShapeEllipse.png',
@@ -13,21 +14,25 @@ const ShapePicker = ({ shape, shapeSelection, id }) => {
   return (
     <div className="shape-picker">
       <img
-        onClick={() => shapeSelection('up', id)}
+        onClick={() => shapeSelection('up')}
         src="./assets/shapes/ShapeUpSelector.png"
         alt="ShapeUpSelector"
         className="shape-up"
       />
       <img src={`./assets/shapes/${shapes[shape]}`} className="shape" alt="shape" />
-      {id}
       <img
-        onClick={() => shapeSelection('down', id)}
+        onClick={() => shapeSelection('down')}
         src="./assets/shapes/ShapeDownSelector.png"
         alt="ShapeDownSelector"
         className="shape-down"
       />
     </div>
   );
+};
+
+ShapePicker.propTypes = {
+  shape: PropTypes.number.isRequired,
+  shapeSelection: PropTypes.func.isRequired
 };
 
 export default ShapePicker;

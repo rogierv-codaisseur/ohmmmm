@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ShapePickerGroup from './shapePicker';
 
 const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
   const { name, shape, avatar } = values;
+
+  const onChangeShape = () => {
+    console.log('test');
+  };
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -11,6 +17,7 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
         <input type="text" id="name" name="name" value={name} onChange={onChange} />
 
         <label htmlFor="shapes">Shape</label>
+        <ShapePickerGroup onChangeShape={onChangeShape()} />
         <input type="text" id="shape" name="shape" value={shape} onChange={onChange} />
 
         <label htmlFor="avatar">Avatar</label>

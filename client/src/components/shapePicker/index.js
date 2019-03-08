@@ -1,28 +1,41 @@
 import React from 'react';
-import ShapePicker from './shapePicker';
+import ShapePickerContainer from './shapePickerContainer';
 import './style.css';
+import { connect } from 'react-redux';
+import { shapeSelection } from '../../actions/shape';
 
-class ShapePickerContainer extends React.Component {
-  state = { shape: 0, shape2: 0, shape3: 0 };
+class ShapePickerGroup extends React.Component {
+  state = { shapeCode: '000' };
 
-  shapeSelection = (direction, id) => {
-    console.log(id);
-    if (direction === 'up') {
-      this.setState({ shape: (this.state.shape + 1) % 5 });
-    } else {
-      this.state.shape === 0 ? this.setState({ shape: 4 }) : this.setState({ shape: this.state.shape - 1 });
-    }
+  changeShape1 = async shape => {
+    await this.setState(prevState => ({
+      shapeCode: shape + prevState.shapeCode[1] + prevState.shapeCode[2]
+    }));
+    await this.props.shapeSelection(this.state.shapeCode);
+  };
+
+  changeShape2 = async shape => {
+    await this.setState(prevState => ({ shapeCode: prevState.shapeCode[0] + shape + prevState.shapeCode[2] }));
+    await this.props.shapeSelection(this.state.shapeCode);
+  };
+
+  changeShape3 = async shape => {
+    await this.setState(prevState => ({ shapeCode: prevState.shapeCode[0] + prevState.shapeCode[1] + shape }));
+    await this.props.shapeSelection(this.state.shapeCode);
   };
 
   render() {
     return (
       <div className="shape-picker-group">
-        <ShapePicker shapeSelection={this.shapeSelection} shape={this.state.shape} id={1} />
-        <ShapePicker shapeSelection={this.shapeSelection} shape={this.state.shape} id={2} />
-        <ShapePicker shapeSelection={this.shapeSelection} shape={this.state.shape} id={3} />
+        <ShapePickerContainer onChange={this.changeShape1} />
+        <ShapePickerContainer onChange={this.changeShape2} />
+        <ShapePickerContainer onChange={this.changeShape3} />
       </div>
     );
   }
 }
 
-export default ShapePickerContainer;
+export default connect(
+  null,
+  { shapeSelection }
+)(ShapePickerGroup);

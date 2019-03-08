@@ -1,5 +1,6 @@
 .shape-picker-group {
-  display: flex
+  display: flex;
+  margin: 10px
 }
 
 .shape-picker {
