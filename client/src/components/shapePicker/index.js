@@ -26,9 +26,9 @@ class ShapePickerGroup extends React.Component {
   render() {
     return (
       <div className="shape-picker-group">
-        <ShapePickerContainer onChange={this.changeShape1} />
-        <ShapePickerContainer onChange={this.changeShape2} />
-        <ShapePickerContainer onChange={this.changeShape3} />
+        <ShapePickerContainer onChange={this.changeShape1} color={0} />
+        <ShapePickerContainer onChange={this.changeShape2} color={1} />
+        <ShapePickerContainer onChange={this.changeShape3} color={2} />
       </div>
     );
   }

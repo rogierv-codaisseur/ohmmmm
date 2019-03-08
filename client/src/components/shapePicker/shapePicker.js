@@ -2,27 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
-const ShapePicker = ({ shape, shapeSelection }) => {
+const ShapePicker = ({ shape, shapeSelection, color }) => {
   const shapes = {
-    0: 'ShapeCloud.png',
-    1: 'ShapeEllipse.png',
-    2: 'ShapePolygon.png',
-    3: 'ShapeStar.png',
-    4: 'ShapeUnion.png'
+    0: ['CloudPurple.png', 'CloudOrange.png', 'CloudTurquoise.png'],
+    1: ['EllipsePurple.png', 'EllipseOrange.png', 'EllipseTurquoise.png'],
+    2: ['PolygonPurple.png', 'PolygonOrange.png', 'PolygonTurquoise.png'],
+    3: ['StarPurple.png', 'StarOrange.png', 'StarTurquoise.png'],
+    4: ['UnionPurple.png', 'UnionOrange.png', 'UnionTurquoise.png'],
+    arrowUp: ['ShapeUpSelectorPurple.png', 'ShapeUpSelectorOrange.png', 'ShapeUpSelectorTurquoise.png'],
+    arrowDown: ['ShapeDownSelectorPurple.png', 'ShapeDownSelectorOrange.png', 'ShapeDownSelectorTurquoise.png']
   };
 
   return (
     <div className="shape-picker">
       <img
         onClick={() => shapeSelection('up')}
-        src="./assets/shapes/ShapeUpSelector.png"
+        src={`./assets/shapes/${shapes.arrowUp[color]}`}
         alt="ShapeUpSelector"
         className="shape-up"
       />
-      <img src={`./assets/shapes/${shapes[shape]}`} className="shape" alt="shape" />
+      <img src={`./assets/shapes/${shapes[shape][color]}`} className="shape" alt="shape" />
       <img
         onClick={() => shapeSelection('down')}
-        src="./assets/shapes/ShapeDownSelector.png"
+        src={`./assets/shapes/${shapes.arrowDown[color]}`}
         alt="ShapeDownSelector"
         className="shape-down"
       />
@@ -32,7 +34,8 @@ const ShapePicker = ({ shape, shapeSelection }) => {
 
 ShapePicker.propTypes = {
   shape: PropTypes.number.isRequired,
-  shapeSelection: PropTypes.func.isRequired
+  shapeSelection: PropTypes.func.isRequired,
+  color: PropTypes.number.isRequired
 };
 
 export default ShapePicker;

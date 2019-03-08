@@ -20,14 +20,15 @@ class ShapePickerContainer extends React.Component {
   render() {
     return (
       <div className="shape-picker-group">
-        <ShapePicker shapeSelection={this.shapeSelection} shape={this.state.shape} />
+        <ShapePicker shapeSelection={this.shapeSelection} shape={this.state.shape} color={this.props.color} />
       </div>
     );
   }
 }
 
 ShapePickerContainer.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  color: PropTypes.number.isRequired
 };
 
 export default ShapePickerContainer;
