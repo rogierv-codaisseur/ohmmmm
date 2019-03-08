@@ -18,6 +18,7 @@ export default timeInSec => {
   let speedText;
   let flyingOhms;
   let music;
+  let preGame;
 
   new Phaser.Game(config);
 
@@ -53,7 +54,10 @@ export default timeInSec => {
     }
   });
 
+
+
   function create() {
+
     // add background image
     this.add.image(200, 350, 'stage');
 
