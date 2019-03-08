@@ -2,7 +2,6 @@ import Phaser from 'phaser';
 import updateGame from './update';
 import configGame from './config';
 import preloadGame from './preload';
-import createGame from './create';
 
 export default timeInSec => {
   const config = configGame(preload, create, update);
@@ -55,9 +54,8 @@ export default timeInSec => {
   });
 
   function create() {
-    createGame(this);
     // add background image
-    // this.add.image(200, 350, 'stage');
+    this.add.image(200, 350, 'stage');
 
     // declare and play theme music
     music = this.sound.add('theme', {
