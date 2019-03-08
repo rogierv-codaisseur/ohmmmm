@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './splashScreen.css'
 
 const SplashScreen = () => {
   return (
-    <div>
-      SplashScreen - Go to <Link to="/player-selection">Player Selection</Link>
+    <div className="Splash">
+      <div className="Logo">
+        <img src="../assets/Logo.png" alt="logo"/>
+      </div>
+      <div className="Footer">
+        <p>Made with ❤ at <Link to="https://codaisseur.com/">Codaisseur</Link></p>
+      </div>
     </div>
   );
 };
