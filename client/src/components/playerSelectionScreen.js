@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ShapePickerGroup from './shapePicker';
 
 const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
-  const { name, shape } = values;
+  const { name } = values;
   return (
     <div>
       <form onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" value={name} onChange={onChange} />
 
-        <label htmlFor="shapes">Shape</label>
-        <input type="text" id="shape" name="shape" value={shape} onChange={onChange} />
+        <ShapePickerGroup />
 
         <input type="submit" value="Login" />
       </form>
@@ -25,8 +25,7 @@ PlayerSelectionScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   values: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired
   }).isRequired
 };
 
