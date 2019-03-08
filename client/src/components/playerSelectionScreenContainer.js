@@ -10,8 +10,8 @@ class PlayerSelectionScreenContainer extends React.Component {
   state = { name: '', shape: '' };
 
   onSubmit = event => {
-    const { login } = this.props;
-    const { name, shape } = this.state;
+    const { login, shape } = this.props;
+    const { name } = this.state;
     event.preventDefault();
     login(name, shape);
   };
@@ -27,14 +27,16 @@ class PlayerSelectionScreenContainer extends React.Component {
 }
 
 PlayerSelectionScreenContainer.propTypes = {
-  currentUser: PropTypes.shape({ token: PropTypes.string.isRequired }),
-  login: PropTypes.func.isRequired
+  currentUser: PropTypes.string,
+  login: PropTypes.func.isRequired,
+  shape: PropTypes.string.isRequired
 };
 
 PlayerSelectionScreenContainer.defaultProps = { currentUser: null };
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  shape: state.shape
 });
 
 export default connect(

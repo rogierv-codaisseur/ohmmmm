@@ -43,7 +43,7 @@ export default timeInSec => {
       this.setPosition(this.pathVector.x, this.pathVector.y);
     },
 
-    preUpdate: function(time, delta) {
+    preUpdate: function (time, delta) {
       this.anims.update(time, delta);
 
       this.path.getPoint(this.pathIndex, this.pathVector);
@@ -127,7 +127,7 @@ export default timeInSec => {
       })
       .setDepth(5);
     // define player movements
-    this.input.on('pointermove', function(pointer) {
+    this.input.on('pointermove', function (pointer) {
       player.x = pointer.x;
       player.y = pointer.y;
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
@@ -289,5 +289,11 @@ export default timeInSec => {
         fill: '#000'
       })
       .setDepth(5);
+
+    setTimeout(
+      function () {
+        window.location.href = '/game-result'
+      }, 3000);
+
   }
 };
