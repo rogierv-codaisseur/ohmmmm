@@ -7,13 +7,13 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
   const { name, shape, avatar } = values;
   return (
     <div className="Splash">
-      <div className="LogoLogin">
+      <div className="LogoCreate">
         <Link to="/player-selection">
           <img src="../assets/Logo.png" alt="logo"/>
         </Link>
       </div>
-      <div className="FormLogin">
-        <form className="FormBodyLogin" onSubmit={onSubmit}>
+      <div className="FormCreate">
+        <form className="FormBodyCreate" onSubmit={onSubmit}>
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" value={name} onChange={onChange} />
 

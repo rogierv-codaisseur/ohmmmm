@@ -1,22 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './playerSelectionScreen.css'
+import {login} from '../actions/auth'
 
-const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
-  const { name, shape } = values;
+
+const PlayerSelectionScreen = () => {
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" value={name} onChange={onChange} />
-
-        <label htmlFor="shapes">Shape</label>
-        <input type="text" id="shape" name="shape" value={shape} onChange={onChange} />
-
-        <input type="submit" value="Login" />
-      </form>
-      PlayerSelectionScreen - Go to <Link to="/game-selection">Game Selection</Link> or
-      <Link to="/player-creation"> create a Player</Link>
+    <div className="Splash">
+      <div className="LogoLogin">
+        <Link to="/player-creation">
+          <img src="../assets/Logo.png" alt="logo"/>
+        </Link>
+      </div>
+      <div className="FormLogin">
+        <div className="ExistingUser" onClick={login}>
+          <p>Current User Name + Shapes</p>
+        </div>
+        <div className="Logout">
+          <p>Log out</p>
+        </div>
+        <Link className="Login" to="/player-creation">Sign up</Link>
+      </div>
     </div>
   );
 };
