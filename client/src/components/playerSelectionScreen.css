@@ -1,0 +1,67 @@
+
+.Splash {
+  width: 400px;
+  height: 700px;
+  background: url("../assets/Background.png") no-repeat center center fixed;
+  border: 1px solid white;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Fredoka One', cursive;
+}
+
+.LogoLogin {
+  height: 60%;
+}
+
+.LogoLogin img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20%;
+}
+
+.FormLogin {
+  font-size: 1rem;
+  height: 40%;
+  height: 200px;
+  margin: auto auto;
+  width: 80%;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Login, .Logout, .ExistingUser {
+  width: 90%;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+}
+
+.Login, .Logout, .ExistingUser :hover {
+  cursor: pointer;
+}
+
+.ExistingUser {
+  height: 25%;
+
+  background-color: rgb(1, 209, 193);
+}
+
+.Logout {
+  height: 25%;
+
+  background-color: rgb(1, 209, 193);
+}
+
+.Login {
+  height: 18%;
+  background-color: rgb(253, 171, 74);
+  text-decoration: none;
+  color: white;
+  padding-top: 15px;
+}
