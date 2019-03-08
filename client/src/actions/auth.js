@@ -2,7 +2,7 @@ import request from 'superagent';
 
 export const LOGIN = 'LOGIN';
 
-const baseUrl = 'http://ohmmmm.herokuapp.com';
+const baseUrl = 'https://ohmmmm.herokuapp.com';
 // const baseUrl = 'http://localhost:4000';
 
 const loginSuccess = token => ({
