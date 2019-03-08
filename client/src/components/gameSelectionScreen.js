@@ -5,7 +5,7 @@ const GameSelectionScreen = () => {
   return (
     <div>
       <div>
-        <Link to={{ pathname: '/game', state: { timeInSec: 120 } }}>2 minutes</Link>
+        <Link to={{ pathname: '/game', state: { timeInSec: 20 } }}>2 minutes</Link>
       </div>
       <div>
         <Link to={{ pathname: '/game', state: { timeInSec: 300 } }}>5 minutes</Link>

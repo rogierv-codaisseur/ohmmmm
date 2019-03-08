@@ -18,6 +18,8 @@ export default timeInSec => {
   let speedText;
   let flyingOhms;
   let music;
+  let slowMessages = ['', 'Sloooow down...', 'Take  it  easy...', 'Breathe in...', 'Breathe out...', 'Please, chill...'];
+  let randomNum = Math.ceil(Math.random()*5)
 
   new Phaser.Game(config);
 
@@ -117,7 +119,7 @@ export default timeInSec => {
       .play('breath');
 
     let slowDownText = this.add
-      .text(30, 270, '', {
+      .text(30, 270, slowMessages[0], {
         fontSize: '40px',
         fill: '#000'
       })
@@ -129,14 +131,15 @@ export default timeInSec => {
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
       if (speed > 10) {
         score -= 1;
-        slowDownText.setText('Sloooow down...');
+        slowDownText.setText(slowMessages[randomNum]);
 
         if (score < 0) {
           score = 0;
         }
       }
       if (speed < 10) {
-        slowDownText.setText('');
+        slowDownText.setText(slowMessages[0]);
+        randomNum = Math.ceil(Math.random()*5)
       }
     });
 
@@ -277,6 +280,8 @@ export default timeInSec => {
     });
     music.pause();
     endgame.play();
+
+    slowMessages = ['']
 
     // pop up text when timer runs out
     let gameOverText = this.add
