@@ -9,7 +9,7 @@ const PlayerSelectionScreen = () => {
   return (
     <div className="Splash">
       <div className="LogoLogin">
-        <Link to="/player-creation">
+        <Link to="/game-selection">
           <img src="../assets/Logo.png" alt="logo"/>
         </Link>
       </div>

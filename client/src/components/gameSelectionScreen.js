@@ -1,19 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './gameSelectionScreen.css'
 
 const GameSelectionScreen = () => {
+
+  // change this to (props.currentUser.name) once props have been established
+  // also change currentUser below accordingly
+  let currentUser = 'Dusty'
+
   return (
-    <div>
-      <div>
-        <Link to={{ pathname: '/game', state: { timeInSec: 120 } }}>2 minutes</Link>
+    <div className="GameSelectSplash">
+      <p className="PlayerName">{currentUser}</p>
+      <div className="Two">
+        <Link to={{ pathname: '/game', state: { timeInSec: 120 } }}>
+          <span className="Time">2</span><br />
+          <span className="Minutes">minutes</span>
+        </Link>
       </div>
-      <div>
-        <Link to={{ pathname: '/game', state: { timeInSec: 300 } }}>5 minutes</Link>
+      <div className="Five">
+        <Link to={{ pathname: '/game', state: { timeInSec: 300 } }}>
+          <span className="Time">5</span><br />
+          <span className="Minutes">minutes</span>
+        </Link>
       </div>
-      <div>
-        <Link to={{ pathname: '/game', state: { timeInSec: 600 } }}>10 minutes</Link>
+      <div className="Ten">
+        <Link to={{ pathname: '/game', state: { timeInSec: 600 } }}>
+          <span className="Time">10</span><br />
+          <span className="Minutes">minutes</span>
+        </Link>
       </div>
-      GameSelectionScreen - Go to the <Link to="/game">Game</Link> or go to <Link to="/game-result">Game Result</Link>
     </div>
   );
 };
