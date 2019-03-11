@@ -15,18 +15,19 @@ const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
           <img src="../assets/Logo.png" alt="logo"/>
         </Link>
       </div>
-
-    <div className="FormLogin">
-    <div >
-      <form className="Form" onSubmit={onSubmit}>
-        <label className="User" htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" value={name} onChange={onChange} />
-        <ShapePickerGroup />
-        <input className="Login" type="submit" value="Login" />
-      </form>
-    </div>
-      <Link className="Signup" to="/player-creation">Sign up</Link>
-    </div>
+      <div className="FormLogin">
+        <div >
+          <form className="Form" onSubmit={onSubmit}>
+            <p className="User">Name:</p>
+            <label htmlFor="name"></label>
+            <input type="text" id="name" name="name" value={name} onChange={onChange} />
+            <ShapePickerGroup />
+            <input className="Login" type="submit" value="Login" />
+          </form>
+        </div>
+          <p className="User">No account yet?</p>
+          <Link className="Signup" to="/player-creation">Sign up</Link>
+      </div>
     </div>
   )
 }
