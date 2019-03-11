@@ -16,7 +16,8 @@ router.post('/login', (req, res, next) => {
         }
         if (bcrypt.compareSync(password, entity.password)) {
           res.send({
-            token: toJWT({ userId: entity.id })
+            token: toJWT({ userId: entity.id }),
+            name
           });
         } else {
           res.status(401).send({ message: 'Password was incorrect' });
