@@ -13,21 +13,21 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
       </p>
 
       <div className="Two">
-        <Link to={{ pathname: '/pre-game', state: { timeInSec: 120, gameType: 1 } }} onClick={() => setGame(120, 1)}>
+        <Link to="/pre-game" onClick={() => setGame(120, 1)}>
           <span className="Time">2</span>
           <br />
           <span className="Minutes">minutes</span>
         </Link>
       </div>
       <div className="Five">
-        <Link to={{ pathname: '/pre-game', state: { timeInSec: 300, gameType: 2 } }} onClick={() => setGame(300, 2)}>
+        <Link to="/pre-game" onClick={() => setGame(300, 2)}>
           <span className="Time">5</span>
           <br />
           <span className="Minutes">minutes</span>
         </Link>
       </div>
       <div className="Ten">
-        <Link to={{ pathname: '/pre-game', state: { timeInSec: 600, gameType: 3 } }} onClick={() => setGame(10, 3)}>
+        <Link to="/pre-game" onClick={() => setGame(600, 3)}>
           <span className="Time">10</span>
           <br />
           <span className="Minutes">minutes</span>
