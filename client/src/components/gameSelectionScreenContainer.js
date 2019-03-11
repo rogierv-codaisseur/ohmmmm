@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GameSelectionScreen from './gameSelectionScreen';
 import { connect } from 'react-redux';
-import { setGame } from '../actions/setGame'
+import { setGame } from '../actions/setGame';
 import { setCurrentUser } from '../actions/auth';
 
 class GameSelectionScreenContainer extends React.Component {
@@ -20,12 +20,15 @@ class GameSelectionScreenContainer extends React.Component {
   };
 
   render() {
-    return <GameSelectionScreen currentUser={this.props.currentUser} logoff={this.logoff} setGame={this.props.setGame} />;
+    return (
+      <GameSelectionScreen currentUser={this.props.currentUser} logoff={this.logoff} setGame={this.props.setGame} />
+    );
   }
 }
 
 GameSelectionScreenContainer.propTypes = {
   setCurrentUser: PropTypes.func.isRequired,
+  setGame: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({
     token: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
@@ -40,5 +43,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {setGame, setCurrentUser }
+  { setGame, setCurrentUser }
 )(GameSelectionScreenContainer);

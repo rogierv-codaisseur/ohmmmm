@@ -27,9 +27,7 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
         </Link>
       </div>
       <div className="Ten">
-
-        <Link to={{ pathname: '/pre-game', state: { timeInSec: 600, gameType: 3 } }} onClick={() => setGame(600, 3)}>
-
+        <Link to={{ pathname: '/pre-game', state: { timeInSec: 600, gameType: 3 } }} onClick={() => setGame(10, 3)}>
           <span className="Time">10</span>
           <br />
           <span className="Minutes">minutes</span>
@@ -42,6 +40,7 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
 export default GameSelectionScreen;
 
 GameSelectionScreen.propTypes = {
+  setGame: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({
     token: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired

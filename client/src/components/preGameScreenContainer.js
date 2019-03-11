@@ -3,17 +3,17 @@ import PreGameScreen from './preGameScreen';
 import { connect } from 'react-redux';
 
 class PreGameScreenContainer extends React.Component {
-
   render() {
-    return <PreGameScreen setTime={this.props.setTime}/>;
+    return <PreGameScreen />;
   }
 }
 
 const mapStateToProps = state => ({
-setTime: state.setGame.setTime
+  setTime: state.setGame.setTime,
+  gameType: state.setGame.gameType
 });
 
 export default connect(
-mapStateToProps,
-null
+  mapStateToProps,
+  null
 )(PreGameScreenContainer);
