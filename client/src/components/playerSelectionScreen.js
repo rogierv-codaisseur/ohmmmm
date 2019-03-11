@@ -9,7 +9,7 @@ const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
   const { name } = values;
   return (
     
-    <div className="Splash">
+    <div className="SplashLogin">
       <div className="LogoLogin">
         <Link to="/game-selection">
           <img src="../assets/Logo.png" alt="logo"/>
