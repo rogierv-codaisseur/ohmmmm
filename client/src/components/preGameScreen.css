@@ -1,33 +1,28 @@
 
-.Splash {
+.PreGameSplash {
   width: 400px;
   height: 700px;
-  background: url("../assets/Background.png") no-repeat center center fixed;
+  background: url("../assets/Stage.png") no-repeat center center fixed;
   border: 1px solid white;
   text-align: center;
   margin: 0 auto;
   font-family: 'Fredoka One', cursive;
 }
 
-.Logo {
-  height: 90%;
+.PreGameLogo {
+  height: 65%;
 }
 
-.Logo img {
+.PreGameLogo img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   padding-top: 200px;
 }
 
-.Footer {
-  font-size: 1rem;
-  color: white;
-  text-justify: center;
-  height: 10%;  
-}
-
-.Footer a {
-  text-decoration: none;
-  color: red;
+.Info {
+  margin: 0 auto;
+  font-size: 1.5rem;
+  color: rgba(117, 117, 117, 1);
+  width: 60%;
 }

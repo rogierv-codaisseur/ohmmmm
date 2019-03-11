@@ -4,14 +4,14 @@ import './preGameScreen.css'
 
 const PreGameScreen = (props) => {
   return (
-    <div className="Splash">
-      <div className="Logo">
+    <div className="PreGameSplash">
+      <div className="PreGameLogo">
         <Link to={{ pathname: '/game', state: { timeInSec: props.setTime } }}>
-          <img src="../assets/Logo.png" alt="logo"/>
+          <img src="../assets/start.png" alt="logo"/>
         </Link>
       </div>
-      <div className="Footer">
-        <p>Made with ❤ at <Link to="https://codaisseur.com/">Codaisseur</Link></p>
+      <div className="Info">
+        <p>Move the flower around to catch the dots, but remember if you move too fast you will lose points.</p>
       </div>
     </div>
   );
