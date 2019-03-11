@@ -27,7 +27,10 @@ class PlayerCreationScreenContainer extends React.Component {
 }
 
 PlayerCreationScreenContainer.propTypes = {
-  currentUser: PropTypes.string,
+  currentUser: PropTypes.shape({
+    token: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }),
   register: PropTypes.func.isRequired,
   shape: PropTypes.string.isRequired
 };

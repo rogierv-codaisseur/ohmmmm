@@ -3,11 +3,20 @@ import PropTypes from 'prop-types';
 import GameSelectionScreen from './gameSelectionScreen';
 import { connect } from 'react-redux';
 import { setTime } from '../actions/setTime'
+import { setCurrentUser } from '../actions/auth';
 
 class GameSelectionScreenContainer extends React.Component {
   logoff = () => {
     localStorage.clear();
     window.location.href = '/';
+  };
+
+  componentDidMount = () => {
+    const { setCurrentUser } = this.props;
+    if (localStorage.getItem('currentUser')) {
+      const currentUserId = JSON.parse(localStorage.getItem('currentUser'));
+      setCurrentUser(currentUserId);
+    }
   };
 
   render() {
@@ -30,5 +39,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {setTime}
+  {setTime, setCurrentUser }
 )(GameSelectionScreenContainer);
