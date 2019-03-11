@@ -1,5 +1,5 @@
 
-.Splash {
+.SplashLogin {
   width: 400px;
   height: 700px;
   background: url("../assets/Background.png") no-repeat center center fixed;
@@ -70,4 +70,25 @@
   text-decoration: none;
   color: white;
   padding-top: 8px;
+}
+
+@media (max-width: 320px) {
+  .SplashLogin {
+    width: 318px;
+    height: 568px;
+    background-size: 105%
+  }
+
+  .LogoLogin {
+    height: 47%;
+  }
+
+  .LogoLogin img {
+    width: 75%
+  }
+
+  .FormLogin {
+    height: 51%;
+  }
+
 }
