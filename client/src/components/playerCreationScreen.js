@@ -1,42 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 import './playerCreationScreen.css'
 import ShapePickerGroup from './shapePicker';
 
-
 const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
-  const { name, avatar } = values;
+  const { name } = values;
 
   return (
     <div className="SplashCreate">
       <div className="FormCreate">
-
         <form className="FormBodyCreate" onSubmit={onSubmit}>
         <h4>SIGN UP</h4>
-
         <div className="Name">
-        <label className="User" htmlFor="name">User Name:</label>
+          <label className="User" htmlFor="name">User Name:</label>
           <input type="text" id="name" name="name" value={name} onChange={onChange} />
-
         </div>
-
-
           <label className="User" htmlFor="avatar">Choose your Avatar:</label>
-
           <div className="Avatars">
-
-            <input type="image" id="avatar" name="avatar" src="../assets/Gary.png" alt="Submit" value={avatar} onChange={onChange} />
-            <input type="image" id="avatar" name="avatar" src="../assets/Lily.png" alt="Submit" value={avatar} onChange={onChange} />
+            <input className="Gary" type="radio" id="Gary" name="avatar" value="Gary" onChange={onChange}></input>
+            <label htmlFor="Gary"><img src="/assets/Gary.png" alt="Gary" /></label>
+            <input className="Lily" type="radio" id="Lily" name="avatar" value="Lily" onChange={onChange} />
+            <label htmlFor="Lily"><img src="/assets/Lily.png" alt="Lily" /></label>
           </div>
-
-          {/* <input type="text" id="avatar" name="avatar" value={avatar} onChange={onChange} /> */}
-
           <label className="User" htmlFor="shapes">Choose your Shapes:</label>
           <ShapePickerGroup />
-    
           <input id="create" type="submit" value="Create" />
-
         </form>
       </div>
     </div>

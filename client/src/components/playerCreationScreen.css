@@ -9,10 +9,21 @@
   font-family: 'Fredoka One', 'Roboto', cursive;
 }
 
+.Avatars input{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+  /* -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; */
+}
+
 .FormCreate {
   font-size: 1rem;
-  margin: 19% auto;
-  height: 80%;
+  margin: 10% auto;
+  height: 85%;
   width: 85%;
   border-radius: 10px;
   background-color: white;
@@ -31,13 +42,13 @@
   align-content: space-between;
 }
 
-.Avatars input{
-  width: 89%
-}
-
 .Name input{
   width: 89%;
   height: 40px;
+}
+
+.Name, .Avatars {
+  margin-bottom: 25px;
 }
 
 .FormCreate #create {
@@ -47,7 +58,7 @@
   text-align: center;
   width: 92%;
   height: 35px;
-  background-color: rgb(253, 171, 74);
+  background-color: rgb(1, 209, 193);
   color: white;
   padding-top: 4px;
   font-family: 'Fredoka One';

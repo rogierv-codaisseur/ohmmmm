@@ -10,7 +10,7 @@ const loginSuccess = token => ({
   token
 });
 
-export const login = (name, password) => dispatch => {
+export const login = (name, password) => dispatch => {  
   request
     .post(`${baseUrl}/login`)
     .send({ name, password })
@@ -18,10 +18,10 @@ export const login = (name, password) => dispatch => {
     .catch(error => error);
 };
 
-export const register = (name, password, avatar) => dispatch => {
+export const register = (name, password, avatar) => dispatch => {  
   request
     .post(`${baseUrl}/players`)
     .send({ name, password, avatar })
     .then(() => dispatch(login(name, password)))
-    .catch(error => error);
+    .catch(error => error);    
 };
