@@ -29,3 +29,28 @@
   left: 36px;
   top: 75px
 }
+
+@media (max-width: 320px) {
+.shape-picker {
+  width: 70px;
+  height: 70px;
+}
+
+.shape {
+  width: 40px;
+  left: 15px;
+  top: 15px;
+}
+
+.shape-up {
+  position: absolute;
+  left: 27px;
+  top: 3px
+}
+
+.shape-down {
+  position: absolute;
+  left: 27px;
+  top: 57px
+}
+}

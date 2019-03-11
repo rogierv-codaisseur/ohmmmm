@@ -9,6 +9,7 @@ import PlayerSelectionScreenContainer from './components/playerSelectionScreenCo
 import PlayerCreationScreenContainer from './components/playerCreationScreenContainer.js';
 import GameSelectionScreenContainer from './components/gameSelectionScreenContainer.js';
 import GameResultScreenContainer from './components/gameResultScreenContainer.js';
+import PreGameScreenContainer from './components/preGameScreenContainer.js';
 import ShapePickerGroup from './components/shapePicker';
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/player-selection" component={PlayerSelectionScreenContainer} />
           <Route exact path="/player-creation" component={PlayerCreationScreenContainer} />
           <Route exact path="/game-selection" component={GameSelectionScreenContainer} />
+          <Route exact path="/pre-game" component={PreGameScreenContainer} />
           <Route exact path="/game-result" component={GameResultScreenContainer} />
           <Route exact path="/shape" component={ShapePickerGroup} />
         </Provider>
