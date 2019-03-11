@@ -6,7 +6,7 @@ import game from '../game';
 export default class GameContainer extends React.Component {
   componentDidMount() {
     const { location } = this.props;
-    game(location.state.timeInSec);
+    game(location.state.timeInSec, location.state.gameType);
   }
 
   shouldComponentUpdate() {
