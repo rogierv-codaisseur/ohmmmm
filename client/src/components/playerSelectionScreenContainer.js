@@ -32,7 +32,10 @@ class PlayerSelectionScreenContainer extends React.Component {
 }
 
 PlayerSelectionScreenContainer.propTypes = {
-  currentUser: PropTypes.string,
+  currentUser: PropTypes.shape({
+    token: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }),
   login: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
   shape: PropTypes.string.isRequired
