@@ -54,3 +54,28 @@
   top: 57px
 }
 }
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .shape-picker {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .shape {
+    width: 45px;
+    left: 17.5px;
+    top: 17.5px;
+  }
+  
+  .shape-up {
+    position: absolute;
+    left: 32px;
+    top: 3px
+  }
+  
+  .shape-down {
+    position: absolute;
+    left: 32px;
+    top: 67px
+  }
+  }

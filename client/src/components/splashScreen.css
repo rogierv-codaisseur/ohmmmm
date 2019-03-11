@@ -43,3 +43,23 @@
     width: 75%
   }
 }
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .Splash {
+    width: 358px;
+    height: 638px;
+    background-size: 105%
+  }
+
+  .Logo img {
+    width: 90%
+  }
+}
+
+@media (min-width: 361px) and (max-width: 375px) {
+  .Splash {
+    width: 373px;
+    height: 665px;
+    background-size: 105%
+  }
+}

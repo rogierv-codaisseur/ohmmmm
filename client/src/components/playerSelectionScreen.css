@@ -92,3 +92,27 @@
   }
 
 }
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .SplashLogin {
+    width: 358px;
+    height: 638px;
+    background-size: 105%
+  }
+
+  .LogoLogin img {
+    width: 90%
+  }
+  
+  .FormLogin {
+    height: 51%;
+  }
+}
+
+@media (min-width: 361px) and (max-width: 375px) {
+  .SplashLogin {
+    width: 373px;
+    height: 665px;
+    background-size: 105%
+  }
+}
