@@ -1,9 +1,17 @@
 import { SET_TIME } from '../actions/setTime';
 
-export default (state = 120, action = {}) => {
+let initialstate = {
+  gameType: 1,
+  setTime: 120
+}
+
+export default (state = initialstate, action = {}) => {
   switch (action.type) {
     case SET_TIME:
-      return action.time;
+      return {
+        gameType: action.payload.type,
+        setTime: action.payload.time
+      }
 
     default:
       return state;

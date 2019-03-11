@@ -6,7 +6,7 @@ const PreGameScreen = (props) => {
   return (
     <div className="PreGameSplash">
       <div className="PreGameLogo">
-        <Link to={{ pathname: '/game', state: { timeInSec: props.setTime } }}>
+        <Link to={{ pathname: '/game', state: { timeInSec: props.game } }}>
           <img src="../assets/start.png" alt="logo"/>
         </Link>
       </div>
