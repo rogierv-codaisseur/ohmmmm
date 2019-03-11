@@ -1,0 +1,17 @@
+
+.GameResultSplash {
+  background: url('../assets/results.png');
+  width: 400px;
+  height: 700px;
+  border: 1px solid rgb(97, 75, 75);
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Fredoka One', cursive;
+  color: white
+}
+
+.GameResultSplash a {
+  text-decoration: none;
+  color: rgb(1, 171, 209);
+  font-size: 1rem;
+}

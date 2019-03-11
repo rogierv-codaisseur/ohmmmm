@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './gameResultScreen.css'
 
 const GameResultScreen = () => {
   return (
-    <div>
-      GameResultScreen - Go to <Link to="/game-selection">Game Selection</Link>
+    <div className="GameResultSplash">
+      <Link className="GameLink" to="/game-selection">back to Game Selection</Link>
     </div>
   );
 };
