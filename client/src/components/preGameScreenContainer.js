@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 class PreGameScreenContainer extends React.Component {
 
   render() {
-    return <PreGameScreen setTime={this.props.game}/>;
+    return <PreGameScreen setTime={this.props.setTime}/>;
   }
 }
 
 const mapStateToProps = state => ({
-game: state.game
+setTime: state.setGame.setTime
 });
 
 export default connect(

@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import './preGameScreen.css'
 
 const PreGameScreen = (props) => {
+
+  if (!props.setTime) return 'Loading...'
   return (
     <div className="PreGameSplash">
       <div className="PreGameLogo">
-        <Link to={{ pathname: '/game', state: { timeInSec: props.game } }}>
+        <Link to={{ pathname: '/game', state: { timeInSec: props.setTime } }}>
           <img src="../assets/start.png" alt="logo"/>
         </Link>
       </div>
