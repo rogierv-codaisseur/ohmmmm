@@ -31,3 +31,15 @@
   text-decoration: none;
   color: red;
 }
+
+@media (max-width: 320px) {
+  .Splash {
+    width: 318px;
+    height: 568px;
+    background-size: 105%
+  }
+
+  .Logo img {
+    width: 75%
+  }
+}
