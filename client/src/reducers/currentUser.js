@@ -1,6 +1,6 @@
 import { LOGIN, SET_CURRENT_USER } from '../actions/auth';
 
-export default (state = null, action = {}) => {
+export default (state = null, action = {}) => {  
   switch (action.type) {
     case LOGIN:
       return action.token;
