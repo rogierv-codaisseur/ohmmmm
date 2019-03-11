@@ -18,7 +18,7 @@ const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
       <div className="FormLogin">
         <div >
           <form className="Form" onSubmit={onSubmit}>
-            <p className="User">Name:</p>
+            <p className="User">User Name:</p>
             <label htmlFor="name"></label>
             <input type="text" id="name" name="name" value={name} onChange={onChange} />
             <ShapePickerGroup />

@@ -1,37 +1,66 @@
 
-.Splash {
+.SplashCreate {
   width: 400px;
   height: 700px;
   background: url("../assets/Background.png") no-repeat center center fixed;
   border: 1px solid white;
   text-align: center;
   margin: 0 auto;
-  font-family: 'Fredoka One', cursive;
-}
-
-.LogoCreate {
-  height: 60%;
-}
-
-.LogoCreate img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 20%;
+  font-family: 'Fredoka One', 'Roboto', cursive;
 }
 
 .FormCreate {
   font-size: 1rem;
-  height: 40%;
-}
-
-.FormBodyCreate {
-  height: 200px;
-  margin: auto auto;
-  width: 80%;
+  margin: 19% auto;
+  height: 80%;
+  width: 85%;
   border-radius: 10px;
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
+
+.FormBodyCreate {
+  margin-top: 0px;
+}
+
+.Avatars {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.Avatars input{
+  width: 89%
+}
+
+.Name input{
+  width: 89%;
+  height: 40px;
+}
+
+.FormCreate #create {
+  height: 40px;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 92%;
+  height: 35px;
+  background-color: rgb(253, 171, 74);
+  color: white;
+  padding-top: 4px;
+  font-family: 'Fredoka One';
+}
+
+.FormCreate #create :hover{
+  cursor: pointer;
+}
+
+.User {
+  font-size: 0.8rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 5px;
+}
+
 
