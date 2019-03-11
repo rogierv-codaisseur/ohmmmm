@@ -2,6 +2,6 @@ import { combineReducers } from 'redux';
 
 import currentUser from './currentUser';
 import shape from './shape';
-import setTime from './setTime'
+import setGame from './setGame'
 
-export default combineReducers({ currentUser, shape, setTime });
+export default combineReducers({ currentUser, shape, setGame });

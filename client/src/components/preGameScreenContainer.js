@@ -10,7 +10,7 @@ class PreGameScreenContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-setTime: state.setTime
+setTime: state.setGame.setTime
 });
 
 export default connect(
