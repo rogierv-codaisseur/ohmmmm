@@ -1,22 +1,29 @@
 import request from 'superagent';
 
-export const LOGIN = 'LOGIN';
+export const TOP_5 = 'TOP_5';
 
-const baseUrl = 'https://ohmmmm.herokuapp.com';
-// const baseUrl = 'http://localhost:4000';
+// const baseUrl = 'https://ohmmmm.herokuapp.com';
+const baseUrl = 'http://localhost:4000';
 
-const loginSuccess = token => ({
-  type: LOGIN,
-  token
+const top5 = top5 => ({
+  type: TOP_5,
+  top5
 });
 
 export const addScore = (score, gameTypeId) => (dispatch, getState) => {
   const playerId = getState().currentUser.userId;
-  console.log('Score', score);
 
   request
     .post(`${baseUrl}/scores`)
     .send({ score, playerId, gameTypeId })
-    // .then(() => dispatch(login(name, password)))
+    .catch(error => error);
+};
+
+export const getPlayerTop5 = () => (dispatch, getState) => {
+  const playerId = getState().currentUser.userId;
+
+  request
+    .get(`${baseUrl}/playerTop5?playerId=${playerId}`)
+    .then(response => dispatch(top5(response.body.score)))
     .catch(error => error);
 };
