@@ -2,8 +2,8 @@ import request from 'superagent';
 
 export const TOP_5 = 'TOP_5';
 
-// const baseUrl = 'https://ohmmmm.herokuapp.com';
-const baseUrl = 'http://localhost:4000';
+const baseUrl = 'https://ohmmmm.herokuapp.com';
+// const baseUrl = 'http://localhost:4000';
 
 const top5 = top5 => ({
   type: TOP_5,
