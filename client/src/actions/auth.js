@@ -27,10 +27,10 @@ export const login = (name, password) => dispatch => {
     .catch(error => error);
 };
 
-export const register = (name, password, avatar) => dispatch => {
+export const register = (name, password, avatar) => dispatch => {  
   request
     .post(`${baseUrl}/players`)
     .send({ name, password, avatar })
     .then(() => dispatch(login(name, password)))
-    .catch(error => error);
+    .catch(error => error);    
 };
