@@ -25,6 +25,7 @@ class GameSelectionScreenContainer extends React.Component {
 }
 
 GameSelectionScreenContainer.propTypes = {
+  setCurrentUser: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({
     token: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired

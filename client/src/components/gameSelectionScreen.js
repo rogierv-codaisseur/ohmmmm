@@ -27,7 +27,9 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
         </Link>
       </div>
       <div className="Ten">
+
         <Link to={{ pathname: '/pre-game', state: { timeInSec: 600, gameType: 3 } }} onClick={() => setGame(600, 3)}>
+
           <span className="Time">10</span>
           <br />
           <span className="Minutes">minutes</span>
