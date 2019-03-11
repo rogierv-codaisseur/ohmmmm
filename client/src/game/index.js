@@ -2,8 +2,10 @@ import Phaser from 'phaser';
 import updateGame from './update';
 import configGame from './config';
 import preloadGame from './preload';
+import store from '../store';
+import { addScore } from '../actions/score';
 
-export default timeInSec => {
+export default (timeInSec, gameType) => {
   const config = configGame(preload, create, update);
 
   let player;
@@ -18,8 +20,15 @@ export default timeInSec => {
   let speedText;
   let flyingOhms;
   let music;
-  let slowMessages = ['', 'Sloooow down...', 'Take  it  easy...', 'Breathe in...', 'Breathe out...', 'Please, chill...'];
-  let randomNum = Math.ceil(Math.random()*5)
+  let slowMessages = [
+    '',
+    'Sloooow down...',
+    'Take  it  easy...',
+    'Breathe in...',
+    'Breathe out...',
+    'Please, chill...'
+  ];
+  let randomNum = Math.ceil(Math.random() * 5);
   let preGame;
 
   new Phaser.Game(config);
@@ -45,7 +54,7 @@ export default timeInSec => {
       this.setPosition(this.pathVector.x, this.pathVector.y);
     },
 
-    preUpdate: function (time, delta) {
+    preUpdate: function(time, delta) {
       this.anims.update(time, delta);
 
       this.path.getPoint(this.pathIndex, this.pathVector);
@@ -56,10 +65,7 @@ export default timeInSec => {
     }
   });
 
-
-
   function create() {
-
     // add background image
     this.add.image(200, 350, 'stage');
 
@@ -129,7 +135,7 @@ export default timeInSec => {
       })
       .setDepth(5);
     // define player movements
-    this.input.on('pointermove', function (pointer) {
+    this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
       player.y = pointer.y;
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
@@ -143,7 +149,7 @@ export default timeInSec => {
       }
       if (speed < 10) {
         slowDownText.setText(slowMessages[0]);
-        randomNum = Math.ceil(Math.random()*5)
+        randomNum = Math.ceil(Math.random() * 5);
       }
     });
 
@@ -285,7 +291,7 @@ export default timeInSec => {
     music.pause();
     endgame.play();
 
-    slowMessages = ['']
+    slowMessages = [''];
 
     // pop up text when timer runs out
     let gameOverText = this.add
@@ -295,10 +301,10 @@ export default timeInSec => {
       })
       .setDepth(5);
 
-    setTimeout(
-      function () {
-        window.location.href = '/game-result'
-      }, 3000);
+    store.dispatch(addScore(score, gameType));
 
+    setTimeout(function() {
+      window.location.href = '/game-result';
+    }, 3000);
   }
 };

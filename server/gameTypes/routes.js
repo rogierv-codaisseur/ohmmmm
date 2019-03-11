@@ -24,4 +24,12 @@ router.get('/game-types/:id', (req, res, next) => {
     .catch(error => next(error));
 });
 
+router.post('/game-types', (req, res, next) => {
+  GameType.create({ ...req.body })
+    .then(gameType => {
+      return res.status(201).send(gameType);
+    })
+    .catch(error => next(error));
+});
+
 module.exports = router;

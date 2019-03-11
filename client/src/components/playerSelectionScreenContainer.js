@@ -22,17 +22,16 @@ class PlayerSelectionScreenContainer extends React.Component {
 
   render() {
     if (this.props.currentUser) return <Redirect to="/game-selection" />;
-    if (localStorage.getItem('currentUser')) {
-      const currentUserId = JSON.parse(localStorage.getItem('currentUser'));
-      this.props.setCurrentUser(currentUserId);
-      return <Redirect to="/game-selection" />;
-    }
+    if (localStorage.getItem('currentUser')) return <Redirect to="/game-selection" />;
     return <PlayerSelectionScreen onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} />;
   }
 }
 
 PlayerSelectionScreenContainer.propTypes = {
-  currentUser: PropTypes.string,
+  currentUser: PropTypes.shape({
+    token: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }),
   login: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
   shape: PropTypes.string.isRequired
