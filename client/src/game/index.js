@@ -20,7 +20,6 @@ export default timeInSec => {
   let music;
   let slowMessages = ['', 'Sloooow down...', 'Take  it  easy...', 'Breathe in...', 'Breathe out...', 'Please, chill...'];
   let randomNum = Math.ceil(Math.random()*5)
-  let preGame;
 
   new Phaser.Game(config);
 

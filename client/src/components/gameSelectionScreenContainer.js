@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GameSelectionScreen from './gameSelectionScreen';
 import { connect } from 'react-redux';
+import { setTime } from '../actions/setTime'
 
 class GameSelectionScreenContainer extends React.Component {
   logoff = () => {
@@ -10,7 +11,7 @@ class GameSelectionScreenContainer extends React.Component {
   };
 
   render() {
-    return <GameSelectionScreen currentUser={this.props.currentUser} logoff={this.logoff} />;
+    return <GameSelectionScreen currentUser={this.props.currentUser} logoff={this.logoff} setTime={this.props.setTime} />;
   }
 }
 
@@ -29,5 +30,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  {setTime}
 )(GameSelectionScreenContainer);
