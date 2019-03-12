@@ -22,11 +22,11 @@ export default (timeInSec, gameType) => {
   let music;
   let slowMessages = [
     '',
-    'Sloooow down...',
-    'Take  it  easy...',
-    'Breathe in...',
-    'Breathe out...',
-    'Please, chill...'
+    'slooow\ndown',
+    'take it\neasy',
+    'breathe\nin',
+    'breathe\nout',
+    'please\nchill'
   ];
   let randomNum = Math.ceil(Math.random() * 5);
 
@@ -74,25 +74,22 @@ export default (timeInSec, gameType) => {
     });
     music.play();
 
-    scoreText = this.add
-      .text(0, 0, '', {
-        fontSize: '16px',
-        fill: '#000'
-      })
-      .setDepth(3);
-
     speedText = this.add
       .text(160, 0, '', {
+        fontFamily: 'Fredoka One',
         fontSize: '16px',
         fill: '#000'
       })
       .setDepth(3);
+    
+      speedText.visible = false;
 
     // add timer text to canvas
     timeText = this.add
-      .text(300, 0, '', {
-        fontSize: '16px',
-        fill: '#000'
+      .text(325, 10, '', {
+        fontFamily: 'Fredoka One',
+        fontSize: '27px',
+        fill: '#505050'
       })
       .setDepth(3);
 
@@ -121,18 +118,21 @@ export default (timeInSec, gameType) => {
 
     // create player
     player = this.physics.add
-      .sprite(75, 625, 'player')
-      .setCircle(40)
+      .sprite(200, 350, 'player')
+      .setCircle(50)
       .setDepth(2)
       .setInteractive()
       .play('breath');
 
     let slowDownText = this.add
-      .text(30, 270, slowMessages[0], {
-        fontSize: '40px',
-        fill: '#000'
+      .text(130, 230, slowMessages[0], {
+        fontFamily: 'Fredoka One',
+        fontSize: '45px',
+        fill: '#505050',
+        align: 'center',
       })
       .setDepth(5);
+      
     // define player movements
     this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
@@ -156,21 +156,21 @@ export default (timeInSec, gameType) => {
     gohms = this.physics.add.group({
       key: 'gohm',
       repeat: 1,
-      setXY: { x: 75, y: 625 }
+      setXY: { x: 200, y: 350 }
       // frameQuantity: 5,
     });
 
     //  Create 5 PURPLE ohms
     pohms = this.physics.add.group({
       key: 'pohm',
-      setXY: { x: 75, y: 625 }
+      setXY: { x: 200, y: 350 }
       // frameQuantity: 5,
     });
 
     //  Create 5 ORANGE ohms
     oohms = this.physics.add.group({
       key: 'oohm',
-      setXY: { x: 75, y: 625 }
+      setXY: { x: 200, y: 350 }
       // frameQuantity: 5,
     });
 
@@ -186,7 +186,7 @@ export default (timeInSec, gameType) => {
             Phaser.Math.FloatBetween(20, 680),
             5,
             5,
-            0.01,
+            0.004,
             'gohm'
           ),
           true
@@ -203,7 +203,7 @@ export default (timeInSec, gameType) => {
             Phaser.Math.FloatBetween(20, 680),
             4,
             4,
-            0.012,
+            0.006,
             'pohm'
           ),
           true
@@ -220,7 +220,7 @@ export default (timeInSec, gameType) => {
             Phaser.Math.FloatBetween(20, 680),
             3,
             3,
-            0.015,
+            0.009,
             'oohm'
           ),
           true
@@ -229,10 +229,13 @@ export default (timeInSec, gameType) => {
     }
 
     // add score text
-    scoreText = this.add.text(0, 0, 'ohms: 0', {
-      fontSize: '16px',
-      fill: '#000'
-    });
+    scoreText = this.add.text(20, 10, '', {
+      fontFamily: 'Fredoka One',
+      fontSize: '27px',
+      fill: '#951010'
+    })
+    .setDepth(3);
+
 
     // set up overlap to trigger the scoring
     this.physics.add.overlap(player, gohms, collectGohms, null, this);
@@ -249,7 +252,7 @@ export default (timeInSec, gameType) => {
       gohms.disableBody(true, true);
 
       score += 10;
-      scoreText.setText('ohms: ' + score);
+      scoreText.setText(score);
 
       bell.play();
     }
@@ -259,7 +262,7 @@ export default (timeInSec, gameType) => {
       pohms.disableBody(true, true);
 
       score += 10;
-      scoreText.setText('ohms: ' + score);
+      scoreText.setText(score);
 
       bell.play();
     }
@@ -269,7 +272,7 @@ export default (timeInSec, gameType) => {
       oohms.disableBody(true, true);
 
       score += 10;
-      scoreText.setText('ohms: ' + score);
+      scoreText.setText(score);
 
       bell.play();
     }
@@ -295,8 +298,9 @@ export default (timeInSec, gameType) => {
     // pop up text when timer runs out
     let gameOverText = this.add
       .text(30, 270, 'GOOD JOB!', {
+        fontFamily: 'Fredoka One',
         fontSize: '64px',
-        fill: '#000'
+        fill: '#505050'
       })
       .setDepth(5);
 
