@@ -18,9 +18,9 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
           <label className="User" htmlFor="avatar">Choose your Avatar:</label>
           <div className="Avatars">
             <input className="Gary" type="radio" id="Gary" name="avatar" value="Gary" onChange={onChange}></input>
-            <label htmlFor="Gary"><img src="/assets/Gary.png" alt="Gary" /></label>
+            <label htmlFor="Gary"><img className="GaryImg" src="/assets/Gary.png" alt="Gary" /></label>
             <input className="Lily" type="radio" id="Lily" name="avatar" value="Lily" onChange={onChange} />
-            <label htmlFor="Lily"><img src="/assets/Lily.png" alt="Lily" /></label>
+            <label htmlFor="Lily"><img className="LilyImg" src="/assets/Lily.png" alt="Lily" /></label>
           </div>
           <label className="User" htmlFor="shapes">Choose your Shapes:</label>
           <ShapePickerGroup />
