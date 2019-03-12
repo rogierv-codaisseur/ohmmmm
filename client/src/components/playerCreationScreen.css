@@ -33,7 +33,6 @@
 .Avatars input[type=radio]:checked + label>img {
   transition: 200ms all;
   transform: 
-    /* rotateZ(-360deg);  */
     translateY(-15px);
   background: radial-gradient(closest-side, #A08AF9, white)
 }

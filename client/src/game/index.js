@@ -93,7 +93,7 @@ export default (timeInSec, gameType) => {
         scaleX: 1.1,
         scaleY: 1.1,
         ease: 'Sine.easeInOut',
-        duration: 4000,
+        duration: 4050,
         delay: i * 200,
         repeat: -1,
         yoyo: true
@@ -300,8 +300,16 @@ export default (timeInSec, gameType) => {
     this.physics.add.overlap(player, pohms, collectPohms, null, this);
     this.physics.add.overlap(player, oohms, collectOohms, null, this);
 
-    // declare bell sound
-    let bell = this.sound.add('bell', {
+    // declare bell sounds
+    let lowpop = this.sound.add('lowpop', {
+      loop: false
+    });
+
+    let midpop = this.sound.add('midpop', {
+      loop: false
+    });
+
+    let highpop = this.sound.add('highpop', {
       loop: false
     });
 
@@ -312,7 +320,7 @@ export default (timeInSec, gameType) => {
       score += 10;
       scoreText.setText(score);
 
-      bell.play();
+      highpop.play();
     }
 
     // collect PURPLE ohms
@@ -322,7 +330,7 @@ export default (timeInSec, gameType) => {
       score += 10;
       scoreText.setText(score);
 
-      bell.play();
+      lowpop.play();
     }
 
     // collect ORANGE ohms
@@ -332,7 +340,7 @@ export default (timeInSec, gameType) => {
       score += 10;
       scoreText.setText(score);
 
-      bell.play();
+      midpop.play();
     }
   }
 
