@@ -8,7 +8,6 @@ import { addScore } from '../actions/score';
 export default (timeInSec, gameType) => {
   const config = configGame(preload, create, update);
 
-  let shadow
   let player;
   let gohms;
   let pohms;
@@ -21,15 +20,8 @@ export default (timeInSec, gameType) => {
   let speedText;
   let flyingOhms;
   let music;
-  let bubbles
-  let slowMessages = [
-    '',
-    'slooow\ndown',
-    'take it\neasy',
-    'breathe\nin',
-    'breathe\nout',
-    'please\nchill'
-  ];
+  let bubbles;
+  let slowMessages = ['', 'slooow\ndown', 'take it\neasy', 'breathe\nin', 'breathe\nout', 'please\nchill'];
   let randomNum = Math.ceil(Math.random() * 5);
 
   new Phaser.Game(config);
@@ -75,7 +67,7 @@ export default (timeInSec, gameType) => {
 
     Phaser.Actions.GridAlign(bubbles.getChildren(), {
       width: 8,
-      height:14,
+      height: 14,
       cellWidth: 50,
       cellHeight: 50,
       x: 25,
@@ -84,7 +76,7 @@ export default (timeInSec, gameType) => {
 
     var i = 0;
 
-    bubbles.children.iterate(function (child) {
+    bubbles.children.iterate(function(child) {
       this.tweens.add({
         targets: child,
         alpha: 0.2,
@@ -100,8 +92,7 @@ export default (timeInSec, gameType) => {
       if (i % 8 === 0) {
         i = 0;
       }
-  }, this);
-
+    }, this);
 
     // declare and play theme music
     music = this.sound.add('theme', {
@@ -116,8 +107,8 @@ export default (timeInSec, gameType) => {
         fill: '#000'
       })
       .setDepth(3);
-    
-      speedText.visible = false;
+
+    speedText.visible = false;
 
     // add timer text to canvas
     timeText = this.add
@@ -164,29 +155,28 @@ export default (timeInSec, gameType) => {
         fontFamily: 'Fredoka One',
         fontSize: '45px',
         fill: '#505050',
-        align: 'center',
+        align: 'center'
         // alpha: 1
       })
-      .setDepth(5)
+      .setDepth(5);
 
     // set fade of slow down text
     this.tweens.add({
-        targets: slowDownText,
-        alpha: { value: 0, duration: 4000, ease: 'Power1', delay: 2000 },
-        yoyo: false,
-        loop: -1
-    })
-      
+      targets: slowDownText,
+      alpha: { value: 0, duration: 4000, ease: 'Power1', delay: 2000 },
+      yoyo: false,
+      loop: -1
+    });
+
     // define player movements
     this.input.on('pointermove', function(pointer) {
       player.x = pointer.x;
       player.y = pointer.y;
+      pointer.motionFactor = 0.4;
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
-      if (speed > 10) {
+      if (speed > 5) {
         score -= 1;
-        slowDownText
-          .setText(slowMessages[randomNum])
-
+        slowDownText.setText(slowMessages[randomNum]);
         if (score < 0) {
           score = 0;
         }
@@ -215,7 +205,7 @@ export default (timeInSec, gameType) => {
     //  Create 5 ORANGE ohms
     oohms = this.physics.add.group({
       key: 'oohm',
-      setXY: { x: -20, y: -20 },
+      setXY: { x: -20, y: -20 }
       // frameQuantity: 5,
     });
 
@@ -225,7 +215,7 @@ export default (timeInSec, gameType) => {
       alpha: { value: 0, duration: 3000, ease: 'Power1' },
       yoyo: true,
       loop: -1
-    })
+    });
 
     //  x, y = center of the path
     //  width, height = size of the elliptical path
@@ -282,13 +272,13 @@ export default (timeInSec, gameType) => {
     }
 
     // add score text
-    scoreText = this.add.text(20, 10, '', {
-      fontFamily: 'Fredoka One',
-      fontSize: '27px',
-      fill: '#d32929'
-    })
-    .setDepth(3);
-
+    scoreText = this.add
+      .text(20, 10, '', {
+        fontFamily: 'Fredoka One',
+        fontSize: '27px',
+        fill: '#d32929'
+      })
+      .setDepth(3);
 
     // set up overlap to trigger the scoring
     this.physics.add.overlap(player, gohms, collectGohms, null, this);
