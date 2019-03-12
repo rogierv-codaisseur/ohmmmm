@@ -301,6 +301,7 @@ export default (timeInSec, gameType) => {
       .setDepth(5);
 
     store.dispatch(addScore(score, gameType));
+    localStorage.setItem('lastScore', score);
 
     setTimeout(function() {
       window.location.href = '/game-result';
