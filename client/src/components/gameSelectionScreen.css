@@ -60,3 +60,88 @@
   text-decoration: none;
   color: white;
 }
+
+@media (max-width: 320px) {
+.GameSelectSplash {
+    width: 318px;
+    height: 568px;
+    background-size: 100%
+  }
+
+  .PlayerName {
+    font-size: 1.4rem;
+    left: -33%;
+    top: -3%;
+  }
+
+  .Time {
+    font-size: 3.5rem;
+  }
+  
+  .Two {
+    top: -1.2%;
+  }
+  
+  .Five {
+    top: 10.3%;
+  }
+  
+  .Ten {
+    top: 17%;
+  }
+
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+.GameSelectSplash {
+    width: 358px;
+    height: 638px;
+    background-size: 100%
+  }
+
+  .PlayerName {
+    left: -34%;
+  }
+
+  .Time {
+    font-size: 4rem;
+  }
+  
+  .Two {
+    top: 0%;
+  }
+  
+  .Five {
+    top: 12.5%;
+  }
+  
+  .Ten {
+    top: 19.5%;
+  }
+
+}
+
+@media (min-width: 361px) and (max-width: 375px) {
+.GameSelectSplash {
+    width: 373px;
+    height: 665px;
+    background-size: 100%
+  }
+
+  .PlayerName {
+    left: -34%;
+  }
+
+  .Two {
+    top: 0.8%;
+  }
+  
+  .Five {
+    top: 12.5%;
+  }
+  
+  .Ten {
+    top: 19.5%;
+  }
+
+}
