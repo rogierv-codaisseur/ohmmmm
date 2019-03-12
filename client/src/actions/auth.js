@@ -3,8 +3,8 @@ import request from 'superagent';
 export const LOGIN = 'LOGIN';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
-const baseUrl = 'https://ohmmmm.herokuapp.com';
-// const baseUrl = 'http://localhost:4000';
+// const baseUrl = 'https://ohmmmm.herokuapp.com';
+const baseUrl = 'http://localhost:4000';
 
 const loginSuccess = token => ({
   type: LOGIN,

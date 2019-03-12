@@ -8,6 +8,7 @@ class GameContainer extends React.Component {
   componentDidMount() {
     const { setTime, gameType } = this.props;
     game(setTime, gameType);
+    localStorage.setItem('gameType', gameType);
   }
 
   shouldComponentUpdate() {
