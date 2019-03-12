@@ -38,9 +38,9 @@ table {
 .LilyText {
   width: 220px;
   font-size: 1.1rem;
-  position: relative;
-  top: 54px;
-  left: 16px;
+  position: absolute;
+  top: 260px;
+  margin-left: 15px;
 }
 
 @media (max-width: 320px) {
@@ -61,16 +61,12 @@ table {
   .LilyText {
     width: 150px;
     font-size: 0.9rem;
-    top: 14px;
-    left: 23px;
+    top: 208px;
+    margin-left: 23px;
   }
 
   .GameResultSplash a {
-    text-decoration: none;
-    color: rgb(1, 171, 209);
-    font-size: 1rem;
-    position: relative;
-    top: 200px;
+    top: 270px;
   }
 }
 
@@ -84,12 +80,12 @@ table {
   .LilyText {
     width: 200px;
     font-size: 1rem;
-    top: 14px;
-    left: 12px;
+    top: 232px;
+    margin-left: 12px;
   }
 
   .GameResultSplash a {
-    top: 180px;
+    top: 280px;
   }
 
 }
@@ -104,11 +100,11 @@ table {
   .LilyText {
     width: 200px;
     font-size: 1.05rem;
-    top: 21px;
-    left: 16px;
+    top: 245px;
+    margin-left: 16px;
   }
 
   .GameResultSplash a {
-    top: 200px;
+    top: 300px;
   }
 }
