@@ -13,26 +13,17 @@ router.get('/scores', (req, res, next) => {
 
 router.get('/playerTop5', (req, res, next) => {
   const playerId = req.query.playerId;
+  const gameTypeId = req.query.gameTypeId;
 
   Score.findAll({
     include: [{ all: true, nested: true }],
-    where: { playerId: `${playerId}` },
+    where: { playerId: `${playerId}`, gameTypeId: `${gameTypeId}` },
     order: [['score', 'DESC']],
     limit: 5
   }).then(score => {
     return res.status(200).send({ score });
   });
 });
-
-// Events.findAll({
-//   limit,
-//   offset,
-//   where: {
-//     end_date: { [Op.gte]: new Date() },
-//     [Op.or]: [{ name: { [Op.iLike]: `%${filter}%` } }, { description: { [Op.iLike]: `%${filter}%` } }]
-//   },
-//   order: [[sort, direction]]
-// })
 
 router.get('/scores/:id', (req, res, next) => {
   const id = req.params.id;
