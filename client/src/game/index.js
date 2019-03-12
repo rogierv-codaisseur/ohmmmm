@@ -87,7 +87,7 @@ export default (timeInSec, gameType) => {
     bubbles.children.iterate(function (child) {
       this.tweens.add({
         targets: child,
-        alpha: 0.3,
+        alpha: 0.2,
         scaleX: 1.1,
         scaleY: 1.1,
         ease: 'Sine.easeInOut',
@@ -154,7 +154,7 @@ export default (timeInSec, gameType) => {
     // create player
     player = this.physics.add
       .sprite(200, 350, 'player')
-      .setCircle(50)
+      .setCircle(45)
       .setDepth(2)
       .setInteractive()
       .play('breath');
@@ -285,7 +285,7 @@ export default (timeInSec, gameType) => {
     scoreText = this.add.text(20, 10, '', {
       fontFamily: 'Fredoka One',
       fontSize: '27px',
-      fill: '#951010'
+      fill: '#d32929'
     })
     .setDepth(3);
 
