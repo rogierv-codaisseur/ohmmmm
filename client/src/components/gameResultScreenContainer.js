@@ -18,7 +18,7 @@ class GameResultScreenContainer extends React.Component {
 
   render() {
     if (!this.props.top5) return 'Loading';
-    return <GameResultScreen top5={this.props.top5} />;
+    return <GameResultScreen top5={this.props.top5} lastScore={localStorage.getItem('lastScore')} />;
   }
 }
 
