@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 export default (preload, create, update) => {
   return {
     type: Phaser.AUTO,
-    pixelArt: true,
+    pixelArt: false,
     scale: {
       parent: 'phaser-game',
       mode: Phaser.Scale.FIT,
@@ -26,7 +26,7 @@ export default (preload, create, update) => {
       update
     },
     audio: {
-      disableWebAudio: true
+      disableWebAudio: false
     }
   };
 };
