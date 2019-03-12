@@ -11,22 +11,20 @@ const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
     
     <div className="SplashLogin">
       <div className="LogoLogin">
-        <Link to="/game-selection">
-          <img src="../assets/Logo.png" alt="logo"/>
-        </Link>
+        <img src="../assets/Logo.png" alt="logo"/>
       </div>
       <div className="FormLogin">
+        <p className="User">No account yet?</p>
+        <Link className="Signup" to="/player-creation">Sign up</Link>
         <div >
           <form className="Form" onSubmit={onSubmit}>
-            <p className="User">User Name:</p>
+            <p className="User">Existing User Login:</p>
             <label htmlFor="name"></label>
             <input type="text" id="name" name="name" value={name} onChange={onChange} />
             <ShapePickerGroup />
             <input className="Login" type="submit" value="Login" />
           </form>
         </div>
-          <p className="User">No account yet?</p>
-          <Link className="Signup" to="/player-creation">Sign up</Link>
       </div>
     </div>
   )
