@@ -73,6 +73,7 @@ export default (timeInSec, gameType) => {
     // add bubbles
     bubbles = this.add.group({ key: 'bubble', repeat: 111, setScale: { x: 0, y: 0 } });
 
+    // align background bubbles in a grid
     Phaser.Actions.GridAlign(bubbles.getChildren(), {
       width: 8,
       height:14,
@@ -84,6 +85,7 @@ export default (timeInSec, gameType) => {
 
     var i = 0;
 
+    // make bubbles breathe
     bubbles.children.iterate(function (child) {
       this.tweens.add({
         targets: child,
@@ -100,7 +102,7 @@ export default (timeInSec, gameType) => {
       if (i % 8 === 0) {
         i = 0;
       }
-  }, this);
+    }, this);
 
 
     // declare and play theme music
@@ -201,14 +203,16 @@ export default (timeInSec, gameType) => {
     gohms = this.physics.add.group({
       key: 'gohm',
       repeat: 1,
-      setXY: { x: -20, y: -20 }
+      setXY: { x: -20, y: -20 },
+      setScale: { x: 0, y: 0 }
       // frameQuantity: 5,
     });
 
     //  Create 5 PURPLE ohms
     pohms = this.physics.add.group({
       key: 'pohm',
-      setXY: { x: -20, y: -20 }
+      setXY: { x: -20, y: -20 },
+      setScale: { x: 0, y: 0 }
       // frameQuantity: 5,
     });
 
@@ -216,6 +220,7 @@ export default (timeInSec, gameType) => {
     oohms = this.physics.add.group({
       key: 'oohm',
       setXY: { x: -20, y: -20 },
+      setScale: { x: 0, y: 0 }
       // frameQuantity: 5,
     });
 
