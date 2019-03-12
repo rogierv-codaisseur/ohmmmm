@@ -5,7 +5,7 @@ import './playerSelectionScreen.css'
 // import {login} from '../actions/auth'
 import ShapePickerGroup from './shapePicker';
 
-const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
+const PlayerSelectionScreen = ({ onSubmit, onChange, values, loginErr }) => {
   const { name } = values;
   return (
     
@@ -24,6 +24,7 @@ const PlayerSelectionScreen = ({ onSubmit, onChange, values }) => {
             <ShapePickerGroup />
             <input className="Login" type="submit" value="Login" />
           </form>
+          <p className="errorMessage">{loginErr}</p>
         </div>
           <p className="User">No account yet?</p>
           <Link className="Signup" to="/player-creation">Sign up</Link>
@@ -37,7 +38,8 @@ PlayerSelectionScreen.propTypes = {
   onChange: PropTypes.func.isRequired,
   values: PropTypes.shape({
     name: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  // loginErr: PropTypes.string.isRequired
 };
 
 export default PlayerSelectionScreen;
