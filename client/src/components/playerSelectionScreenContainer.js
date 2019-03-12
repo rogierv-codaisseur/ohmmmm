@@ -23,7 +23,8 @@ class PlayerSelectionScreenContainer extends React.Component {
   render() {
     if (this.props.currentUser) return <Redirect to="/game-selection" />;
     if (localStorage.getItem('currentUser')) return <Redirect to="/game-selection" />;
-    return <PlayerSelectionScreen onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} />;
+    return <PlayerSelectionScreen onSubmit={this.onSubmit} onChange={this.onChange} 
+    values={this.state} loginErr={this.props.loginErr}/>;
   }
 }
 
@@ -41,7 +42,8 @@ PlayerSelectionScreenContainer.defaultProps = { currentUser: null };
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  shape: state.shape
+  shape: state.shape,
+  loginErr: state.loginErr
 });
 
 export default connect(
