@@ -74,4 +74,98 @@
   line-height: 5px;
 }
 
+.GaryImg {
+  margin-top: 30px;
+}
 
+.LilyImg {
+  margin-left: 40px;
+}
+
+
+
+@media (max-width: 320px) {
+  .SplashCreate {
+    width: 318px;
+    height: 568px;
+    background-size: 105%
+  }
+  
+  .Name input{
+    height: 32px;
+  }
+
+  .Name {
+    margin: 0px;
+  }
+
+  .GaryImg {
+    width: 115px;
+    margin-top: 27px;
+  }
+
+  .LilyImg {
+    width: 115px;
+  }
+
+  .Avatars {
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .SplashCreate {
+    width: 358px;
+    height: 638px;
+    background-size: 105%
+  }
+
+  .Name input{
+    height: 36px;
+  }
+
+  .Name {
+    margin: 0px;
+  }
+
+  .GaryImg {
+    width: 120px;
+    margin-top: 27px;
+  }
+
+  .LilyImg {
+    width: 120px;
+    margin-left: 20px;
+  }
+
+  h4 {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+
+}
+
+@media (min-width: 361px) and (max-width: 375px) {
+  .SplashCreate {
+    width: 373px;
+    height: 665px;
+    background-size: 105%
+  }
+
+  .Name {
+    margin: 0px;
+  }
+
+  .GaryImg {
+    margin-top: 27px;
+  }
+
+  .LilyImg {
+    margin-left: 27px;
+  }
+}
