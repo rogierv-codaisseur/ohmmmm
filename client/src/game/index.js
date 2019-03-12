@@ -8,6 +8,7 @@ import { addScore } from '../actions/score';
 export default (timeInSec, gameType) => {
   const config = configGame(preload, create, update);
 
+  let game
   let player;
   let gohms;
   let pohms;
@@ -30,7 +31,7 @@ export default (timeInSec, gameType) => {
   ];
   let randomNum = Math.ceil(Math.random() * 5);
 
-  new Phaser.Game(config);
+  game = new Phaser.Game(config);
 
   function preload() {
     preloadGame(this);
@@ -130,8 +131,16 @@ export default (timeInSec, gameType) => {
         fontSize: '45px',
         fill: '#505050',
         align: 'center',
+        // alpha: 1
       })
-      .setDepth(5);
+      .setDepth(5)
+
+    this.tweens.add({
+        targets: slowDownText,
+        alpha: { value: 0, duration: 4000, ease: 'Power1' },
+        yoyo: true,
+        loop: -1
+    })
       
     // define player movements
     this.input.on('pointermove', function(pointer) {
@@ -140,7 +149,8 @@ export default (timeInSec, gameType) => {
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
       if (speed > 10) {
         score -= 1;
-        slowDownText.setText(slowMessages[randomNum]);
+        slowDownText
+          .setText(slowMessages[randomNum])
 
         if (score < 0) {
           score = 0;
