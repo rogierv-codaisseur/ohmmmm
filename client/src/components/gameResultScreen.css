@@ -1,6 +1,6 @@
 table {
   margin: auto;
-  margin-top: 10px;
+  margin-top: 10%;
   }
   
   th {
@@ -17,7 +17,7 @@ table {
   }
 
 .GameResultSplash {
-  background: url('../assets/results.png');
+  background: url('../assets/Stage.png');
   width: 400px;
   height: 700px;
   border: 1px solid rgb(97, 75, 75);
@@ -27,20 +27,23 @@ table {
   color: white
 }
 
-.GameResultSplash a {
-  text-decoration: none;
-  color: rgb(1, 171, 209);
-  font-size: 1rem;
-  position: relative;
-  top: 270px;
+.LilySpeak {
+  margin-top: 45%;
 }
 
 .LilyText {
-  width: 220px;
+  width: 40%;
   font-size: 1.1rem;
-  position: absolute;
-  top: 260px;
-  margin-left: 15px;
+}
+
+.Home img {
+  width: 12%;
+}
+
+.Home {
+  position: relative;
+  bottom: 8%;
+  right: 30%;
 }
 
 @media (max-width: 320px) {
