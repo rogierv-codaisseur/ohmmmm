@@ -24,7 +24,7 @@ const GameResultScreen = ({ top5, lastScore }) => {
           ))}
         </tbody>
       </table>
-
+      <p className="LilyText">Awesome job, you managed to collect /score/ Ohmmmms.</p>
       <Link className="GameLink" to="/game-selection">
         back to Game Selection
       </Link>
