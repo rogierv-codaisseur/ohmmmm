@@ -87,7 +87,7 @@ export default (timeInSec, gameType) => {
     bubbles.children.iterate(function (child) {
       this.tweens.add({
         targets: child,
-        alpha: 0.4,
+        alpha: 0.3,
         scaleX: 1.1,
         scaleY: 1.1,
         ease: 'Sine.easeInOut',
@@ -201,21 +201,21 @@ export default (timeInSec, gameType) => {
     gohms = this.physics.add.group({
       key: 'gohm',
       repeat: 1,
-      setXY: { x: 200, y: 350 }
+      setXY: { x: -20, y: -20 }
       // frameQuantity: 5,
     });
 
     //  Create 5 PURPLE ohms
     pohms = this.physics.add.group({
       key: 'pohm',
-      setXY: { x: 200, y: 350 }
+      setXY: { x: -20, y: -20 }
       // frameQuantity: 5,
     });
 
     //  Create 5 ORANGE ohms
     oohms = this.physics.add.group({
       key: 'oohm',
-      setXY: { x: 200, y: 350 },
+      setXY: { x: -20, y: -20 },
       // frameQuantity: 5,
     });
 
