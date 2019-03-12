@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Phaser from 'phaser';
 import updateGame from './update';
 import configGame from './config';
@@ -8,7 +9,6 @@ import { addScore } from '../actions/score';
 export default (timeInSec, gameType) => {
   const config = configGame(preload, create, update);
 
-  let shadow
   let player;
   let gohms;
   let pohms;

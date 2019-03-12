@@ -9,15 +9,33 @@
   font-family: 'Fredoka One', 'Roboto', cursive;
 }
 
-.Avatars input{
-  margin: 0;
-  padding: 0;
+.Avatars {
   display: flex;
   flex-direction: row;
-  align-content: space-evenly;
-  /* -webkit-appearance: none;
+  align-content: space-between;
+  margin-bottom: 0px;
+}
+
+.LilyImg {
+  margin-top: 15px;
+}
+
+.GaryImg {
+  margin-top: 30px;
+}
+.Avatars input{
+  margin-left: 15px;
+  -webkit-appearance: none;
      -moz-appearance: none;
-          appearance: none; */
+          appearance: none;
+}
+
+.Avatars input[type=radio]:checked + label>img {
+  transition: 200ms all;
+  transform: 
+    /* rotateZ(-360deg);  */
+    translateY(-15px);
+  background: radial-gradient(closest-side, #A08AF9, white)
 }
 
 .FormCreate {
@@ -45,9 +63,14 @@
 .Name input{
   width: 89%;
   height: 40px;
+  text-align: center;
+  font-family: 'Fredoka One';
+  font-size: 1rem;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 5px;
 }
 
-.Name, .Avatars {
+.Name {
   margin-bottom: 25px;
 }
 

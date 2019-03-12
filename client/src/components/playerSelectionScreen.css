@@ -54,7 +54,12 @@
 
 .Form input {
   height: 30px;
-  width: 89%
+  width: 89%;
+  text-align: center;
+  font-family: 'Fredoka One';
+  font-size: 1rem;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 5px;
 }
 
 .User {
