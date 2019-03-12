@@ -8,7 +8,7 @@ import { addScore } from '../actions/score';
 export default (timeInSec, gameType) => {
   const config = configGame(preload, create, update);
 
-  let game
+  let shadow
   let player;
   let gohms;
   let pohms;
@@ -21,6 +21,7 @@ export default (timeInSec, gameType) => {
   let speedText;
   let flyingOhms;
   let music;
+  let bubbles
   let slowMessages = [
     '',
     'slooow\ndown',
@@ -31,7 +32,7 @@ export default (timeInSec, gameType) => {
   ];
   let randomNum = Math.ceil(Math.random() * 5);
 
-  game = new Phaser.Game(config);
+  new Phaser.Game(config);
 
   function preload() {
     preloadGame(this);
@@ -68,6 +69,39 @@ export default (timeInSec, gameType) => {
   function create() {
     // add background image
     this.add.image(200, 350, 'stage');
+
+    // add bubbles
+    bubbles = this.add.group({ key: 'bubble', repeat: 111, setScale: { x: 0, y: 0 } });
+
+    Phaser.Actions.GridAlign(bubbles.getChildren(), {
+      width: 8,
+      height:14,
+      cellWidth: 50,
+      cellHeight: 50,
+      x: 25,
+      y: 25
+    });
+
+    var i = 0;
+
+    bubbles.children.iterate(function (child) {
+      this.tweens.add({
+        targets: child,
+        alpha: 0.4,
+        scaleX: 1.1,
+        scaleY: 1.1,
+        ease: 'Sine.easeInOut',
+        duration: 4000,
+        delay: i * 200,
+        repeat: -1,
+        yoyo: true
+      });
+      i++;
+      if (i % 8 === 0) {
+        i = 0;
+      }
+  }, this);
+
 
     // declare and play theme music
     music = this.sound.add('theme', {
@@ -135,10 +169,11 @@ export default (timeInSec, gameType) => {
       })
       .setDepth(5)
 
+    // set fade of slow down text
     this.tweens.add({
         targets: slowDownText,
-        alpha: { value: 0, duration: 4000, ease: 'Power1' },
-        yoyo: true,
+        alpha: { value: 0, duration: 4000, ease: 'Power1', delay: 2000 },
+        yoyo: false,
         loop: -1
     })
       
@@ -180,9 +215,17 @@ export default (timeInSec, gameType) => {
     //  Create 5 ORANGE ohms
     oohms = this.physics.add.group({
       key: 'oohm',
-      setXY: { x: 200, y: 350 }
+      setXY: { x: 200, y: 350 },
       // frameQuantity: 5,
     });
+
+    // trying to add fade to ohms
+    this.tweens.add({
+      targets: [oohms],
+      alpha: { value: 0, duration: 3000, ease: 'Power1' },
+      yoyo: true,
+      loop: -1
+    })
 
     //  x, y = center of the path
     //  width, height = size of the elliptical path

@@ -1,5 +1,6 @@
 export default game => {
   game.load.image('stage', 'assets/Stage.png');
+  game.load.image('bubble', 'assets/bubble.png')
   game.load.image('star', 'assets/star.png');
   game.load.image('gohm', 'assets/DotGreen.png');
   game.load.image('pohm', 'assets/DotPurple.png');
