@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import './gameResultScreen.css';
 
-const GameResultScreen = ({ top5 }) => {
+const GameResultScreen = ({ top5, lastScore }) => {
   return (
     <div className="GameResultSplash">
       <table>
@@ -28,15 +28,19 @@ const GameResultScreen = ({ top5 }) => {
       <Link className="GameLink" to="/game-selection">
         back to Game Selection
       </Link>
+
+      <div>Your score: {lastScore}!</div>
     </div>
   );
 };
 
 GameResultScreen.propTypes = {
+  lastScore: PropTypes.string,
   top5: PropTypes.array
 };
 
 GameResultScreen.defaultProps = {
+  lastScore: null,
   top5: null
 };
 
