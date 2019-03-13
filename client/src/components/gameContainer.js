@@ -1,12 +1,14 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import game from '../game';
 
-export default class GameContainer extends React.Component {
+class GameContainer extends React.Component {
   componentDidMount() {
-    const { location } = this.props;
-    game(location.state.timeInSec);
+    const { setTime, gameType } = this.props;
+    game(setTime, gameType);
+    localStorage.setItem('gameType', gameType);
   }
 
   shouldComponentUpdate() {
@@ -19,9 +21,16 @@ export default class GameContainer extends React.Component {
 }
 
 GameContainer.propTypes = {
-  location: PropTypes.shape({
-    state: PropTypes.shape({
-      timeInSec: PropTypes.number.isRequired
-    }).isRequired
-  }).isRequired
+  setTime: PropTypes.number.isRequired,
+  gameType: PropTypes.number.isRequired
 };
+
+const mapStateToProps = state => ({
+  setTime: state.setGame.setTime,
+  gameType: state.setGame.gameType
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(GameContainer);

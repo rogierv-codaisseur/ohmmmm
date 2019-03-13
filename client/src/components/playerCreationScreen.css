@@ -1,37 +1,138 @@
-
-.Splash {
+.SplashCreate {
   width: 400px;
   height: 700px;
   background: url("../assets/Background.png") no-repeat center center fixed;
-  border: 1px solid white;
+  border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Fredoka One', 'Roboto', cursive;
 }
 
-.LogoCreate {
-  height: 60%;
+.Avatars {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
 }
 
-.LogoCreate img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 20%;
+.LilyImg {
+  margin-top: 15px;
+}
+
+.GaryImg {
+  margin-top: 30px;
+}
+
+.Avatars input {
+  margin-left: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.Avatars input[type=radio]:checked+label>img {
+  transition: 200ms all;
+  transform:
+    translateY(-15px);
+  background: radial-gradient(closest-side, #A08AF9, white)
 }
 
 .FormCreate {
   font-size: 1rem;
-  height: 40%;
-}
-
-.FormBodyCreate {
-  height: 200px;
-  margin: auto auto;
-  width: 80%;
+  margin: 10% auto;
+  height: 85%;
+  width: 85%;
   border-radius: 10px;
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
+.Name input {
+  width: 90%;
+  height: 40px;
+  text-align: center;
+  font-family: 'Fredoka One';
+  font-size: 1rem;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 5px;
+}
+
+.Name {
+  margin-bottom: 25px;
+}
+
+.FormCreate #create {
+  height: 40px;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 92%;
+  height: 35px;
+  background-color: rgb(1, 209, 193);
+  color: white;
+  padding-top: 4px;
+  font-family: 'Fredoka One';
+}
+
+.FormCreate #create :hover {
+  cursor: pointer;
+}
+
+.User {
+  font-size: 0.8rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 5px;
+}
+
+.GaryImg {
+  margin-top: 30px;
+}
+
+.LilyImg {
+  margin-left: 40px;
+}
+
+
+
+@media (min-width: 320px) and (max-width: 375px) {
+  .SplashCreate {
+    width: 95vw;
+    height: 95vh;
+  }
+
+  .Name input {
+    height: 32px;
+  }
+
+  .Name {
+    margin: 0px;
+  }
+
+  .GaryImg {
+    width: 100px;
+    margin-top: 27px;
+  }
+
+  .LilyImg {
+    width: 100px;
+    margin-left: 10%;
+  }
+
+  .Avatars {
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+
+  .shape-picker-group {
+    margin-left: 7px;
+    margin-right: auto;
+    width: 95%;
+    margin-bottom: 5px;
+  }
+}

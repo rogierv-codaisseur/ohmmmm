@@ -1,0 +1,46 @@
+.PreGameSplash {
+  width: 400px;
+  height: 700px;
+  background: url("../assets/Stage.png") no-repeat center center fixed;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Fredoka One', cursive;
+}
+
+.PreGameLogo {
+  height: 60%;
+}
+
+.PreGameLogo img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 200px;
+}
+
+.Info {
+  margin: 0 auto;
+  font-size: 1.5rem;
+  color: rgba(117, 117, 117, 1);
+  width: 60%;
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+  .PreGameSplash {
+    width: 95vw;
+    height: 95vh;
+    background-size: 105%
+  }
+
+  .PreGameLogo img {
+    padding-top: 20vh;
+  }
+
+  .Info {
+    font-size: 1.3rem;
+    margin-top: 0;
+  }
+
+}

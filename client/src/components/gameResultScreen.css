@@ -1,0 +1,90 @@
+table {
+  margin: auto;
+  margin-top: 10%;
+}
+
+th {
+  background-color: #FDAB4A;
+  border-radius: 5px;
+  padding: 6px 30px;
+}
+
+td {
+  background-color: #01D1C1;
+  border-radius: 5px;
+  padding: 6px 30px;
+  font-size: 1rem;
+}
+
+.GameResultSplash {
+  background: url('../assets/results.png');
+  width: 400px;
+  height: 700px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  position: relative;
+}
+
+.GameResultSplash  a {
+  text-decoration: none;
+}
+
+.LilyText {
+  width: 220px;
+  font-size: 1.1rem;
+  position: absolute;
+  top: 56%;
+  margin-left: 13%;
+}
+
+.GameLink p {
+  font-size: 1.2rem;
+  color: #01D1C1;
+}
+
+.GameLink {
+  text-align: center;
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+  .GameResultSplash {
+    width: 95vw;
+    height: 95vh;
+    background-size: 105%
+  }
+
+  th {
+    font-size: 1rem;
+  }
+
+  td {
+    font-size: 0.8rem;
+  }
+
+  .LilyText {
+    width: 150px;
+    font-size: 0.9rem;
+    top: 58.5%;
+    margin-left: 18%;
+  }
+
+
+  .GameLink p {
+    font-size: 1rem;
+  }
+
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+
+  .LilyText {
+    width: 150px;
+    font-size: 1rem;
+    top: 47.5%;
+    margin-left: 20%;
+  }
+}

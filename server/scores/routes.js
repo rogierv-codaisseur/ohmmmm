@@ -1,12 +1,24 @@
 const { Router } = require('express');
 
 const Score = require('./model');
-const Player = require('../players/model');
-const GameType = require('../gameTypes/model');
 const router = new Router();
 
 router.get('/scores', (req, res, next) => {
   Score.findAll({ include: [{ all: true, nested: true }] }).then(score => {
+    return res.status(200).send({ score });
+  });
+});
+
+router.get('/playerTop5', (req, res, next) => {
+  const playerId = req.query.playerId;
+  const gameTypeId = req.query.gameTypeId;
+
+  Score.findAll({
+    include: [{ all: true, nested: true }],
+    where: { playerId: `${playerId}`, gameTypeId: `${gameTypeId}` },
+    order: [['score', 'DESC']],
+    limit: 5
+  }).then(score => {
     return res.status(200).send({ score });
   });
 });

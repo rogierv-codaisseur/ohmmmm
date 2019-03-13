@@ -1,29 +1,25 @@
-
-.Splash {
+.SplashLogin {
   width: 400px;
   height: 700px;
   background: url("../assets/Background.png") no-repeat center center fixed;
-  border: 1px solid white;
+  border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Fredoka One', 'Roboto', cursive;
 }
 
 .LogoLogin {
-  height: 55%;
+  height: 47%;
 }
 
 .LogoLogin img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 17%;
+  margin: 0 auto;
 }
 
 .FormLogin {
   font-size: 1rem;
-  height: 45%;
-  height: 270px;
   margin: auto auto;
   width: 85%;
   border-radius: 10px;
@@ -34,14 +30,16 @@
   justify-content: space-evenly;
 }
 
-.Signup, .Login {
+.Signup,
+.Login {
   font-size: 1rem;
   border-radius: 5px;
   text-align: center;
   color: white;
 }
 
-.Signup, .Login :hover {
+.Signup,
+.Login :hover {
   cursor: pointer;
 }
 
@@ -49,22 +47,55 @@
   width: 89%;
   height: 30%;
   background-color: rgb(1, 209, 193);
+  font-family: 'Fredoka One';
 }
 
 .Form input {
-  height: 35px;
-  width: 89%
+  height: 50%;
+  width: 89%;
+  text-align: center;
+  font-family: 'Fredoka One';
+  font-size: 1rem;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 5px;
 }
 
 .User {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 5px;
 }
 
 .Signup {
   width: 90%;
-  height: 25px;
+  height: 27px;
   background-color: rgb(253, 171, 74);
   text-decoration: none;
   color: white;
   padding-top: 8px;
+}
+
+.errorMessage {
+  color: red;
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+  .SplashLogin {
+    width: 95vw;
+    height: 95vh;
+  }
+
+  .LogoLogin {
+    height: 35vh;
+  }
+
+  .LogoLogin img {
+    width: 75%;
+  }
+
+  .FormLogin {
+    height: 320px;
+  }
+
+
 }

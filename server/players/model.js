@@ -5,16 +5,17 @@ const Player = sequelize.define(
   'players',
   {
     name: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true
+      type: Sequelize.STRING(15),
+      unique: true,
+      allowNull: false
     },
     password: {
       type: Sequelize.STRING,
       allowNull: false
     },
     avatar: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: false
     }
   },
   {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import PlayerSelectionScreen from './playerSelectionScreen';
-import { login } from '../actions/auth';
+import { login, setCurrentUser } from '../actions/auth';
 
 class PlayerSelectionScreenContainer extends React.Component {
   state = { name: '', shape: '' };
@@ -22,24 +22,32 @@ class PlayerSelectionScreenContainer extends React.Component {
 
   render() {
     if (this.props.currentUser) return <Redirect to="/game-selection" />;
-    return <PlayerSelectionScreen onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} />;
+    if (localStorage.getItem('currentUser')) return <Redirect to="/game-selection" />;
+    return <PlayerSelectionScreen onSubmit={this.onSubmit} onChange={this.onChange} 
+    values={this.state} errorMessage={this.props.errorMessage}/>;
   }
 }
 
 PlayerSelectionScreenContainer.propTypes = {
-  currentUser: PropTypes.string,
+  currentUser: PropTypes.shape({
+    token: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }),
   login: PropTypes.func.isRequired,
-  shape: PropTypes.string.isRequired
+  setCurrentUser: PropTypes.func.isRequired,
+  shape: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string
 };
 
-PlayerSelectionScreenContainer.defaultProps = { currentUser: null };
+PlayerSelectionScreenContainer.defaultProps = { currentUser: null, errorMessage: null };
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  shape: state.shape
+  shape: state.shape,
+  errorMessage: state.errorMessages
 });
 
 export default connect(
   mapStateToProps,
-  { login }
+  { login, setCurrentUser }
 )(PlayerSelectionScreenContainer);

@@ -29,3 +29,86 @@
   left: 36px;
   top: 75px
 }
+
+@media (max-width: 320px) {
+  .shape-picker-group {
+    margin: 8px
+  }
+
+.shape-picker {
+  width: 70px;
+  height: 70px;
+}
+
+.shape {
+  width: 40px;
+  left: 15px;
+  top: 15px;
+}
+
+.shape-up {
+  position: absolute;
+  left: 27px;
+  top: 3px
+}
+
+.shape-down {
+  position: absolute;
+  left: 27px;
+  top: 57px
+}
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .shape-picker-group {
+    margin: 8px
+  }
+
+  .shape-picker {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .shape {
+    width: 45px;
+    left: 17.5px;
+    top: 17.5px;
+  }
+  
+  .shape-up {
+    position: absolute;
+    left: 32px;
+    top: 3px
+  }
+  
+  .shape-down {
+    position: absolute;
+    left: 32px;
+    top: 67px
+  }
+  }
+
+  @media (min-width: 361px) and (max-width: 375px) {
+    .shape-picker {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .shape {
+      width: 45px;
+      left: 17.5px;
+      top: 17.5px;
+    }
+    
+    .shape-up {
+      position: absolute;
+      left: 32px;
+      top: 3px
+    }
+    
+    .shape-down {
+      position: absolute;
+      left: 32px;
+      top: 67px
+    }
+    }

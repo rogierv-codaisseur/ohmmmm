@@ -1,9 +1,9 @@
-
 .GameSelectSplash {
-  background: url('../assets/garyselect.png');
+  background: url('../assets/garyselect.png') no-repeat center center fixed;
   width: 400px;
   height: 700px;
-  border: 1px solid rgb(97, 75, 75);
+  border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
   font-family: 'Fredoka One', cursive;
@@ -17,8 +17,7 @@
 .PlayerName {
   font-size: 1.5rem;
   position: relative;
-  left: -37%;
-  top: -2%;
+  top: -3%;
 }
 
 .Two {
@@ -46,7 +45,16 @@
   font-size: 1rem;
 }
 
-.Two  a {
+.exit {
+  line-height: 1.3rem;
+  position: relative;
+  left: 0%;
+  top: 47vh;
+  height: 32px;
+  width: 32px;
+}
+
+.Two a {
   text-decoration: none;
   color: white;
 }
@@ -59,4 +67,79 @@
 .Ten a {
   text-decoration: none;
   color: white;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .GameSelectSplash {
+    width: 95vw;
+    height: 95vh;
+    background-size: 95%
+  }
+
+  .PlayerName {
+    font-size: 1.4rem;
+  }
+
+  .Time {
+    font-size: 3.5rem;
+  }
+
+  .Two {
+    top: -1.2%;
+  }
+
+  .Five {
+    width: 100px;
+    left: 57%;
+    top: 10.3%;
+  }
+
+  .Ten {
+    top: 17%;
+  }
+
+  .exit {
+    top: 45vh;
+    height: 32px;
+    width: 32px;
+  }
+
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+  .GameSelectSplash {
+    width: 95vw;
+    height: 95vh;
+    background-size: 95%
+  }
+
+  .PlayerName {
+    font-size: 1.4rem;
+    top: 8%;
+  }
+
+  .Time {
+    font-size: 3.5rem;
+  }
+
+  .Two {
+    top: 10%;
+  }
+
+  .Five {
+    width: 100px;
+    left: 58%;
+    top: 21%;
+  }
+
+  .Ten {
+    top: 27%;
+  }
+
+  .exit {
+    top: 51vh;
+    height: 32px;
+    width: 32px;
+  }
+
 }

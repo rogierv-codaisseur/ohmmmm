@@ -1,10 +1,11 @@
 html {
-  background-color: rgb(1, 171, 209);
+  background-color: black;
   font-family: 'Fredoka One', cursive;
 }
 
 .App {
   min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
