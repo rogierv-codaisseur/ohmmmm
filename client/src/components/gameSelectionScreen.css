@@ -50,7 +50,7 @@
   line-height: 1.3rem;
   position: relative;
   left: 0%;
-  top: 53vh;
+  top: 50vh;
   height: 32px;
   width: 32px;
 }
@@ -100,7 +100,7 @@
   }
 
   .exit {
-    top: 50vh;
+    top: 45vh;
     height: 32px;
     width: 32px;
   }
@@ -138,7 +138,7 @@
   }
 
   .exit {
-    top: 53vh;
+    top: 51vh;
     height: 32px;
     width: 32px;
   }
