@@ -31,7 +31,7 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
           <span className="Minutes">minutes</span>
         </Link>
       </div>
-      <img className="exit" src="assets/exit_white.svg" onClick={logoff} />
+      <img className="exit" src="assets/exit_white.svg" onClick={logoff} alt="exit" />
     </div>
   );
 };

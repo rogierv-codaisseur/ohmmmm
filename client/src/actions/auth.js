@@ -34,10 +34,10 @@ export const login = (name, password) => dispatch => {
       )
     )
     .catch(error => {
-      if (error.status === 401 || 404) {
+      if (error.status === 401 || error.status === 404) {
         dispatch(loginFailure(error.response.body.message));
       } else {
-        console.error(error);
+        return error;
       }
     });
 };
