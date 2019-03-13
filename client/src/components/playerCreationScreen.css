@@ -3,7 +3,8 @@
   width: 400px;
   height: 700px;
   background: url("../assets/Background.png") no-repeat center center fixed;
-  border: 1px solid white;
+  border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
   font-family: 'Fredoka One', 'Roboto', cursive;
@@ -13,7 +14,6 @@
   display: flex;
   flex-direction: row;
   align-content: space-between;
-  margin-bottom: 0px;
 }
 
 .LilyImg {
@@ -23,6 +23,7 @@
 .GaryImg {
   margin-top: 30px;
 }
+
 .Avatars input{
   margin-left: 15px;
   -webkit-appearance: none;
@@ -47,16 +48,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-}
-
-.FormBodyCreate {
-  margin-top: 0px;
-}
-
-.Avatars {
-  display: flex;
-  flex-direction: row;
-  align-content: space-between;
 }
 
 .Name input{
@@ -106,11 +97,10 @@
 
 
 
-@media (max-width: 320px) {
+@media (min-width: 320px) and (max-width: 375px) {
   .SplashCreate {
-    width: 318px;
-    height: 568px;
-    background-size: 105%
+    width: 95vw;
+    height: 95vh;
   }
   
   .Name input{
@@ -122,12 +112,13 @@
   }
 
   .GaryImg {
-    width: 115px;
+    width: 100px;
     margin-top: 27px;
   }
 
   .LilyImg {
-    width: 115px;
+    width: 100px;
+    margin-left: 10%;
   }
 
   .Avatars {
@@ -138,8 +129,15 @@
     margin-top: 7px;
     margin-bottom: 7px;
   }
-}
 
+  .shape-picker-group {
+    margin-left: 7px;
+    margin-right: auto;
+    width: 95%;
+    margin-bottom: 5px;
+  }
+}
+/* 
 @media (min-width: 321px) and (max-width: 360px) {
   .SplashCreate {
     width: 358px;
@@ -190,4 +188,4 @@
   .LilyImg {
     margin-left: 27px;
   }
-}
+} */

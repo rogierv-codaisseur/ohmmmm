@@ -45,9 +45,8 @@ table {
 
 @media (max-width: 320px) {
 .GameResultSplash {
-    width: 318px;
-    height: 568px;
-    background-size: 100%
+    width: 95vw;
+    height: 95vh;
   }
 
   th {
@@ -72,9 +71,8 @@ table {
 
 @media (min-width: 321px) and (max-width: 360px) {
 .GameResultSplash {
-    width: 358px;
-    height: 638px;
-    background-size: 100%
+    width: 95vw;
+    height: 95vh;
   }
 
   .LilyText {
@@ -90,11 +88,10 @@ table {
 
 }
 
-@media (min-width: 361px) and (max-width: 375px) {
+@media (min-width: 360px) and (max-width: 1000px) {
 .GameResultSplash {
-    width: 373px;
-    height: 665px;
-    background-size: 100%
+    width: 95vw;
+    height: 95vh;
   }
 
   .LilyText {

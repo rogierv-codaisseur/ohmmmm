@@ -12,8 +12,8 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values }) => {
         <form className="FormBodyCreate" onSubmit={onSubmit}>
         <h4>SIGN UP</h4>
         <div className="Name">
-          <label className="User" htmlFor="name">User Name:</label>
-          <input type="text" id="name" name="name" value={name} onChange={onChange} />
+          <label className="User" htmlFor="name">User:</label>
+          <input placeholder="Enter Name" type="text" id="name" name="name" value={name} onChange={onChange} />
         </div>
           <label className="User" htmlFor="avatar">Choose your Avatar:</label>
           <div className="Avatars">
