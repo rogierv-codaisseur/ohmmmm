@@ -46,6 +46,15 @@
   font-size: 1rem;
 }
 
+.exit {
+  line-height: 1.3rem;
+  position: relative;
+  left: 0%;
+  top: 53vh;
+  height: 32px;
+  width: 32px;
+}
+
 .Two a {
   text-decoration: none;
   color: white;
@@ -70,8 +79,6 @@
 
   .PlayerName {
     font-size: 1.4rem;
-    /* left: -33%;
-    top: -3%; */
   }
 
   .Time {
@@ -90,6 +97,12 @@
 
   .Ten {
     top: 17%;
+  }
+
+  .exit {
+    top: 50vh;
+    height: 32px;
+    width: 32px;
   }
 
 }
@@ -122,6 +135,12 @@
 
   .Ten {
     top: 27%;
+  }
+
+  .exit {
+    top: 53vh;
+    height: 32px;
+    width: 32px;
   }
 
 }

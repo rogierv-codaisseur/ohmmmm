@@ -8,9 +8,7 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
 
   return (
     <div className="GameSelectSplash">
-      <p className="PlayerName" onClick={logoff}>
-        {currentUserName}
-      </p>
+      <p className="PlayerName">{currentUserName}</p>
 
       <div className="Two">
         <Link to="/pre-game" onClick={() => setGame(120, 1)}>
@@ -33,6 +31,7 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
           <span className="Minutes">minutes</span>
         </Link>
       </div>
+      <img className="exit" src="assets/exit_white.svg" onClick={logoff} />
     </div>
   );
 };
