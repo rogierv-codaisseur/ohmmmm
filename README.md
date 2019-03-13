@@ -1,6 +1,6 @@
 ### Welcome to
 
-![Logo](https://github.com/rogierv-codaisseur/Kingdom-of-Tripolis/blob/master/screenshots/logo.png)
+![Logo](https://github.com/rogierv-codaisseur/ohmmmm/blob/dev/Screenshot%202019-03-13%20at%2015.50.56.png)
 
 We built this game as a classic top-down rpg style puzzler.<br />
 The aim of the game is to reach the Loot Chest first, while avoiding the skeletons.
