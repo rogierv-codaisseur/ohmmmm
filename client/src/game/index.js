@@ -169,12 +169,12 @@ export default (timeInSec, gameType) => {
 
    
     // set fade of slow down text
-    // this.tweens.add({
-    //   targets: slowDownText,
-    //   alpha: { value: 0, duration: 3000, ease: 'Power1', delay: 1000 },
-    //   yoyo: false,
-    //   loop: 1
-    // });
+    this.tweens.add({
+      targets: slowDownText,
+      alpha: { value: 0, duration: 1000, ease: 'Power1', delay: 0 },
+      yoyo: true,
+      loop: -1
+    });
 
     // define player movements
     this.input.on('pointermove', function(pointer) {
@@ -182,15 +182,19 @@ export default (timeInSec, gameType) => {
       player.y = pointer.y;
       pointer.motionFactor = 0.4;
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
-      if (speed > 5) {
+      if (speed > 6) {
         score -= 1;
         slowDownText.setText(slowMessages[randomNum]);
+
+        // setTimeout(function (){
+        //   slowDownText.setText(slowMessages[0]);
+        // }, 3000)
 
         if (score < 0) {
           score = 0;
         }
       }
-      if (speed < 10) {
+      if (speed < 4) {
         slowDownText.setText(slowMessages[0]);
         randomNum = Math.ceil(Math.random() * 5);
       }
