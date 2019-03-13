@@ -29,6 +29,10 @@ td {
   position: relative;
 }
 
+.GameResultSplash  a {
+  text-decoration: none;
+}
+
 .LilyText {
   width: 220px;
   font-size: 1.1rem;
@@ -37,14 +41,13 @@ td {
   margin-left: 13%;
 }
 
-.GameLink img {
-  width: 50px;
+.GameLink p {
+  font-size: 1.2rem;
+  color: #01D1C1;
 }
 
-.Home {
-  position: fixed;
-  margin-left: -4%;
-  padding-top: 380px;
+.GameLink {
+  text-align: center;
 }
 
 @media (min-width: 320px) and (max-width: 375px) {
@@ -69,24 +72,14 @@ td {
     margin-left: 18%;
   }
 
-  .Home {
-    position: fixed;
-    margin-left: -6%;
-    padding-top: 295px;
-  }
 
-  .GameLink img {
-    width: 40px;
+  .GameLink p {
+    font-size: 1rem;
   }
 
 }
 
 @media (min-width: 375px) and (max-width: 425px) {
-  .Home {
-    position: fixed;
-    margin-left: -6%;
-    padding-top: 380px;
-  }
 
   .LilyText {
     width: 150px;

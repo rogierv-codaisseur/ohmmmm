@@ -22,7 +22,7 @@ export default (timeInSec, gameType) => {
   let flyingOhms;
   let music;
   let bubbles;
-  let slowMessages = ['', 'slooow\ndown', 'take it\neasy', 'breathe\nin', 'breathe\nout', 'please\nchill'];
+  let slowMessages = ['', 'slooow down', 'take it easy', 'breathe in', 'breathe out', 'please chill'];
   let randomNum = Math.ceil(Math.random() * 5);
 
   new Phaser.Game(config);
@@ -63,6 +63,10 @@ export default (timeInSec, gameType) => {
     // add background image
     this.add.image(200, 350, 'stage');
 
+    var cornerLeft = this.add.circle(10, -10, 80, 0x6666ff).setDepth(1)
+    var cornerRight = this.add.circle(390, -10, 80, 0x6666ff).setDepth(1)
+
+
     // add bubbles
     bubbles = this.add.group({ key: 'bubble', repeat: 111, setScale: { x: 0, y: 0 } });
 
@@ -82,14 +86,14 @@ export default (timeInSec, gameType) => {
     bubbles.children.iterate(function(child) {
       this.tweens.add({
         targets: child,
-        alpha: 0.2,
+        alpha: 0.1,
         scaleX: 1.1,
         scaleY: 1.1,
         ease: 'Sine.easeInOut',
-        duration: 4050,
+        duration: 4000,
         delay: i * 200,
         repeat: -1,
-        yoyo: true
+        yoyo: true,
       });
       i++;
       if (i % 8 === 0) {
@@ -115,10 +119,10 @@ export default (timeInSec, gameType) => {
 
     // add timer text to canvas
     timeText = this.add
-      .text(325, 10, '', {
+      .text(336, 10, '', {
         fontFamily: 'Fredoka One',
         fontSize: '27px',
-        fill: '#505050'
+        fill: '#ffffff'
       })
       .setDepth(3);
 
@@ -154,20 +158,21 @@ export default (timeInSec, gameType) => {
       .play('breath');
 
     let slowDownText = this.add
-      .text(130, 230, slowMessages[0], {
+      .text(120, 10, slowMessages[0], {
         fontFamily: 'Fredoka One',
-        fontSize: '45px',
+        fontSize: '27px',
         fill: '#505050',
-        align: 'center'
+        align: 'center',
         // alpha: 1
       })
       .setDepth(5);
 
+   
     // set fade of slow down text
     this.tweens.add({
       targets: slowDownText,
-      alpha: { value: 0, duration: 4000, ease: 'Power1', delay: 2000 },
-      yoyo: false,
+      alpha: { value: 0, duration: 1000, ease: 'Power1', delay: 0 },
+      yoyo: true,
       loop: -1
     });
 
@@ -177,15 +182,19 @@ export default (timeInSec, gameType) => {
       player.y = pointer.y;
       pointer.motionFactor = 0.4;
       speed = Math.round(parseInt(Math.sqrt(Math.abs(pointer.velocity.x) ** 2 + Math.abs(pointer.velocity.y) ** 2)));
-      if (speed > 5) {
+      if (speed > 6) {
         score -= 1;
         slowDownText.setText(slowMessages[randomNum]);
+
+        // setTimeout(function (){
+        //   slowDownText.setText(slowMessages[0]);
+        // }, 3000)
 
         if (score < 0) {
           score = 0;
         }
       }
-      if (speed < 10) {
+      if (speed < 4) {
         slowDownText.setText(slowMessages[0]);
         randomNum = Math.ceil(Math.random() * 5);
       }
@@ -280,10 +289,10 @@ export default (timeInSec, gameType) => {
 
     // add score text
     scoreText = this.add
-      .text(20, 10, '', {
+      .text(10, 10, '', {
         fontFamily: 'Fredoka One',
         fontSize: '27px',
-        fill: '#d32929'
+        fill: '#ffffff'
       })
       .setDepth(3);
 
