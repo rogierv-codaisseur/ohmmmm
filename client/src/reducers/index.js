@@ -4,6 +4,6 @@ import currentUser from './currentUser';
 import shape from './shape';
 import top5 from './score';
 import setGame from './setGame';
-import loginErr from './loginErr';
+import errorMessages from './errorMessages';
 
-export default combineReducers({ currentUser, shape, top5, setGame, loginErr });
+export default combineReducers({ currentUser, shape, top5, setGame, errorMessages });
