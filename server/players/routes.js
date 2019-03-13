@@ -28,7 +28,7 @@ router.get('/players/:id', (req, res, next) => {
 router.post('/players', (req, res, next) => {
   const { name, password, avatar } = req.body;
   const player = {
-    name,
+    name: name.toUpperCase(),
     password: bcrypt.hashSync(password, 10),
     avatar
   };
