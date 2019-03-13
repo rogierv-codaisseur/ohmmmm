@@ -1,59 +1,63 @@
 table {
   margin: auto;
-  margin-top: 10px;
-  }
-  
-  th {
-    background-color: #FDAB4A;
-    border-radius: 5px;
-    padding: 6px 30px;
-  }
-  
-  td {
-    background-color: #01D1C1;
-    border-radius: 5px;
-    padding: 6px 30px;
-    font-size: 1rem;
-  }
+  margin-top: 10%;
+}
+
+th {
+  background-color: #FDAB4A;
+  border-radius: 5px;
+  padding: 6px 30px;
+}
+
+td {
+  background-color: #01D1C1;
+  border-radius: 5px;
+  padding: 6px 30px;
+  font-size: 1rem;
+}
 
 .GameResultSplash {
   background: url('../assets/results.png');
   width: 400px;
   height: 700px;
-  border: 1px solid rgb(97, 75, 75);
+  border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
   font-family: 'Fredoka One', cursive;
-  color: white
-}
-
-.GameResultSplash a {
-  text-decoration: none;
-  color: rgb(1, 171, 209);
-  font-size: 1rem;
+  color: white;
   position: relative;
-  top: 350px;
 }
 
 .LilyText {
   width: 220px;
   font-size: 1.1rem;
   position: absolute;
-  top: 260px;
-  margin-left: 15px;
+  top: 56%;
+  margin-left: 13%;
 }
 
-@media (max-width: 320px) {
-.GameResultSplash {
-    width: 318px;
-    height: 568px;
-    background-size: 100%
+.GameLink img {
+  width: 50px;
+}
+
+.Home {
+  position: fixed;
+  margin-left: -4%;
+  padding-top: 380px;
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+  .GameResultSplash {
+    width: 95vw;
+    height: 95vh;
+    background-size: 105%
   }
 
   th {
     font-size: 1rem;
   }
-  
+
   td {
     font-size: 0.8rem;
   }
@@ -61,50 +65,33 @@ table {
   .LilyText {
     width: 150px;
     font-size: 0.9rem;
-    top: 208px;
-    margin-left: 23px;
+    top: 58.5%;
+    margin-left: 18%;
   }
 
-  .GameResultSplash a {
-    top: 270px;
+  .Home {
+    position: fixed;
+    margin-left: -6%;
+    padding-top: 295px;
   }
+
+  .GameLink img {
+    width: 40px;
+  }
+
 }
 
-@media (min-width: 321px) and (max-width: 360px) {
-.GameResultSplash {
-    width: 358px;
-    height: 638px;
-    background-size: 100%
+@media (min-width: 375px) and (max-width: 425px) {
+  .Home {
+    position: fixed;
+    margin-left: -6%;
+    padding-top: 380px;
   }
 
   .LilyText {
-    width: 200px;
+    width: 150px;
     font-size: 1rem;
-    top: 232px;
-    margin-left: 12px;
-  }
-
-  .GameResultSplash a {
-    top: 280px;
-  }
-
-}
-
-@media (min-width: 361px) and (max-width: 375px) {
-.GameResultSplash {
-    width: 373px;
-    height: 665px;
-    background-size: 100%
-  }
-
-  .LilyText {
-    width: 200px;
-    font-size: 1.05rem;
-    top: 245px;
-    margin-left: 16px;
-  }
-
-  .GameResultSplash a {
-    top: 300px;
+    top: 47.5%;
+    margin-left: 20%;
   }
 }
