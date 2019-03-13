@@ -1,27 +1,25 @@
-### Welcome to
+### Ohmmmm — Meditation for kids app
 
 ![Logo](https://github.com/rogierv-codaisseur/ohmmmm/blob/dev/Screenshot%202019-03-13%20at%2015.50.56.png)
 
-We built this game as a classic top-down rpg style puzzler.<br />
-The aim of the game is to reach the Loot Chest first, while avoiding the skeletons.
+Meditation and kids might not sound like a match made in heaven. Kids between the ages of ten to fourteen lead busy and active lives, it’s a time of fast transition and emotional & cognitive development. Where can they get some rest and some quiet time will all of that buzzing? Ohmmmm is a game that makes meditation fun and engages kids to slow down and relax.
 
 ![](KingdomOfTripolis.gif)
 
-The front-end was developed using only `React` and `Redux`.<br />
-The back-end was implimented using `Websocket`
+The front-end framework was developed using `React` and `Redux`.<br />
+The game was built using `Phaser 3` and the back-end was implimented with `Express`
 
 ## Game Rules
 
-Player 1 - Use arrow keys to navigate around the map.<br />
-Player 2 - Use W A S D to bavigate around the map.<br />
-Avoid the Skeletons! They will only move once a player moves.<br />
-Player will respawn at start when hit by an enemy.<br />
-Plan your moves carefully OR run like a crazed bat out of hell.<br />
-Be the first to claim the LOOT!
+Move the flower across the screen while trying to collect ohmmmms.<br />
+Move too fast and you will lose points.<br />
+When you move too fast you will be alerted via warning text.<br />
+Try and matcg your breathing to the flower pulse.<br />
+The goal is to relax and take your time and not rush to collect points.
 
 ## Play Online
 
-https://kingdom-of-tripolis.netlify.com/
+https://ohmmmm.netlify.com/
 
 ## Run Locally
 
@@ -34,22 +32,12 @@ npm install
 npm run start
 ```
 
-If dynos have been stopped, you can run the `Server` locally:<br />
-*NOTE: Run `Client` as mentioned above*
-
-```sh
-cd server/
-npm install
-npm run start
-```
-
 ## Contributors
 
+Aliénor de Haan - Client
+Milan van den Bovenkamp - Project Manager
+
+Development Team:
+Leonie Peters: https://github.com/LeoniePeters<br />
 Rogier Verkaik: https://github.com/rogierv-codaisseur<br />
 Dusty Wood Saunders: https://github.com/dustywsaunders
-
-## Credits
-
-Music: http://freemusicarchive.org/music/Azureflux/<br />
-Some sprites: https://candacis.wordpress.com/category/resources/tiles/<br />
-Other sprites: https://opengameart.org/content/lpc-medieval-fantasy-character-sprites<br />
