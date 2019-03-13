@@ -42,9 +42,9 @@ td {
 }
 
 .Home {
-  position: absolute;
-  margin-left: -6%;
-  padding-top: 500px;
+  position: fixed;
+  margin-left: -4%;
+  padding-top: 380px;
 }
 
 @media (min-width: 320px) and (max-width: 375px) {
@@ -70,9 +70,9 @@ td {
   }
 
   .Home {
-    position: absolute;
+    position: fixed;
     margin-left: -6%;
-    padding-top: 380px;
+    padding-top: 295px;
   }
 
   .GameLink img {
@@ -83,9 +83,9 @@ td {
 
 @media (min-width: 375px) and (max-width: 425px) {
   .Home {
-    position: absolute;
+    position: fixed;
     margin-left: -6%;
-    padding-top: 470px;
+    padding-top: 380px;
   }
 
   .LilyText {
