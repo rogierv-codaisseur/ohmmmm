@@ -22,7 +22,7 @@ export default (timeInSec, gameType) => {
   let flyingOhms;
   let music;
   let bubbles;
-  let slowMessages = ['', 'slooow\ndown', 'take it\neasy', 'breathe\nin', 'breathe\nout', 'please\nchill'];
+  let slowMessages = ['', 'slooow down', 'take it easy', 'breathe in', 'breathe out', 'please chill'];
   let randomNum = Math.ceil(Math.random() * 5);
 
   new Phaser.Game(config);
@@ -62,6 +62,10 @@ export default (timeInSec, gameType) => {
   function create() {
     // add background image
     this.add.image(200, 350, 'stage');
+
+    var cornerLeft = this.add.circle(10, -10, 80, 0x6666ff).setDepth(1)
+    var cornerRight = this.add.circle(390, -10, 80, 0x6666ff).setDepth(1)
+
 
     // add bubbles
     bubbles = this.add.group({ key: 'bubble', repeat: 111, setScale: { x: 0, y: 0 } });
@@ -115,10 +119,10 @@ export default (timeInSec, gameType) => {
 
     // add timer text to canvas
     timeText = this.add
-      .text(325, 10, '', {
+      .text(336, 10, '', {
         fontFamily: 'Fredoka One',
         fontSize: '27px',
-        fill: '#505050'
+        fill: '#ffffff'
       })
       .setDepth(3);
 
@@ -154,22 +158,23 @@ export default (timeInSec, gameType) => {
       .play('breath');
 
     let slowDownText = this.add
-      .text(130, 230, slowMessages[0], {
+      .text(120, 10, slowMessages[0], {
         fontFamily: 'Fredoka One',
-        fontSize: '45px',
+        fontSize: '27px',
         fill: '#505050',
-        align: 'center'
+        align: 'center',
         // alpha: 1
       })
       .setDepth(5);
 
+   
     // set fade of slow down text
-    this.tweens.add({
-      targets: slowDownText,
-      alpha: { value: 0, duration: 4000, ease: 'Power1', delay: 2000 },
-      yoyo: false,
-      loop: -1
-    });
+    // this.tweens.add({
+    //   targets: slowDownText,
+    //   alpha: { value: 0, duration: 3000, ease: 'Power1', delay: 1000 },
+    //   yoyo: false,
+    //   loop: 1
+    // });
 
     // define player movements
     this.input.on('pointermove', function(pointer) {
@@ -280,10 +285,10 @@ export default (timeInSec, gameType) => {
 
     // add score text
     scoreText = this.add
-      .text(20, 10, '', {
+      .text(10, 10, '', {
         fontFamily: 'Fredoka One',
         fontSize: '27px',
-        fill: '#d32929'
+        fill: '#ffffff'
       })
       .setDepth(3);
 
