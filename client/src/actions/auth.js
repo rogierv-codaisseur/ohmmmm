@@ -1,7 +1,7 @@
 import request from 'superagent';
 
 export const LOGIN = 'LOGIN';
-export const LOGIN_FAILED = 'LOGIN_FAILED'
+export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 const baseUrl = 'https://ohmmmm.herokuapp.com';
@@ -34,10 +34,10 @@ export const login = (name, password) => dispatch => {
       )
     )
     .catch(error => {
-      if(error.status === 401 || 404) {
-      dispatch(loginFailure(error.response.body.message))
+      if (error.status === 401 || 404) {
+        dispatch(loginFailure(error.response.body.message));
       } else {
-        console.error(error)
+        console.error(error);
       }
     });
 };
