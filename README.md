@@ -4,7 +4,7 @@
 
 Meditation and kids might not sound like a match made in heaven. Kids between the ages of ten to fourteen lead busy and active lives, it’s a time of fast transition and emotional & cognitive development. Where can they get some rest and some quiet time will all of that buzzing? Ohmmmm is a game that makes meditation fun and engages kids to slow down and relax.
 
-![](KingdomOfTripolis.gif)
+![](https://github.com/rogierv-codaisseur/ohmmmm/blob/dev/screenshots/ohmmmm.gif)
 
 ## Development
 
