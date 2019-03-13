@@ -22,7 +22,8 @@ class PlayerCreationScreenContainer extends React.Component {
 
   render() {
     if (this.props.currentUser) return <Redirect to="/game-selection" />;
-    return <PlayerCreationScreen onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} />;
+    return <PlayerCreationScreen onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} 
+    errorMessage={this.props.errorMessage}/>;
   }
 }
 
@@ -39,7 +40,8 @@ PlayerCreationScreenContainer.defaultProps = { currentUser: null };
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  shape: state.shape
+  shape: state.shape,
+  errorMessage: state.errorMessages
 });
 
 export default connect(
