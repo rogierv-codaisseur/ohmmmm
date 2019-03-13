@@ -6,6 +6,8 @@ Meditation and kids might not sound like a match made in heaven. Kids between th
 
 ![](KingdomOfTripolis.gif)
 
+## Development
+
 The front-end framework was developed using `React` and `Redux`.<br />
 The game was built using `Phaser 3` and the back-end was implimented with `Express`
 
@@ -34,7 +36,7 @@ npm run start
 
 ## Contributors
 
-Aliénor de Haan - Client
+Aliénor de Haan - Client<br />
 Milan van den Bovenkamp - Project Manager
 
 Development Team:
