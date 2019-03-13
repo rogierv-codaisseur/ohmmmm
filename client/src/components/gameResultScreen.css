@@ -1,6 +1,6 @@
 table {
   margin: auto;
-  margin-top: 10px;
+  margin-top: 10%;
   }
   
   th {
@@ -20,33 +20,38 @@ table {
   background: url('../assets/results.png');
   width: 400px;
   height: 700px;
-  border: 1px solid rgb(97, 75, 75);
+  border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
   font-family: 'Fredoka One', cursive;
-  color: white
-}
-
-.GameResultSplash a {
-  text-decoration: none;
-  color: rgb(1, 171, 209);
-  font-size: 1rem;
+  color: white;
   position: relative;
-  top: 350px;
 }
 
 .LilyText {
   width: 220px;
   font-size: 1.1rem;
   position: absolute;
-  top: 260px;
-  margin-left: 15px;
+  top: 56%;
+  margin-left: 13%;
 }
 
-@media (max-width: 320px) {
+.GameLink img{
+  width: 50px;
+}
+
+.Home {
+  position: absolute;
+  margin-left: -6%;
+  padding-top: 500px;
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
 .GameResultSplash {
     width: 95vw;
     height: 95vh;
+    background-size: 105%
   }
 
   th {
@@ -60,15 +65,38 @@ table {
   .LilyText {
     width: 150px;
     font-size: 0.9rem;
-    top: 208px;
-    margin-left: 23px;
+    top: 58.5%;
+    margin-left: 18%;
   }
 
-  .GameResultSplash a {
-    top: 270px;
+  .Home {
+    position: absolute;
+    margin-left: -6%;
+    padding-top: 380px;
+  }
+
+  .GameLink img{
+    width: 40px;
+  }
+  
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+  .Home {
+    position: absolute;
+    margin-left: -6%;
+    padding-top: 470px;
+  }
+
+  .LilyText {
+    width: 150px;
+    font-size: 1rem;
+    top: 47.5%;
+    margin-left: 20%;
   }
 }
 
+/* 
 @media (min-width: 321px) and (max-width: 360px) {
 .GameResultSplash {
     width: 95vw;
@@ -104,4 +132,4 @@ table {
   .GameResultSplash a {
     top: 300px;
   }
-}
+} */

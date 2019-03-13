@@ -26,7 +26,7 @@ const GameResultScreen = ({ top5, lastScore }) => {
       </table>
       <p className="LilyText">Awesome job, you managed to collect <br></br>{lastScore} Ohmmmms.</p>
       <Link className="GameLink" to="/game-selection">
-        back to Game Selection
+        <img className="Home" src="../assets/home.png" alt="home"/>
       </Link>
     </div>
   );
