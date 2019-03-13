@@ -14,7 +14,8 @@ const Player = sequelize.define(
       allowNull: false
     },
     avatar: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: false
     }
   },
   {

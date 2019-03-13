@@ -12,7 +12,7 @@ router.post('/login', (req, res, next) => {
     Player.findOne({ where: { name } })
       .then(entity => {
         if (!entity) {
-          return res.status(404).send({ message: 'Player with that name does not exists' });
+          return res.status(404).send({ message: "Are you sure that's your username?" });
         }
         if (bcrypt.compareSync(password, entity.password)) {
           res.send({
@@ -21,13 +21,13 @@ router.post('/login', (req, res, next) => {
             userId: entity.id
           });
         } else {
-          res.status(401).send({ message: 'Password was incorrect' });
+          res.status(401).send({ message: 'Try to remember your shape combo!' });
         }
       })
       .catch(error => next(error));
   } else {
     res.status(401).send({
-      message: 'Please supply a valid name and password'
+      message: 'Hi there! Type in your name and shape combo!'
     });
   }
 });
