@@ -86,14 +86,14 @@ export default (timeInSec, gameType) => {
     bubbles.children.iterate(function(child) {
       this.tweens.add({
         targets: child,
-        alpha: 0.2,
+        alpha: 0.1,
         scaleX: 1.1,
         scaleY: 1.1,
         ease: 'Sine.easeInOut',
-        duration: 4050,
+        duration: 4000,
         delay: i * 200,
         repeat: -1,
-        yoyo: true
+        yoyo: true,
       });
       i++;
       if (i % 8 === 0) {
