@@ -62,7 +62,7 @@
   color: white;
 }
 
-@media (min-width: 320px) and (max-width: 375px) {
+@media (min-width: 320px) and (max-width: 374px) {
 .GameSelectSplash {
     width: 95vw;
     height: 95vh;
@@ -94,6 +94,39 @@
   }
 
 }
+
+@media (min-width: 375px) and (max-width: 425px) {
+  .GameSelectSplash {
+      width: 95vw;
+      height: 95vh;
+      background-size: 95%
+    }
+  
+    .PlayerName {
+      font-size: 1.4rem;
+      top: 8%;
+    }
+  
+    .Time {
+      font-size: 3.5rem;
+    }
+    
+    .Two {
+      top: 10%;
+    }
+    
+    .Five {
+      width: 100px;
+      left: 58%;
+      top: 21%;
+    }
+    
+    .Ten {
+      top: 27%;
+    }
+  
+  }
+
 /* 
 @media (min-width: 321px) and (max-width: 360px) {
 .GameSelectSplash {
