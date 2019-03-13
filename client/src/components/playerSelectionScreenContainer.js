@@ -35,10 +35,11 @@ PlayerSelectionScreenContainer.propTypes = {
   }),
   login: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
-  shape: PropTypes.string.isRequired
+  shape: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string
 };
 
-PlayerSelectionScreenContainer.defaultProps = { currentUser: null };
+PlayerSelectionScreenContainer.defaultProps = { currentUser: null, errorMessage: null };
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,

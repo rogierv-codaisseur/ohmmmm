@@ -1,9 +1,9 @@
-
 .Splash {
   width: 400px;
   height: 700px;
   background: url("../assets/Background.png") no-repeat center center fixed;
-  border: 1px solid white;
+  border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
   font-family: 'Fredoka One', cursive;
@@ -17,14 +17,14 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 200px;
+  padding-top: 25vh;
 }
 
 .Footer {
   font-size: 1rem;
   color: white;
   text-justify: center;
-  height: 10%;  
+  height: 10%;
 }
 
 .Footer a {
@@ -32,34 +32,13 @@
   color: red;
 }
 
-@media (max-width: 320px) {
+@media (min-width: 320px) and (max-width: 375px) {
   .Splash {
-    width: 318px;
-    height: 568px;
-    background-size: 105%
+    width: 95vw;
+    height: 95vh;
   }
 
   .Logo img {
     width: 75%
-  }
-}
-
-@media (min-width: 321px) and (max-width: 360px) {
-  .Splash {
-    width: 358px;
-    height: 638px;
-    background-size: 105%
-  }
-
-  .Logo img {
-    width: 90%
-  }
-}
-
-@media (min-width: 361px) and (max-width: 375px) {
-  .Splash {
-    width: 373px;
-    height: 665px;
-    background-size: 105%
   }
 }

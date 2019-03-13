@@ -37,7 +37,7 @@ router.post('/players', (req, res, next) => {
     res.status(401).send({ message: 'Combine different shapes. This will be your password!' });
   } else {
   const player = {
-    name,
+    name: name.toUpperCase(),
     password: bcrypt.hashSync(password, 10),
     avatar
   };

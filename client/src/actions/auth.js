@@ -1,8 +1,10 @@
 import request from 'superagent';
 
 export const LOGIN = 'LOGIN';
+
 export const LOGIN_FAILED = 'LOGIN_FAILED'
 export const SIGNUP_FAILED = 'SIGNUP_FAILED'
+
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 const baseUrl = 'https://ohmmmm.herokuapp.com';
@@ -41,10 +43,10 @@ export const login = (name, password) => dispatch => {
       )
     )
     .catch(error => {
-      if(error.status === 401 || 404) {
-      dispatch(loginFailure(error.response.body.message))
+      if (error.status === 401 || error.status === 404) {
+        dispatch(loginFailure(error.response.body.message));
       } else {
-        console.error(error)
+        return error;
       }
     });
 };
@@ -53,10 +55,8 @@ export const register = (name, password, avatar) => dispatch => {
   request
     .post(`${baseUrl}/players`)
     .send({ name, password, avatar })
-    // .then(res => console.log(res.response))
     .then(() => dispatch(login(name, password)))
     .catch(error => {
-      // console.error(error.response)
       if(error.status === 401) {
       dispatch(signupFailure(error.response.body.message))
       } else {
