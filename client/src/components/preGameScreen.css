@@ -1,4 +1,3 @@
-
 .PreGameSplash {
   width: 400px;
   height: 700px;
@@ -45,28 +44,3 @@
   }
 
 }
-/* 
-@media (min-width: 321px) and (max-width: 360px) {
-  .PreGameSplash {
-    width: 358px;
-    height: 638px;
-    background-size: 105%
-  }
-
-  .PreGameLogo img {
-    padding-top: 170px;
-  }
-
-  .Info {
-    font-size: 1.4rem;
-  }
-
-}
-
-@media (min-width: 361px) and (max-width: 375px) {
-  .PreGameSplash {
-    width: 373px;
-    height: 665px;
-    background-size: 105%
-  }
-} */

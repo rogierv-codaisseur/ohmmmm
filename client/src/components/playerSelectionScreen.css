@@ -1,4 +1,3 @@
-
 .SplashLogin {
   width: 400px;
   height: 700px;
@@ -31,14 +30,16 @@
   justify-content: space-evenly;
 }
 
-.Signup, .Login {
+.Signup,
+.Login {
   font-size: 1rem;
   border-radius: 5px;
   text-align: center;
   color: white;
 }
 
-.Signup, .Login :hover {
+.Signup,
+.Login :hover {
   cursor: pointer;
 }
 
@@ -98,27 +99,3 @@
 
 
 }
-/* 
-@media (min-width: 321px) and (max-width: 360px) {
-  .SplashLogin {
-    width: 358px;
-    height: 638px;
-    background-size: 105%
-  }
-
-  .LogoLogin img {
-    width: 90%
-  }
-  
-  .FormLogin {
-    height: 51%;
-  }
-}
-
-@media (min-width: 361px) and (max-width: 375px) {
-  .SplashLogin {
-    width: 373px;
-    height: 665px;
-    background-size: 105%
-  }
-} */
