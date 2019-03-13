@@ -33,7 +33,10 @@ table {
 
 .LilyText {
   width: 40%;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
+  position: relative;
+  top: 100px;
+  left: 17%;
 }
 
 .Home img {
