@@ -16,7 +16,7 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
       </p>
 
       <div className="Two">
-        <Link to="/pre-game" onClick={() => setGame(120, 1)}>
+        <Link to="/pre-game" onClick={() => setGame(2, 1)}>
           <span className="Time">2</span>
           <br />
           <span className="Minutes">minutes</span>

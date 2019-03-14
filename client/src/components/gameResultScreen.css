@@ -29,7 +29,7 @@ td {
   position: relative;
 }
 
-.GameResultSplash  a {
+.GameResultSplash a {
   text-decoration: none;
 }
 
@@ -80,6 +80,16 @@ td {
 }
 
 @media (min-width: 375px) and (max-width: 425px) {
+
+  .LilyText {
+    width: 150px;
+    font-size: 1rem;
+    top: 57.5%;
+    margin-left: 20%;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 425px) and (min-height: 812px) {
 
   .LilyText {
     width: 150px;
