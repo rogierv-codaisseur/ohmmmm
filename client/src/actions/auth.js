@@ -1,14 +1,11 @@
 import request from 'superagent';
 
 export const LOGIN = 'LOGIN';
-
-export const LOGIN_FAILED = 'LOGIN_FAILED'
-export const SIGNUP_FAILED = 'SIGNUP_FAILED'
-
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 const baseUrl = 'https://ohmmmm.herokuapp.com';
-// const baseUrl = 'http://localhost:4000';
 
 const loginSuccess = token => ({
   type: LOGIN,
@@ -31,7 +28,6 @@ export const setCurrentUser = currentUser => ({
 });
 
 export const login = (name, password) => dispatch => {
-  console.log('dispatch login')
   request
     .post(`${baseUrl}/login`)
     .send({ name, password })
@@ -57,10 +53,10 @@ export const register = (name, password, avatar) => dispatch => {
     .send({ name, password, avatar })
     .then(() => dispatch(login(name, password)))
     .catch(error => {
-      if(error.status === 401) {
-      dispatch(signupFailure(error.response.body.message))
+      if (error.status === 401) {
+        dispatch(signupFailure(error.response.body.message));
       } else {
-        console.error('error')
+        return error;
       }
     });
 };

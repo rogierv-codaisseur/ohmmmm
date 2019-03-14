@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './preGameScreen.css';
 
 const PreGameScreen = () => {
-  // if (!setTime) return 'Loading...';
   return (
     <div className="PreGameSplash">
       <div className="PreGameLogo">
