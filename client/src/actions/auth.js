@@ -1,14 +1,11 @@
 import request from 'superagent';
 
 export const LOGIN = 'LOGIN';
-
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const SIGNUP_FAILED = 'SIGNUP_FAILED';
-
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 const baseUrl = 'https://ohmmmm.herokuapp.com';
-// const baseUrl = 'http://localhost:4000';
 
 const loginSuccess = token => ({
   type: LOGIN,
