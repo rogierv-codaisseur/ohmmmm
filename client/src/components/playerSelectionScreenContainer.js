@@ -23,8 +23,14 @@ class PlayerSelectionScreenContainer extends React.Component {
   render() {
     if (this.props.currentUser) return <Redirect to="/game-selection" />;
     if (localStorage.getItem('currentUser')) return <Redirect to="/game-selection" />;
-    return <PlayerSelectionScreen onSubmit={this.onSubmit} onChange={this.onChange} 
-    values={this.state} errorMessage={this.props.errorMessage}/>;
+    return (
+      <PlayerSelectionScreen
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+        errorMessage={this.props.errorMessage}
+      />
+    );
   }
 }
 
