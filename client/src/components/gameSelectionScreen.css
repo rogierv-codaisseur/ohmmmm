@@ -7,17 +7,23 @@
   text-align: center;
   margin: 0 auto;
   font-family: 'Fredoka One', cursive;
-  color: white
-}
-
-.Time {
-  font-size: 5rem;
+  color: white;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 100px 120px 120px 120px 240px;
 }
 
 .PlayerName {
   font-size: 1.5rem;
-  position: relative;
-  top: -3%;
+  grid-column-start: 1;
+  grid-column-end: end;
+  grid-row: 1;
+}
+
+.GameSelectSplash img {
+  width: 200px;
+  height: 200px;
+  z-index: auto; 
 }
 
 .logout {
@@ -26,29 +32,37 @@
   font-size: 1rem;
 }
 
-.Two {
-  line-height: 1.3rem;
-  position: relative;
-  left: -16.5%;
-  top: 1.5%;
+.GameSelectSplash span {
+  z-index:1;  
 }
 
-.Five {
-  line-height: 1.3rem;
+.Time {
+  font-size: 5rem;
   position: relative;
-  left: 22%;
-  top: 14%;
-}
-
-.Ten {
-  line-height: 1.3rem;
-  position: relative;
-  left: -23.5%;
-  top: 21.5%;
+  bottom: 175%;
+  left: 3%;
 }
 
 .Minutes {
   font-size: 1rem;
+  position: relative;
+  bottom: 195%;
+  left: 3%;
+}
+
+.Two {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.Five {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.Ten {
+  grid-column: 1;
+  grid-row: 4;
 }
 
 .Two a {
@@ -66,11 +80,13 @@
   color: white;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 375px) {
   .GameSelectSplash {
     width: 95vw;
-    height: 95vh;
-    background-size: 95%
+    height: 95vh;  
+    background-size: 95%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10% 20% 20% 20% 30%;
   }
 
   .PlayerName {
@@ -79,50 +95,49 @@
 
   .Time {
     font-size: 3.5rem;
+    bottom: 150%;
+  }
+
+  .Minutes {
+    font-size: 0.8rem;
+    bottom: 165%;
+  }
+
+  .GameSelectSplash img {
+    width: 150px;
+    height: 150px;
   }
 
   .Two {
-    top: -1.2%;
-  }
-
-  .Five {
-    width: 100px;
-    left: 57%;
-    top: 10.3%;
-  }
-
-  .Ten {
-    top: 17%;
+    margin-top: 20px;
   }
 }
 
 @media (min-width: 375px) and (max-width: 425px) {
   .GameSelectSplash {
     width: 95vw;
-    height: 95vh;
-    background-size: 95%
-  }
-
-  .PlayerName {
-    font-size: 1.4rem;
-    top: 8%;
+    height: 95vh;  
+    background-size: 95%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10% 20% 20% 20% 30%;
   }
 
   .Time {
     font-size: 3.5rem;
+    bottom: 135%;
+  }
+
+  .Minutes {
+    font-size: 0.8rem;
+    bottom: 147%;
+  }
+
+  .GameSelectSplash img {
+    width: 150px;
+    height: 150px;
   }
 
   .Two {
-    top: 10%;
-  }
-
-  .Five {
-    width: 100px;
-    left: 58%;
-    top: 21%;
-  }
-
-  .Ten {
-    top: 27%;
+    margin-top: 20px;
   }
 }
