@@ -28,7 +28,7 @@ class PlayerSelectionScreenContainer extends React.Component {
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state}
-        errorMessage={this.props.errorMessage}
+        loginError={this.props.loginError}
       />
     );
   }
@@ -42,15 +42,15 @@ PlayerSelectionScreenContainer.propTypes = {
   login: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
   shape: PropTypes.string.isRequired,
-  errorMessage: PropTypes.string
+  loginError: PropTypes.string
 };
 
-PlayerSelectionScreenContainer.defaultProps = { currentUser: null, errorMessage: null };
+PlayerSelectionScreenContainer.defaultProps = { currentUser: null, loginError: null };
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
   shape: state.shape,
-  errorMessage: state.errorMessages
+  loginError: state.loginError
 });
 
 export default connect(

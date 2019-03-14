@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './playerCreationScreen.css';
 import ShapePickerGroup from './shapePicker';
 
-const PlayerCreationScreen = ({ onSubmit, onChange, values, errorMessage }) => {
+const PlayerCreationScreen = ({ onSubmit, onChange, values, signupError }) => {
   const { name } = values;
 
   return (
@@ -60,7 +60,7 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values, errorMessage }) => {
           <ShapePickerGroup />
           <input id="create" type="submit" value="Create" autoComplete="off" />
         </form>
-        <p className="errorMessage">{errorMessage}</p>
+        <p className="errorMessage">{signupError}</p>
       </div>
     </div>
   );
@@ -73,9 +73,9 @@ PlayerCreationScreen.propTypes = {
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired
   }).isRequired,
-  errorMessage: PropTypes.string
+  signupError: PropTypes.string
 };
 
-PlayerCreationScreen.defaultProps = { errorMessage: null };
+PlayerCreationScreen.defaultProps = { signupError: null };
 
 export default PlayerCreationScreen;
