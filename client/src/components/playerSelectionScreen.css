@@ -86,7 +86,7 @@
   }
 
   .LogoLogin {
-    height: 35vh;
+    height: 35%;
   }
 
   .LogoLogin img {
@@ -97,5 +97,14 @@
     height: 320px;
   }
 
+  .Form input {
+    height: 50%;
+    width: 95%;
+    text-align: center;
+    font-family: 'Fredoka One';
+    font-size: 1rem;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 5px;
+  }
 
 }
