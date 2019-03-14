@@ -24,6 +24,9 @@
   width: 200px;
   height: 200px;
   z-index: auto; 
+  position: relative;
+  bottom: 37%;
+  left: 5%;
 }
 
 .logout {
