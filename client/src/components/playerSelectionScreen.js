@@ -21,7 +21,15 @@ const PlayerSelectionScreen = ({ onSubmit, onChange, values, errorMessage }) => 
           <form className="Form" onSubmit={onSubmit}>
             <p className="User">Enter your player name</p>
             <label htmlFor="name" />
-            <input type="text" id="name" name="name" placeholder="Enter Name" value={name} onChange={onChange} />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter Name"
+              value={name}
+              onChange={onChange}
+              autoComplete="off"
+            />
             <ShapePickerGroup className="Shapes" />
             <input className="Login" type="submit" value="Login" />
           </form>
