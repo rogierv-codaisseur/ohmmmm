@@ -72,7 +72,10 @@ PlayerCreationScreen.propTypes = {
   values: PropTypes.shape({
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  errorMessage: PropTypes.string
 };
+
+PlayerCreationScreen.defaultProps = { errorMessage: null };
 
 export default PlayerCreationScreen;
