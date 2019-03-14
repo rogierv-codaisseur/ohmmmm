@@ -36,6 +36,7 @@
   border-radius: 5px;
   text-align: center;
   color: white;
+  width: 87%;
 }
 
 .Signup,
@@ -44,15 +45,15 @@
 }
 
 .Login {
-  width: 89%;
-  height: 30%;
+  width: 90%;
+  height: 30px;
   background-color: rgb(1, 209, 193);
   font-family: 'Fredoka One';
 }
 
 .Form input {
-  height: 50%;
-  width: 89%;
+  height: 40px;
+  width: 95%;
   text-align: center;
   font-family: 'Fredoka One';
   font-size: 1rem;
@@ -68,7 +69,7 @@
 
 .Signup {
   width: 90%;
-  height: 27px;
+  height: 30px;
   background-color: rgb(253, 171, 74);
   text-decoration: none;
   color: white;
@@ -99,7 +100,7 @@
 
   .Form input {
     height: 50%;
-    width: 95%;
+    width: 98%;
     text-align: center;
     font-family: 'Fredoka One';
     font-size: 1rem;

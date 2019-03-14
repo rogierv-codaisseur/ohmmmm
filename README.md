@@ -39,7 +39,7 @@ npm run start
 Aliénor de Haan - Client<br />
 Milan van den Bovenkamp - Project Manager
 
-Development Team:
+Development Team:<br />
 Leonie Peters: https://github.com/LeoniePeters<br />
 Rogier Verkaik: https://github.com/rogierv-codaisseur<br />
 Dusty Wood Saunders: https://github.com/dustywsaunders

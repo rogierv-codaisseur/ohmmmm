@@ -94,6 +94,10 @@
   margin-left: 40px;
 }
 
+.errorMessage {
+  color: red;
+}
+
 
 
 @media (min-width: 320px) and (max-width: 375px) {

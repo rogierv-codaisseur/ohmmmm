@@ -1,6 +1,7 @@
 .shape-picker-group {
   display: flex;
-  margin: 10px
+  justify-content: space-between;
+  margin: 10px;
 }
 
 .shape-picker {
@@ -9,6 +10,7 @@
   width: 89px;
   height: 89px;
   border-radius: 5px;
+  margin: 5px;
 }
 
 .shape {
@@ -35,28 +37,28 @@
     margin: 8px
   }
 
-.shape-picker {
-  width: 70px;
-  height: 70px;
-}
+  .shape-picker {
+    width: 70px;
+    height: 70px;
+  }
 
-.shape {
-  width: 40px;
-  left: 15px;
-  top: 15px;
-}
+  .shape {
+    width: 40px;
+    left: 15px;
+    top: 15px;
+  }
 
-.shape-up {
-  position: absolute;
-  left: 27px;
-  top: 3px
-}
+  .shape-up {
+    position: absolute;
+    left: 27px;
+    top: 3px
+  }
 
-.shape-down {
-  position: absolute;
-  left: 27px;
-  top: 57px
-}
+  .shape-down {
+    position: absolute;
+    left: 27px;
+    top: 57px
+  }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
@@ -68,47 +70,47 @@
     width: 80px;
     height: 80px;
   }
-  
+
   .shape {
     width: 45px;
     left: 17.5px;
     top: 17.5px;
   }
-  
+
   .shape-up {
     position: absolute;
     left: 32px;
     top: 3px
   }
-  
+
   .shape-down {
     position: absolute;
     left: 32px;
     top: 67px
   }
+}
+
+@media (min-width: 361px) and (max-width: 375px) {
+  .shape-picker {
+    width: 80px;
+    height: 80px;
   }
 
-  @media (min-width: 361px) and (max-width: 375px) {
-    .shape-picker {
-      width: 80px;
-      height: 80px;
-    }
-    
-    .shape {
-      width: 45px;
-      left: 17.5px;
-      top: 17.5px;
-    }
-    
-    .shape-up {
-      position: absolute;
-      left: 32px;
-      top: 3px
-    }
-    
-    .shape-down {
-      position: absolute;
-      left: 32px;
-      top: 67px
-    }
-    }
+  .shape {
+    width: 45px;
+    left: 17.5px;
+    top: 17.5px;
+  }
+
+  .shape-up {
+    position: absolute;
+    left: 32px;
+    top: 3px
+  }
+
+  .shape-down {
+    position: absolute;
+    left: 32px;
+    top: 67px
+  }
+}

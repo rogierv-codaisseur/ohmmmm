@@ -8,7 +8,12 @@ const GameSelectionScreen = ({ currentUser, logoff, setGame }) => {
 
   return (
     <div className="GameSelectSplash">
-      <p className="PlayerName">{currentUserName}</p>
+      <p className="PlayerName">
+        {currentUserName}{' '}
+        <span className="logout" onClick={logoff}>
+          logout
+        </span>
+      </p>
 
       <div className="Two">
         <Link to="/pre-game" onClick={() => setGame(120, 1)}>

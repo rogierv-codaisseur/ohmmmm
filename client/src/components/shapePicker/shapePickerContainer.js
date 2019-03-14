@@ -19,7 +19,7 @@ class ShapePickerContainer extends React.Component {
 
   render() {
     return (
-      <div className="shape-picker-group">
+      <div className="shape-picker">
         <ShapePicker shapeSelection={this.shapeSelection} shape={this.state.shape} color={this.props.color} />
       </div>
     );
