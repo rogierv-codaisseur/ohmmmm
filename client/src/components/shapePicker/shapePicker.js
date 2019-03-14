@@ -14,7 +14,7 @@ const ShapePicker = ({ shape, shapeSelection, color }) => {
   };
 
   return (
-    <div className="shape-picker">
+    <div>
       <img
         onClick={() => shapeSelection('up')}
         src={`./assets/shapes/${shapes.arrowUp[color]}`}

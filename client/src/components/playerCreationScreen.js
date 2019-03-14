@@ -13,7 +13,7 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values, signupError }) => {
           <h4>SIGN UP</h4>
           <div className="Name">
             <label className="User" htmlFor="name">
-              User:
+              Player:
             </label>
             <input
               placeholder="Enter Name"
