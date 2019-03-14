@@ -62,15 +62,6 @@
   grid-row: 4;
 }
 
-.exit {
-  line-height: 1.3rem;
-  position: relative;
-  left: 0%;
-  top: 47vh;
-  height: 32px;
-  width: 32px;
-}
-
 .Two a {
   text-decoration: none;
   color: white;
@@ -118,12 +109,6 @@
   .Two {
     margin-top: 20px;
   }
-
-  .exit {
-    top: 45vh;
-    height: 32px;
-    width: 32px;
-  }
 }
 
 
@@ -153,11 +138,5 @@
 
   .Two {
     margin-top: 20px;
-  }
-
-  .exit {
-    top: 51vh;
-    height: 32px;
-    width: 32px;
   }
 }
