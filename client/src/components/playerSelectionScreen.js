@@ -38,9 +38,10 @@ PlayerSelectionScreen.propTypes = {
   values: PropTypes.shape({
     name: PropTypes.string.isRequired
   }).isRequired,
-  loginErr: PropTypes.string
+  loginErr: PropTypes.string,
+  errorMessage: PropTypes.string
 };
 
-PlayerSelectionScreen.defaultProps = { loginErr: null };
+PlayerSelectionScreen.defaultProps = { loginErr: null, errorMessage: null };
 
 export default PlayerSelectionScreen;
