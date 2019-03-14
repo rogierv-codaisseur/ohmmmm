@@ -5,7 +5,7 @@ import './playerSelectionScreen.css';
 // import {login} from '../actions/auth'
 import ShapePickerGroup from './shapePicker';
 
-const PlayerSelectionScreen = ({ onSubmit, onChange, values, errorMessage }) => {
+const PlayerSelectionScreen = ({ onSubmit, onChange, values, loginError }) => {
   const { name } = values;
   return (
     <div className="SplashLogin">
@@ -25,7 +25,7 @@ const PlayerSelectionScreen = ({ onSubmit, onChange, values, errorMessage }) => 
             <ShapePickerGroup className="Shapes" />
             <input className="Login" type="submit" value="Login" />
           </form>
-          <p className="errorMessage">{errorMessage}</p>
+          <p className="errorMessage">{loginError}</p>
         </div>
       </div>
     </div>
@@ -39,9 +39,9 @@ PlayerSelectionScreen.propTypes = {
     name: PropTypes.string.isRequired
   }).isRequired,
   loginErr: PropTypes.string,
-  errorMessage: PropTypes.string
+  loginError: PropTypes.string
 };
 
-PlayerSelectionScreen.defaultProps = { loginErr: null, errorMessage: null };
+PlayerSelectionScreen.defaultProps = { loginErr: null, loginError: null };
 
 export default PlayerSelectionScreen;

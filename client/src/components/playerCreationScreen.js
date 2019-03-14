@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './playerCreationScreen.css'
 import ShapePickerGroup from './shapePicker';
 
-const PlayerCreationScreen = ({ onSubmit, onChange, values, errorMessage }) => {
+const PlayerCreationScreen = ({ onSubmit, onChange, values, signupError }) => {
   const { name } = values;
 
   return (
@@ -26,7 +26,7 @@ const PlayerCreationScreen = ({ onSubmit, onChange, values, errorMessage }) => {
           <ShapePickerGroup />
           <input id="create" type="submit" value="Create" />
         </form>
-        <p className="errorMessage">{errorMessage}</p>
+        <p className="errorMessage">{signupError}</p>
       </div>
     </div>
   );
