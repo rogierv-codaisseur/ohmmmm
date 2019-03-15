@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d6d9efe8-85d1-4cc8-9ad7-c2c5843a9179/deploy-status)](https://app.netlify.com/sites/ohmmmm/deploys)
+
 ### Ohmmmm — Meditation for kids app
 
 ![Logo](https://github.com/rogierv-codaisseur/ohmmmm/blob/dev/screenshots/ohmmmm.png)
