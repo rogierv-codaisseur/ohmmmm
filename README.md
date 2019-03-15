@@ -47,7 +47,7 @@ npm run start
 
 We try to maintain a backlog to keep track of all implemented and future features. That way people can quickly jump in and start helping out. It also displays how we split up our tasks and try to build this project in an iterative and incremental way!
 
-**[Check out my trelloboard here](https://trello.com/b/t25QwyGN/ohmmmm)**
+**[Check out our trelloboard here](https://trello.com/b/t25QwyGN/ohmmmm)**
 
 ## Contributors
 
