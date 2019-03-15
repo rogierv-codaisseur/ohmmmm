@@ -1,13 +1,18 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d6d9efe8-85d1-4cc8-9ad7-c2c5843a9179/deploy-status)](https://app.netlify.com/sites/ohmmmm/deploys)
 
 # OHMMMM
-## Meditation for kids app
-## [Check out the deployed version here!](https://ohmmmm.netlify.com)
+### Meditation for kids app
+### [Check out the deployed version here!](https://ohmmmm.netlify.com)
 
 ![Logo](https://github.com/rogierv-codaisseur/ohmmmm/blob/dev/screenshots/ohmmmm.png)
 
 ## Table of contents
-
+- **[What this project is about](#what-this-project-is-about)**
+- **[Technologies used](#technologies-used)**
+- **[Game Rules](#game-rules)**
+- **[Run Locally](#run-locally)**
+- **[Our agile workflow and Trello board](#our-agile-workflow-and-trello-board)**
+- **[Contributors](#contributors)**
 
 ## What this project is about
 Meditation and kids might not sound like a match made in heaven. Kids between the ages of ten to fourteen lead busy and active lives, it’s a time of fast transition and emotional & cognitive development. Where can they get some rest and some quiet time will all of that buzzing? Ohmmmm is a game that makes meditation fun and engages kids to slow down and relax.
