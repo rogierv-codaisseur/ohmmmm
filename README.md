@@ -1,5 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d6d9efe8-85d1-4cc8-9ad7-c2c5843a9179/deploy-status)](https://app.netlify.com/sites/ohmmmm/deploys)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=ohmmmm)]
+[![Heroku](https://heroku-badge.herokuapp.com/?app=ohmmmm&style=flat&svg=1&root=server/index.js)]
 
 ### Ohmmmm — Meditation for kids app
 
